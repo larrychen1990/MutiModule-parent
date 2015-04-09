@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-	<bean id="accountCaptchaService" class="com.alexgaoyh.MutiModule.captcha.CaptchaServiceImpl">
+	<bean id="facadeService" class="com.alexgaoyh.MutiModule.service.FacadeServiceImpl">
+		<property name="captchaService" ref="captchaService" />
 	</bean>
-
 </beans>

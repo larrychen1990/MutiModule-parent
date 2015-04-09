@@ -1,12 +1,12 @@
 package com.alexgaoyh.MutiModule.captcha;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,9 +20,9 @@ public class AccountCaptchaServiceTest {
     @Before
     public void prepare() throws Exception {
     	
-        ApplicationContext ctx = new ClassPathXmlApplicationContext( "account-captcha.xml" );
+        ApplicationContext ctx = new ClassPathXmlApplicationContext( "module-captcha.xml" );
         
-        service = (CaptchaService) ctx.getBean( "accountCaptchaService" );
+        service = (CaptchaService) ctx.getBean( "captchaService" );
         
     }
 
