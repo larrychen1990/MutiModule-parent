@@ -9,9 +9,7 @@
 		<version>0.0.1-RELEASE</version>
 	</parent>
 	
-	<groupId>com.alexgaoyh</groupId>
 	<artifactId>MutiModule-service</artifactId>
-	<version>0.0.1-RELEASE</version>
 	<name>MutiModule-service</name>
 	<url>http://maven.apache.org</url>
 	
@@ -59,4 +57,20 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<!-- 父子关系继承插件配置， -->
+	<!-- 父模块定义了plugin ,子模块如果想引入这个插件，如下声明即可，它同时又继承了父模块的配置 -->
+    <build>
+    	<plugins>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+    		</plugin>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-resources-plugin</artifactId>
+    		</plugin>
+    	</plugins>
+    </build>
+    
 </project>
