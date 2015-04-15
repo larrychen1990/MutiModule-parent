@@ -17,7 +17,7 @@ public class FacadeServiceTest {
     @Before
     public void prepare() throws Exception  {
     	//可以加载多个配置文件
-        String[] springConfigFiles = {"module-captcha.xml", "module-service.xml" };
+        String[] springConfigFiles = {"module-captcha.xml", "module-service-facade.xml" };
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext( springConfigFiles );
 

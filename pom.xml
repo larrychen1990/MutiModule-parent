@@ -34,8 +34,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<springframework.version>4.0.2.RELEASE</springframework.version>
 		<org.mybatis.mybatis>3.2.8</org.mybatis.mybatis>
+		<org.mybatis.mybatis-spring>1.2.2</org.mybatis.mybatis-spring>
 		<junit.version>4.7</junit.version>
 		<mysql-connector-java>5.1.21</mysql-connector-java>
+		<com.mchange.c3p0>0.9.5</com.mchange.c3p0>
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
@@ -58,9 +60,24 @@
 				<version>${springframework.version}</version>
 			</dependency>
 			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-jdbc</artifactId>
+			    <version>${springframework.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
 				<version>${org.mybatis.mybatis}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${org.mybatis.mybatis-spring}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.mchange</groupId>
+				<artifactId>c3p0</artifactId>
+				<version>${com.mchange.c3p0}</version>
 			</dependency>
 			<dependency>
 				<groupId>mysql</groupId>

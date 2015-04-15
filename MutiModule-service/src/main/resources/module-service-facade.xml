@@ -7,4 +7,5 @@
 	<bean id="facadeService" class="com.alexgaoyh.MutiModule.service.FacadeServiceImpl">
 		<property name="captchaService" ref="captchaService" />
 	</bean>
+	
 </beans>
