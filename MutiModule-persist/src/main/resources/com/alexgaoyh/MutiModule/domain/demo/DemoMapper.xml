@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- namespace 必须是DemoMapper接口的路径 --> 
+<mapper namespace="com.alexgaoyh.MutiModule.persist.demo.DemoMapper">
+
+	<resultMap type="Demo" id="DemoResultMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="deleteFlagState" property="deleteFlagState" typeHandler="com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler"/>
+	</resultMap>
+	
+	<insert id="insertDemo" parameterType="Demo">
+		insert into Demo(deleteFlagState, name) 
+		values(
+		#{deleteFlagState, typeHandler=com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler},
+		#{name})
+	</insert>
+	
+	<select id="selectDemoById" resultMap="DemoResultMap" parameterType="java.lang.Integer">
+		select * from Demo where id=#{id}
+	</select>
+	
+</mapper>

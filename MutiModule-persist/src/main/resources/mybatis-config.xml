@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+
+	<settings>
+		<setting name="cacheEnabled" value="false"/>
+		<setting name="useGeneratedKeys" value="true"/>
+		<setting name="defaultExecutorType" value="REUSE"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias alias="Demo" type="com.alexgaoyh.MutiModule.domain.demo.DemoEntity"/>
+	</typeAliases>
+	
+	<!-- 对事务的管理和连接池的配置 -->  
+	<environments default="development">  
+		<environment id="development">  
+			<transactionManager type="JDBC" />  
+			<dataSource type="POOLED">  
+				<property name="driver" value="com.mysql.jdbc.Driver" />  
+				<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatisTest" />  
+				<property name="username" value="root" />  
+				<property name="password" value="alexgaoyh" />   
+			</dataSource>  
+		</environment>  
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/alexgaoyh/MutiModule/domain/demo/DemoMapper.xml"/>
+	</mappers>
+	
+</configuration>
+   

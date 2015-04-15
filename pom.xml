@@ -33,11 +33,13 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<springframework.version>4.0.2.RELEASE</springframework.version>
+		<org.mybatis.mybatis>3.2.8</org.mybatis.mybatis>
 		<junit.version>4.7</junit.version>
+		<mysql-connector-java>5.1.21</mysql-connector-java>
 	</properties>
 
-	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活性，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
-	<!-- 在父模块中如下声明之后，子模块的dependency依赖声明就可以直接只声明groupId artifactId 这两个部分就可以了 -->
+	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
+	<!-- 在父模块中如下声明之后，子模块的dependency依赖声明就可以直接只声明groupId artifactId 这两个部分就可以�? -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -54,6 +56,16 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
 				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${org.mybatis.mybatis}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java}</version>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
@@ -81,10 +93,12 @@
 	<modules>
 		<module>MutiModule-captcha</module>
 		<module>MutiModule-service</module>
+    	<module>MutiModule-domain</module>
+    	<module>MutiModule-persist</module>
 	</modules>
 	
 	<!-- 提供pluginManagement 帮助管理插件 -->
-	<!-- 父模块定义了plugin ,子模块如果想引入这个插件，如下声明即可，它同时又继承了父模块的配置 -->
+	<!-- 父模块定义了plugin ,子模块如果想引入这个插件，如下声明即可，它同时又继承了父模块的配�? -->
 	<build>
 		<pluginManagement>
 			<plugins>
