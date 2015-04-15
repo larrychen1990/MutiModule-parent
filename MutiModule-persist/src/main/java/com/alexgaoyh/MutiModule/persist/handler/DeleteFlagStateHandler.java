@@ -14,7 +14,6 @@ import com.alexgaoyh.MutiModule.domain.enumState.DeleteFlagState;
  * 自定义DeleteFlagState转换类 <br>
  * 存储属性：DeleteFlagState.getCode() <br>
  * JDBCType：INT
- * @author yanlei
  */
 public class DeleteFlagStateHandler extends BaseTypeHandler<DeleteFlagState> {
  
