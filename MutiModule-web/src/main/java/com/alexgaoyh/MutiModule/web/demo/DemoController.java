@@ -29,7 +29,7 @@ public class DemoController {
 	@RequestMapping("index")
 	public String index() {
 		DemoEntity demo = new DemoEntity();
-		demo.setName("zz");
+		demo.setName("demo/index");
 		demoService.insertDemo(demo);
 		return "demo/index";
 	}
