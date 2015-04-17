@@ -42,9 +42,7 @@
 	    <property name="dataSource" ref="dataSource" />  
 	</bean>
 	
-	<bean id="demoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
-        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.demo.DemoMapper" />  
-	</bean>
+	<!-- 引入persist持久化bean的定义 -->
+	<import resource="module-persist-beam.xml"/>
 	
 </beans>
