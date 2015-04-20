@@ -1,14 +1,16 @@
-package com.alexgaoyh.MutiModule.service;
+package com.alexgaoyh.MutiModule.service.facade.impl;
 
 import com.alexgaoyh.MutiModule.captcha.CaptchaException;
 import com.alexgaoyh.MutiModule.captcha.CaptchaService;
+import com.alexgaoyh.MutiModule.service.facade.IFacadeService;
+import com.alexgaoyh.MutiModule.service.facade.exception.FacadeServiceException;
 
 /**
  * 实现类
  * @author alexgaoyh
  *
  */
-public class FacadeServiceImpl implements FacadeService {
+public class FacadeServiceImpl implements IFacadeService {
 
     private CaptchaService captchaService;
     

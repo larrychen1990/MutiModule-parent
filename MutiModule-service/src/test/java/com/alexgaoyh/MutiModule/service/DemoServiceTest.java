@@ -15,7 +15,7 @@ public class DemoServiceTest {
 	@Before
     public void prepare() throws Exception  {
     	//可以加载多个配置文件
-        String[] springConfigFiles = {"mybatis-spring-config.xml","module-service-demo.xml" };
+        String[] springConfigFiles = {"module-captcha.xml","mybatis-spring-config.xml","module-service-config.xml" };
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext( springConfigFiles );
 
@@ -34,4 +34,19 @@ public class DemoServiceTest {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 添加事务支持，测试方法中调用 demoService.insertDemoForTransaction 
+	 * 此方法内部调用了两个insert语句，其中一个表结构存在，另外一个不存在，抛出异常信息，之后事务回滚，将前面一个插入语句的信息回滚，数据库中看不到相对应的数据
+	 */
+//	@Test
+//	public void insertDemoForTransaction() {
+//		try {
+//			DemoEntity demo = new DemoEntity();
+//			demo.setName("insertDemoForTransaction");
+//			demoService.insertDemoForTransaction(demo);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

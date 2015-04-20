@@ -1,4 +1,4 @@
-package com.alexgaoyh.MutiModule.service;
+package com.alexgaoyh.MutiModule.service.facade.exception;
 
 /**
  *  facade service服务的异常类

@@ -1,11 +1,13 @@
-package com.alexgaoyh.MutiModule.service;
+package com.alexgaoyh.MutiModule.service.facade;
+
+import com.alexgaoyh.MutiModule.service.facade.exception.FacadeServiceException;
 
 /**
  * 定义形如Facade设计模式的 封装接口
  * @author alexgaoyh
  *
  */
-public interface FacadeService {
+public interface IFacadeService {
 	
 	/**
 	 * 产生随机key

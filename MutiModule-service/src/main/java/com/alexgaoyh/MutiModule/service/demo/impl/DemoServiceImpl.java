@@ -28,4 +28,10 @@ public class DemoServiceImpl implements IDemoService{
 		return demoMapper.selectDemoById(id);
 	}
 
+	@Override
+	public void insertDemoForTransaction(DemoEntity demo) {
+		demoMapper.insertDemo(demo);
+		demoMapper.insertIntoNotExistTable(demo);
+	}
+
 }

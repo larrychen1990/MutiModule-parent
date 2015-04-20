@@ -34,4 +34,11 @@ public class DemoController {
 		return "demo/index";
 	}
 	
+	
+	@RequestMapping("index2")
+	public String index2() {
+		DemoEntity demo = new DemoEntity();
+		demoService.insertDemo(demo);
+		return "demo/index";
+	}
 }

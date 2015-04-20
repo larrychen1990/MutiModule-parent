@@ -23,4 +23,11 @@
 		select * from Demo where id=#{id}
 	</select>
 	
+	<insert id="insertIntoNotExistTable" parameterType="Demo">
+		insert into Demo2(deleteFlagState, name) 
+		values(
+		#{deleteFlagState, typeHandler=com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler},
+		#{name})
+	</insert>
+	
 </mapper>

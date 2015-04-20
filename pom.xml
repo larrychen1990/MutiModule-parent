@@ -40,6 +40,7 @@
 		<com.mchange.c3p0>0.9.5</com.mchange.c3p0>
 		<javax.servlet.javax.servlet-api>3.0.1</javax.servlet.javax.servlet-api>
 		<javax.servlet.jsp.jsp-api>2.2</javax.servlet.jsp.jsp-api>
+		<org.aspectj.aspectjweaver>1.6.2</org.aspectj.aspectjweaver>
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
@@ -110,6 +111,11 @@
 				<groupId>com.mchange</groupId>
 				<artifactId>c3p0</artifactId>
 				<version>${com.mchange.c3p0}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${org.aspectj.aspectjweaver}</version>
 			</dependency>
 			<dependency>
 				<groupId>mysql</groupId>

@@ -15,4 +15,10 @@ public interface IDemoService {
 	 * @param id
 	 */
 	public DemoEntity selectDemoById(Integer id);
+	
+	/**
+	 * 向不存在的表结构中插入数据
+	 * @param demo
+	 */
+	public void insertDemoForTransaction(DemoEntity demo);
 }

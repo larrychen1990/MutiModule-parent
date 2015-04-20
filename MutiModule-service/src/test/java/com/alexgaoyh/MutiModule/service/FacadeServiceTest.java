@@ -1,7 +1,5 @@
 package com.alexgaoyh.MutiModule.service;
 
-import java.io.File;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,15 +7,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alexgaoyh.MutiModule.captcha.CaptchaService;
+import com.alexgaoyh.MutiModule.service.facade.IFacadeService;
 
 public class FacadeServiceTest {
 
-    private FacadeService facadeService;
+    private IFacadeService facadeService;
 
     @Before
     public void prepare() throws Exception  {
     	//可以加载多个配置文件
-        String[] springConfigFiles = {"module-captcha.xml", "module-service-facade.xml" };
+        String[] springConfigFiles = {"module-captcha.xml","mybatis-spring-config.xml", "module-service-config.xml" };
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext( springConfigFiles );
 
@@ -26,7 +25,7 @@ public class FacadeServiceTest {
         System.out.println(captchaService);
         
         //获取module-service.xml 包含的 facadeService 的bean
-        facadeService = (FacadeService) ctx.getBean( "facadeService" );
+        facadeService = (IFacadeService) ctx.getBean( "facadeService" );
 
     }
 
