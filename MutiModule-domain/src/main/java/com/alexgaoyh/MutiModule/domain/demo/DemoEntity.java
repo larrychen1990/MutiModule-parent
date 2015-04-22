@@ -9,7 +9,9 @@ public class DemoEntity extends BaseEntity{
 	 */
 	private static final long serialVersionUID = 4296442388109744586L;
 	
-	
+	/**
+	 * 名称
+	 */
 	private String name;
 
 	public String getName() {

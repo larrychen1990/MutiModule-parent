@@ -6,9 +6,10 @@ public interface DemoMapper {
 
 	/**
 	 * 插入操作
+	 * 返回受影响的条数信息，如果想要获取到主键信息，直接取demo.getId();即可
 	 * @param demo
 	 */
-	public void insertDemo(DemoEntity demo);
+	public Integer insertDemo(DemoEntity demo);
 	
 	/**
 	 * 根据id获取实体信息
@@ -21,4 +22,5 @@ public interface DemoMapper {
 	 * @param demo
 	 */
 	public void insertIntoNotExistTable(DemoEntity demo);
+	
 }

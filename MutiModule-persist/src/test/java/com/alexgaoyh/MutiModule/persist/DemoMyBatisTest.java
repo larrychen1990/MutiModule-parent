@@ -28,6 +28,10 @@ public class DemoMyBatisTest {
 			DemoEntity demo = new DemoEntity();
 			demo.setName("test");
 			demoMapper.insertDemo(demo);
+			//返回受影响的条数 keyProperty的值为demoMapper.insertDemo(demo)的返回值
+			//System.out.println("keyProperty=" + keyProperty);
+			//返回生成的主键id
+			//System.out.println("demo.getId()=" + demo.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -37,7 +41,7 @@ public class DemoMyBatisTest {
 	public void testSelectById() {
 		
 		try {
-			DemoEntity demo = demoMapper.selectDemoById(2);
+			DemoEntity demo = demoMapper.selectDemoById(83);
 			if(demo != null) {
 				System.out.println(demo.getName());
 			}

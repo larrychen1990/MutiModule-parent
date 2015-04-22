@@ -8,15 +8,21 @@
 
 	<resultMap type="Demo" id="DemoResultMap">
 		<id column="id" property="id"/>
+		<result column="deleteFlagState" property="deleteFlagState"/>
 		<result column="name" property="name"/>
-		<result column="deleteFlagState" property="deleteFlagState" typeHandler="com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler"/>
+		<!--  <result column="deleteFlagState" property="deleteFlagState" typeHandler="com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler"/>-->
 	</resultMap>
 	
 	<insert id="insertDemo" parameterType="Demo">
-		insert into Demo(deleteFlagState, name) 
+		insert into Demo(id,deleteFlagState, name) 
 		values(
-		#{deleteFlagState, typeHandler=com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler},
+		<!-- #{deleteFlagState, typeHandler=com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler}, -->
+		#{id},
+		#{deleteFlagState},
 		#{name})
+		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id"> 
+			SELECT LAST_INSERT_ID()
+		</selectKey> 
 	</insert>
 	
 	<select id="selectDemoById" resultMap="DemoResultMap" parameterType="java.lang.Integer">
@@ -26,7 +32,8 @@
 	<insert id="insertIntoNotExistTable" parameterType="Demo">
 		insert into Demo2(deleteFlagState, name) 
 		values(
-		#{deleteFlagState, typeHandler=com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler},
+		<!-- #{deleteFlagState, typeHandler=com.alexgaoyh.MutiModule.persist.handler.DeleteFlagStateHandler}, -->
+		#{deleteFlagState},
 		#{name})
 	</insert>
 	
