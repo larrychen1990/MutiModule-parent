@@ -26,12 +26,8 @@
         <setting name="defaultStatementTimeout" value="25000" />  
     </settings>  
 	
-	<typeAliases>
-		<typeAlias alias="Demo" type="com.alexgaoyh.MutiModule.domain.demo.DemoEntity"/>
-	</typeAliases>
-	
 	<mappers>
-		<mapper resource="com/alexgaoyh/MutiModule/domain/demo/DemoMapper.xml"/>
+		<package name="com.alexgaoyh.MutiModule.persist.demo"/>
 	</mappers>
 	
 </configuration>

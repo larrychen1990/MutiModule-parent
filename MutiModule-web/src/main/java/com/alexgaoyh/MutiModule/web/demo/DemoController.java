@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.alexgaoyh.MutiModule.domain.demo.DemoEntity;
+import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
 @Controller
@@ -28,17 +28,12 @@ public class DemoController {
 
 	@RequestMapping("index")
 	public String index() {
-		DemoEntity demo = new DemoEntity();
+		Demo demo = new Demo();
 		demo.setName("demo/index");
-		demoService.insertDemo(demo);
+		demo.setDeleteflagstate(0);
+		demoService.insert(demo);
 		return "demo/index";
 	}
 	
 	
-	@RequestMapping("index2")
-	public String index2() {
-		DemoEntity demo = new DemoEntity();
-		demoService.insertDemo(demo);
-		return "demo/index";
-	}
 }

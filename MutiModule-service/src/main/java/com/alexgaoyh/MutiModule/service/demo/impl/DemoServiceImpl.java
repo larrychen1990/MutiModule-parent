@@ -1,6 +1,6 @@
 package com.alexgaoyh.MutiModule.service.demo.impl;
 
-import com.alexgaoyh.MutiModule.domain.demo.DemoEntity;
+import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoMapper;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
@@ -19,19 +19,13 @@ public class DemoServiceImpl implements IDemoService{
 	//------------------get set方法 end
 
 	@Override
-	public void insertDemo(DemoEntity demo) {
-		demoMapper.insertDemo(demo);
+	public void insert(Demo demo) {
+		demoMapper.insert(demo);
 	}
 
 	@Override
-	public DemoEntity selectDemoById(Integer id) {
-		return demoMapper.selectDemoById(id);
-	}
-
-	@Override
-	public void insertDemoForTransaction(DemoEntity demo) {
-		demoMapper.insertDemo(demo);
-		demoMapper.insertIntoNotExistTable(demo);
+	public Demo selectByPrimaryKey(Integer id) {
+		return demoMapper.selectByPrimaryKey(id);
 	}
 
 }

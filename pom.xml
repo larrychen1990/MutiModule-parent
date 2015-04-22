@@ -160,7 +160,6 @@
 	<modules>
 		<module>MutiModule-captcha</module>
 		<module>MutiModule-service</module>
-    	<module>MutiModule-domain</module>
     	<module>MutiModule-persist</module>
     <module>MutiModule-web</module>
   </modules>

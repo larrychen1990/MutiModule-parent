@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.alexgaoyh.MutiModule.domain.demo.DemoEntity;
+import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoMapper;
 
 public class DemoMyBatisTest {
@@ -25,9 +25,10 @@ public class DemoMyBatisTest {
 	public void testInsert() {
 		
 		try {
-			DemoEntity demo = new DemoEntity();
+			Demo demo = new Demo();
+			demo.setDeleteflagstate(0);
 			demo.setName("test");
-			demoMapper.insertDemo(demo);
+			demoMapper.insert(demo);
 			//返回受影响的条数 keyProperty的值为demoMapper.insertDemo(demo)的返回值
 			//System.out.println("keyProperty=" + keyProperty);
 			//返回生成的主键id
@@ -41,7 +42,7 @@ public class DemoMyBatisTest {
 	public void testSelectById() {
 		
 		try {
-			DemoEntity demo = demoMapper.selectDemoById(83);
+			Demo demo = demoMapper.selectByPrimaryKey(100);
 			if(demo != null) {
 				System.out.println(demo.getName());
 			}

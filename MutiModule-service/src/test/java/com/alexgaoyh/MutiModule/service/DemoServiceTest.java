@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.alexgaoyh.MutiModule.domain.demo.DemoEntity;
+import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
 public class DemoServiceTest {
@@ -27,9 +27,10 @@ public class DemoServiceTest {
 	@Test
 	public void insertDemo() {
 		try {
-			DemoEntity demo = new DemoEntity();
+			Demo demo = new Demo();
 			demo.setName("test");
-			demoService.insertDemo(demo);
+			demo.setDeleteflagstate(0);
+			demoService.insert(demo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
