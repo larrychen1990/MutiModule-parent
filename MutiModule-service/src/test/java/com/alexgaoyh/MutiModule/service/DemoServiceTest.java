@@ -6,6 +6,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
+import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
+import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
+import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
 public class DemoServiceTest {
@@ -50,4 +53,17 @@ public class DemoServiceTest {
 //			e.printStackTrace();
 //		}
 //	}
+	
+	@Test
+	public void getPanigationByRowBounds() {
+		
+		DemoExample example = new DemoExample();
+		example.setOrderByClause("id desc");
+		
+		MyRowBounds myRowBounds = new MyRowBounds(3,10);
+		example.setMyRowBounds(myRowBounds);
+		
+		demoService.getPanigationByRowBounds(example);
+		
+	}
 }

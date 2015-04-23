@@ -45,6 +45,15 @@
       </foreach>
     </where>
   </sql>
+  
+  <!-- alexgaoyh begin -->
+  <sql id="myRowBoundsSQL">
+  	<if test="myRowBounds != null">
+  		limit ${myRowBounds.offset}, ${myRowBounds.limit}
+  	</if>
+  </sql>
+  <!-- alexgaoyh end -->
+  
   <sql id="Update_By_Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated
@@ -105,6 +114,9 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <!-- alexgaoyh begin -->
+	<include refid="myRowBoundsSQL" />
+    <!-- alexgaoyh end -->
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     <!--

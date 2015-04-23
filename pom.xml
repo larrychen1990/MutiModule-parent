@@ -41,6 +41,8 @@
 		<javax.servlet.javax.servlet-api>3.0.1</javax.servlet.javax.servlet-api>
 		<javax.servlet.jsp.jsp-api>2.2</javax.servlet.jsp.jsp-api>
 		<org.aspectj.aspectjweaver>1.6.2</org.aspectj.aspectjweaver>
+		<log4j>1.2.14</log4j>
+		<jstl>1.2</jstl>
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
@@ -121,6 +123,17 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql-connector-java}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j}</version>
+			</dependency>
+			<!-- jstl jsp页面标签 -->
+	        <dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl}</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
