@@ -5,7 +5,6 @@ import java.util.List;
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
 import com.alexgaoyh.MutiModule.persist.demo.DemoMapper;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 

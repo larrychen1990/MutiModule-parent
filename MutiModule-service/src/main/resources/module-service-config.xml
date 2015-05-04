@@ -42,4 +42,8 @@
 		<property name="captchaService" ref="captchaService" />
 	</bean>
 	
+	<bean id="sysmanUserService" class="com.alexgaoyh.MutiModule.service.sysman.impl.SysmanUserServiceImpl">
+		<property name="sysmanUserMapper" ref="sysmanUserMapper" />
+	</bean>
+	
 </beans>
