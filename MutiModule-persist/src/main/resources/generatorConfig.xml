@@ -9,13 +9,13 @@
             connectionURL="jdbc:mysql://127.0.0.1:3306/mybatisTest?useUnicode=true&amp;characterEncoding=UTF-8"
             userId="root" password="alexgaoyh" />
             
-        <javaModelGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" />
+        <javaModelGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" />
         
-        <sqlMapGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\resources" />
+        <sqlMapGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\resources" />
         
-        <javaClientGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" type="XMLMAPPER" />
+        <javaClientGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" type="XMLMAPPER" />
         
-        <table schema="" tableName="demo" />
+        <table schema="" tableName="SysmanUser" domainObjectName="SysmanUser"/>
         
     </context>
 	    

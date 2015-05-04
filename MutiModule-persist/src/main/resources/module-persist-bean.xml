@@ -9,5 +9,9 @@
         <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.demo.DemoMapper" />  
 	</bean>
 	
+	<bean id="sysmanUserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.sysman.SysmanUserMapper" />  
+	</bean>
 	
 </beans>

@@ -26,8 +26,10 @@
         <setting name="defaultStatementTimeout" value="25000" />  
     </settings>  
 	
+	<!-- 定义一个package子元素，用以指定Mapper接口所在的包，这样Mybatis就会把这个包下面的所有Mapper接口都进行注册 -->
+	<!-- 这里的一个package只针对于一个包。当在多个包里面定义有Mapper接口时，我们需要定义对应的多个package元素 -->
 	<mappers>
-		<package name="com.alexgaoyh.MutiModule.persist.demo"/>
+		<package name="com.alexgaoyh.MutiModule.persist"/>
 	</mappers>
 	
 </configuration>
