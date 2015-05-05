@@ -50,8 +50,9 @@
 	<aop:config>
 		<aop:aspect id="aspect" ref="redisHandler">
 			<!-- 在多个表达式之间使用  || , or 表示  或 ，使用  && , and 表示  与 ， ！ 表示  非 -->
-			<aop:pointcut id="pointRedisHandler" expression="execution(* com.alexgaoyh.MutiModule.service.*.*.selectByPrimaryKey(..)) 
-					or execution(* com.alexgaoyh.MutiModule.service.*.*.insert(..)) "/>
+			<!-- <aop:pointcut id="pointRedisHandler" expression="execution(* com.alexgaoyh.MutiModule.service.*.*.selectByPrimaryKey(..)) 
+					or execution(* com.alexgaoyh.MutiModule.service.*.*.insert(..)) "/> -->
+			<aop:pointcut id="pointRedisHandler" expression="execution(* com.alexgaoyh.MutiModule.service.*.*.selectByPrimaryKey(..))"/>		
 					
 			<!-- <aop:before method="doBefore"  pointcut-ref="pointRedisHandler"/>
 			<aop:after method="doAfter"  pointcut-ref="pointRedisHandler"/> -->

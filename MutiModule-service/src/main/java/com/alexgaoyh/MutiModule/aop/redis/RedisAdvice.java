@@ -59,6 +59,8 @@ public class RedisAdvice {
 		String baseKey = pjp.toShortString();
 		
 		Object[] args = pjp.getArgs();
+		//下面这个if判断，针对的是selectByPrimaryKey(Integer id)方法，即 有入参，并且入参的第一个类型为Integer  
+		//后期如果有新增方法的话，是需要这里进行数据判断的，可以针对不同的方法，使用不同的切面
         if (args != null && args.length > 0 && args[0].getClass() == Integer.class) {
         	System.out.println("key =  " + baseKey + "_"  + args[0]);
         	

@@ -13,12 +13,14 @@ MutiModule-service 部分：
 			第二次执行这个方法的时候，缓存中存在值，那么便直接返回返回这个缓存中的存在值。
 			
 	3:
-		3.1: RedisAdvice 类 的 doAround() 方法
-			3.1.1： 需要获取到请求的是哪个类，因为需要根据这个请求的类，再拼接上请求的参数，封装key 进行缓存数据的存取操作
+		3.1：
+			AOP 切面的选择，aop:pointcut 部分，针对不同的方法可以选择不同的切面操作，这样能够避免多个不同的业务逻辑在同一个AOP中进行判断（避免多个if else 语句的存在）
+		3.2: RedisAdvice 类 的 doAround() 方法
+			3.2.1： 需要获取到请求的是哪个类，因为需要根据这个请求的类，再拼接上请求的参数，封装key 进行缓存数据的存取操作
 						pjp.toShortString()  输出    execution(DemoServiceImpl.insert(..))
 						args[0] 为发送的key 请求 
 					这样，就可以根据这两个参数进行key部分的拼接；
-			3.1.2： 因为此时 set/get 方法 是将 value 进行json操作的,那么在进行从缓存中取数据的时候，需要将json串转换为对应的 实体 类型
+			3.2.2： 因为此时 set/get 方法 是将 value 进行json操作的,那么在进行从缓存中取数据的时候，需要将json串转换为对应的 实体 类型
 					pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),
         				((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getReturnType()
         			上面这个方法，就能够够获取到 需要返回的数据类型    
