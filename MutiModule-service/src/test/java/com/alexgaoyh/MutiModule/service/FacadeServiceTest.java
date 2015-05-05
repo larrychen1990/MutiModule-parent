@@ -1,8 +1,5 @@
 package com.alexgaoyh.MutiModule.service;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -22,7 +19,6 @@ public class FacadeServiceTest {
 
         //获取module-captcha.xml 包含的 captchaService 的bean
         CaptchaService captchaService = (CaptchaService) ctx.getBean( "captchaService" );
-        System.out.println(captchaService);
         
         //获取module-service.xml 包含的 facadeService 的bean
         facadeService = (IFacadeService) ctx.getBean( "facadeService" );

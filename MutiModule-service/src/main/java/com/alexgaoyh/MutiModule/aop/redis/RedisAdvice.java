@@ -3,6 +3,7 @@ package com.alexgaoyh.MutiModule.aop.redis;
 import java.io.Serializable;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -48,14 +49,24 @@ public class RedisAdvice {
 	 */
 	private Object doAround(ProceedingJoinPoint pjp) throws Throwable {
 		
+		//返回值类型, add 方法将对应的Object 转换为 json 保存到 缓存中，在 get方法的时候，通过下面注释的返回值类型，将json 转换为对应的object
+		//pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getReturnType();
+		
+		// 输出    execution(DemoServiceImpl.insert(..))
+		//pjp.toShortString();
+		
+		//跳转到这里的方法名 形如 insert selectByPrimaryKey
+		//pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getName();
+		
+		String baseKey = pjp.toShortString();
+		
 		Object[] args = pjp.getArgs();
         if (args != null && args.length > 0 && args[0].getClass() == Integer.class) {
-        	System.out.println("doAround 入参 = " + args[0]);
-        	
+        	System.out.println("key =  " + baseKey + "_"  +args[0]);
         	
         	ObjectMapper mapper = new ObjectMapper();
         	
-        	Object obj = this.get(args[0] + "");
+        	Object obj = this.get(baseKey + "_"  +args[0]);
 
         	
         	if(obj == null) {
@@ -63,18 +74,18 @@ public class RedisAdvice {
         		//调用核心逻辑
         		Object retVal = pjp.proceed();
         		
+        		this.add(baseKey + "_"  +args[0], mapper.writeValueAsString(retVal));
         		
-        		this.add(args[0] + "", mapper.writeValueAsString(retVal));
-        		
-        		System.out.println("this.get(args[0]) == null");
+        		System.out.println("缓存为空");
         		
         		return retVal;
         		
         	}else {
         		
-        		System.out.println("this.get(args[0]) != null");
+        		System.out.println("缓存不为空");
         		
-        		obj = mapper.readValue(obj.toString(), Demo.class);
+        		obj = mapper.readValue(obj.toString(), pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),
+        				((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getReturnType());
 
         		return obj;
         	}

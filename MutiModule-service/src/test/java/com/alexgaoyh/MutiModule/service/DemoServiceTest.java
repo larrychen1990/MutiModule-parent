@@ -23,7 +23,6 @@ public class DemoServiceTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext( springConfigFiles );
 
         demoService = (IDemoService) ctx.getBean( "demoService" );
-        System.out.println(demoService);
         
     }
 	
@@ -56,7 +55,8 @@ public class DemoServiceTest {
 	
 	@Test
 	public void selectByPrimaryKey() {
-		demoService.selectByPrimaryKey(140);
+		Demo demo = demoService.selectByPrimaryKey(140);
+		System.out.println(demo);
 	}
 	
 	//@Test

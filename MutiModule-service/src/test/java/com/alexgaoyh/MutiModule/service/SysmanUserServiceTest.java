@@ -14,7 +14,7 @@ public class SysmanUserServiceTest {
 
 	private ISysmanUserService sysmanUserService;
 	
-	//@Before
+	@Before
     public void prepare() throws Exception  {
     	//可以加载多个配置文件
         String[] springConfigFiles = {"module-captcha.xml","mybatis-spring-config.xml","module-service-config.xml" };
@@ -22,22 +22,26 @@ public class SysmanUserServiceTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext( springConfigFiles );
 
         sysmanUserService = (ISysmanUserService) ctx.getBean( "sysmanUserService" );
-        System.out.println(sysmanUserService);
         
     }
 	
-	//@Test
+	@Test
 	public void insertDemo() {
 		try {
 			SysmanUser sysmanUser = new SysmanUser();
 			sysmanUser.setName("test");
-			sysmanUser.setName("aa");
 			sysmanUser.setPassword("aa");
 			sysmanUser.setDeleteflag(0);
 			sysmanUserService.insert(sysmanUser);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void selectByPrimaryKey() {
+		SysmanUser sysmanUser = sysmanUserService.selectByPrimaryKey(1);
+		System.out.println(sysmanUser);
 	}
 	
 	//@Test
