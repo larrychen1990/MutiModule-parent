@@ -27,7 +27,7 @@ public class DemoServiceTest {
     }
 	
 	@Test
-	public void insertDemo() {
+	public void insert() {
 		try {
 			Demo demo = new Demo();
 			demo.setName("test");

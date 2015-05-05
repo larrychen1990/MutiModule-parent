@@ -11,8 +11,6 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
-import com.alexgaoyh.MutiModule.persist.demo.Demo;
-
 public class RedisAdvice {
 	
 	protected RedisTemplate<Serializable, Serializable> redisTemplate;
@@ -62,7 +60,7 @@ public class RedisAdvice {
 		
 		Object[] args = pjp.getArgs();
         if (args != null && args.length > 0 && args[0].getClass() == Integer.class) {
-        	System.out.println("key =  " + baseKey + "_"  +args[0]);
+        	System.out.println("key =  " + baseKey + "_"  + args[0]);
         	
         	ObjectMapper mapper = new ObjectMapper();
         	

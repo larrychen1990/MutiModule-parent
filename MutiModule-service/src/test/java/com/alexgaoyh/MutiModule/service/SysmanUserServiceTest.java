@@ -26,7 +26,7 @@ public class SysmanUserServiceTest {
     }
 	
 	@Test
-	public void insertDemo() {
+	public void insert() {
 		try {
 			SysmanUser sysmanUser = new SysmanUser();
 			sysmanUser.setName("test");
