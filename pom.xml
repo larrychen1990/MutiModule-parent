@@ -44,6 +44,9 @@
 		<log4j>1.2.14</log4j>
 		<jstl>1.2</jstl>
 		<org.freemarker.freemarker>2.3.22</org.freemarker.freemarker>
+		<spring-data-redis>1.4.1.RELEASE</spring-data-redis>
+		<redis.clients.jedis>2.6.0</redis.clients.jedis>
+		<org.codehaus.jackson>1.9.13</org.codehaus.jackson>
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
@@ -100,6 +103,16 @@
 			    <artifactId>spring-jdbc</artifactId>
 			    <version>${springframework.version}</version>
 			</dependency>
+			<dependency>  
+		        <groupId>org.springframework.data</groupId>  
+		        <artifactId>spring-data-redis</artifactId>  
+		        <version>${spring-data-redis}</version>  
+		    </dependency>
+		    <dependency>  
+		        <groupId>redis.clients</groupId>  
+		        <artifactId>jedis</artifactId>  
+		        <version>${redis.clients.jedis}</version>  
+		    </dependency>
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
@@ -140,6 +153,17 @@
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
 				<version>${org.freemarker.freemarker}</version>
+			</dependency>
+			<!-- json jackson -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-asl</artifactId>
+				<version>${org.codehaus.jackson}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${org.codehaus.jackson}</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>

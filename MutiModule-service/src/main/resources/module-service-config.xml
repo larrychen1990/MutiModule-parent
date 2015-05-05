@@ -8,8 +8,13 @@
         http://www.springframework.org/schema/beans   
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
         http://www.springframework.org/schema/tx   
-        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
         
+    <!-- redis 配置 -->
+	<import resource="redis-config.xml"/>
+        
+	<!--  事务控制  begin -->
+	        
     <!-- 事务相关控制 -->
 	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	    <property name="dataSource" ref="dataSource"/>
@@ -33,6 +38,34 @@
 	<aop:config proxy-target-class="true">
 		<aop:advisor pointcut="execution(* com.alexgaoyh.**.service..*.*(..))" advice-ref="txAdvice" />
 	</aop:config>
+	
+	<!--  事务控制 end -->
+	
+	<!-- redis 缓存控制层 begin-->
+	
+	<bean id="redisHandler" class="com.alexgaoyh.MutiModule.aop.redis.RedisAdvice" >
+		<property name="redisTemplate" ref="redisTemplate"></property>
+	</bean>
+	
+	<aop:config>
+		<aop:aspect id="aspect" ref="redisHandler">
+			<!-- 在多个表达式之间使用  || , or 表示  或 ，使用  && , and 表示  与 ， ！ 表示  非 -->
+			<aop:pointcut id="pointRedisHandler" expression="execution(* com.alexgaoyh.MutiModule.service.*.*.find*(..)) 
+					or execution(* com.alexgaoyh.MutiModule.service.*.*.select*(..)) 
+					or execution(* com.alexgaoyh.MutiModule.service.*.*.insert*(..)) "/>
+					
+			<!-- <aop:before method="doBefore"  pointcut-ref="pointRedisHandler"/>
+			<aop:after method="doAfter"  pointcut-ref="pointRedisHandler"/> -->
+			<aop:around method="doAround"  pointcut-ref="pointRedisHandler"/>
+			<!-- <aop:after-returning method="doReturn"  pointcut-ref="pointRedisHandler"/>
+			<aop:after-throwing method="doThrowing" throwing="ex" pointcut-ref="pointRedisHandler"/> -->
+			
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- redis 缓存控制层 end-->
+	
+	<!-- 以下部分为添加新的service方法后，手动添加的部分 -->
 	
 	<bean id="demoService" class="com.alexgaoyh.MutiModule.service.demo.impl.DemoServiceImpl">
 		<property name="demoMapper" ref="demoMapper" />

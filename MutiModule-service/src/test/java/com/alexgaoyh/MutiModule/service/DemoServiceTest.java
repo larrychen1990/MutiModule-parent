@@ -55,6 +55,11 @@ public class DemoServiceTest {
 //	}
 	
 	@Test
+	public void selectByPrimaryKey() {
+		demoService.selectByPrimaryKey(140);
+	}
+	
+	//@Test
 	public void getPanigationByRowBounds() {
 		
 		DemoExample example = new DemoExample();

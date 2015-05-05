@@ -14,7 +14,7 @@ public class SysmanUserServiceTest {
 
 	private ISysmanUserService sysmanUserService;
 	
-	@Before
+	//@Before
     public void prepare() throws Exception  {
     	//可以加载多个配置文件
         String[] springConfigFiles = {"module-captcha.xml","mybatis-spring-config.xml","module-service-config.xml" };
@@ -26,7 +26,7 @@ public class SysmanUserServiceTest {
         
     }
 	
-	@Test
+	//@Test
 	public void insertDemo() {
 		try {
 			SysmanUser sysmanUser = new SysmanUser();
@@ -40,7 +40,7 @@ public class SysmanUserServiceTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void getPanigationByRowBounds() {
 		
 		SysmanUserExample example = new SysmanUserExample();
