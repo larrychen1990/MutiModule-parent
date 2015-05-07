@@ -19,10 +19,13 @@ MutiModule-service 部分：
 			3.2.1： 需要获取到请求的是哪个类，因为需要根据这个请求的类，再拼接上请求的参数，封装key 进行缓存数据的存取操作
 						pjp.toShortString()  输出    execution(DemoServiceImpl.insert(..))
 						args[0] 为发送的key 请求 
-					这样，就可以根据这两个参数进行key部分的拼接；
 			3.2.2： 因为此时 set/get 方法 是将 value 进行json操作的,那么在进行从缓存中取数据的时候，需要将json串转换为对应的 实体 类型
 					pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),
         				((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getReturnType()
         			上面这个方法，就能够够获取到 需要返回的数据类型    
         			PS: 如果这个请求是  com.alexgaoyh.MutiModule.service.demo.impl.selectByPrimaryKey(key) 发送上的请求，
         				那么上面这个方法返回的就是这个方法的返回值 ， 即  Demo 对应的Class<T>
+        	3.2.3: 修改在针对selectByPrimaryKey（key） 方法的AOP操作，对应的缓存key为 ： 包名.类名_key
+        			形如：
+	        			key =  com.alexgaoyh.MutiModule.persist.demo.Demo_140
+	        			key =  com.alexgaoyh.MutiModule.persist.sysman.SysmanUser_1

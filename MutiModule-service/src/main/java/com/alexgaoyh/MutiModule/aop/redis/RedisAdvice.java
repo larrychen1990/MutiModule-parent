@@ -41,6 +41,10 @@ public class RedisAdvice {
 	 * 执行完毕After Advice，再转到Throwing Advice
 	 * Object[] getArgs：返回目标方法的参数  Signature getSignature：返回目标方法的签名 
 	 * Object getTarget：返回被织入增强处理的目标对象 Object getThis：返回AOP框架为目标对象生成的代理对象
+	 * 
+	 * 这个方法是针对service.selectByPrimaryKey(id)的  
+	 * 对应的缓存key 为（保存到缓存中的实体信息 + "_" + 主键id）：       com.alexgaoyh.MutiModule.persist.sysman.SysmanUser_1
+	 * 
 	 * @param pjp
 	 * @return
 	 * @throws Throwable
@@ -56,7 +60,15 @@ public class RedisAdvice {
 		//跳转到这里的方法名 形如 insert selectByPrimaryKey
 		//pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getName();
 		
-		String baseKey = pjp.toShortString();
+		// 调用方法名称 selectByPrimaryKey
+		//String methodName =pjp.getSignature().getName();
+		//获取进入的类名 SysmanUserServiceImpl
+		//String className= pjp.getSignature().getDeclaringType().getSimpleName();
+		
+		//输出形如： com.alexgaoyh.MutiModule.persist.sysman.SysmanUser
+		String baseKey = pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),
+				((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getReturnType().getName();
+		
 		
 		Object[] args = pjp.getArgs();
 		//下面这个if判断，针对的是selectByPrimaryKey(Integer id)方法，即 有入参，并且入参的第一个类型为Integer  
