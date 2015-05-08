@@ -37,6 +37,11 @@ public class ${className}ServiceImpl implements I${className}Service {
 	public ${className} selectByPrimaryKey(Integer id) {
 		return ${smallClassName}Mapper.selectByPrimaryKey(id);
 	}
+	
+	@Override
+	public int updateByPrimaryKeySelective(${className} ${smallClassName}) {
+		return ${smallClassName}Mapper.updateByPrimaryKeySelective(${smallClassName});
+	}
 
 	@Override
 	public Pagination<${className}> getPanigationByRowBounds(${className}Example example) {

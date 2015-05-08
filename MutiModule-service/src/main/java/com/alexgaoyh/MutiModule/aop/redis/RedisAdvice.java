@@ -1,6 +1,7 @@
 package com.alexgaoyh.MutiModule.aop.redis;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -73,7 +74,7 @@ public class RedisAdvice {
 		Object[] args = pjp.getArgs();
 		//下面这个if判断，针对的是selectByPrimaryKey(Integer id)方法，即 有入参，并且入参的第一个类型为Integer  
 		//后期如果有新增方法的话，是需要这里进行数据判断的，可以针对不同的方法，使用不同的切面
-        if (args != null && args.length > 0 && args[0].getClass() == Integer.class) {
+        if (args != null && args.length == 1 && args[0].getClass() == Integer.class) {
         	System.out.println("key =  " + baseKey + "_"  + args[0]);
         	
         	ObjectMapper mapper = new ObjectMapper();
@@ -105,6 +106,37 @@ public class RedisAdvice {
         }
 		return null;
 		
+	}
+	
+	/**
+	 * 更新实体信息操作
+	 * 针对 updateByPrimaryKeySelective 方法
+	 * @param pjp 
+	 * @return
+	 * @throws Throwable
+	 */
+	private Object doUpdateModel(ProceedingJoinPoint pjp) throws Throwable {
+		
+		Object[] args = pjp.getArgs();
+		//下面这个if判断，针对的是selectByPrimaryKey(Integer id)方法，即 有入参，并且入参的第一个类型为Integer  
+		//后期如果有新增方法的话，是需要这里进行数据判断的，可以针对不同的方法，使用不同的切面
+        if (args != null && args.length == 1) {
+        	//反射逻辑获取getId方法   ；获取入参时候的主键ID值
+        	Method getIdMethod = args[0].getClass().getMethod("getId", null);
+        	Integer IDValue = (Integer) getIdMethod.invoke(args[0]); // 调用getter方法获取属性值
+        	
+        	//根据入参的主键ID值，拼接缓存key ，并且对缓存key对应的键值进行更新操作
+        	String key = args[0].getClass().getName() + "_" + IDValue;
+    		Object obj = this.get(key);
+        	if(obj != null) {
+        		ObjectMapper mapper = new ObjectMapper();
+        		this.add(key, mapper.writeValueAsString(args[0]));
+        	}
+        	
+        }
+		Object retVal = pjp.proceed();
+		System.out.println("doUpdateModel = " + retVal);
+		return retVal;
 	}
 
 	/**

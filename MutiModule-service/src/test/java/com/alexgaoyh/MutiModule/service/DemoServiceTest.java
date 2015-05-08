@@ -15,7 +15,7 @@ public class DemoServiceTest {
 
 	private IDemoService demoService;
 	
-	@Before
+	//@Before
     public void prepare() throws Exception  {
     	//可以加载多个配置文件
         String[] springConfigFiles = {"module-captcha.xml","mybatis-spring-config.xml","module-service-config.xml" };
@@ -26,7 +26,7 @@ public class DemoServiceTest {
         
     }
 	
-	@Test
+	//@Test
 	public void insert() {
 		try {
 			Demo demo = new Demo();
@@ -53,7 +53,7 @@ public class DemoServiceTest {
 //		}
 //	}
 	
-	@Test
+	//@Test
 	public void selectByPrimaryKey() {
 		Demo demo = demoService.selectByPrimaryKey(140);
 		System.out.println(demo);

@@ -1,5 +1,7 @@
 package com.alexgaoyh.MutiModule.service;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -25,7 +27,7 @@ public class SysmanUserServiceTest {
         
     }
 	
-	@Test
+	//@Test
 	public void insert() {
 		try {
 			SysmanUser sysmanUser = new SysmanUser();
@@ -40,7 +42,7 @@ public class SysmanUserServiceTest {
 	
 	@Test
 	public void selectByPrimaryKey() {
-		SysmanUser sysmanUser = sysmanUserService.selectByPrimaryKey(1);
+		SysmanUser sysmanUser = sysmanUserService.selectByPrimaryKey(2);
 		System.out.println(sysmanUser);
 	}
 	
@@ -55,5 +57,14 @@ public class SysmanUserServiceTest {
 		
 		sysmanUserService.getPanigationByRowBounds(example);
 		
+	}
+	
+	@Test
+	public void updateByPrimaryKeySelective() {
+		SysmanUser sysmanUser = new SysmanUser();
+		sysmanUser.setId(2);
+		sysmanUser.setName("alexgaoyh1");
+		
+		sysmanUserService.updateByPrimaryKeySelective(sysmanUser);
 	}
 }

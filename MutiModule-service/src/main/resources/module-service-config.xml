@@ -61,6 +61,12 @@
 			<aop:after-throwing method="doThrowing" throwing="ex" pointcut-ref="pointRedisHandler"/> -->
 			
 		</aop:aspect>
+		
+		<aop:aspect id="aspectUpdeteModel" ref="redisHandler">
+			<aop:pointcut id="pointRedisUpdateModelHandler" expression="execution(* com.alexgaoyh.MutiModule.service.*.*.updateByPrimaryKeySelective(..))"/>		
+					
+			<aop:around method="doUpdateModel"  pointcut-ref="pointRedisUpdateModelHandler"/>
+		</aop:aspect>
 	</aop:config>
 	
 	<!-- redis 缓存控制层 end-->

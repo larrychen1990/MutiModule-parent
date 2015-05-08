@@ -29,3 +29,5 @@ MutiModule-service 部分：
         			形如：
 	        			key =  com.alexgaoyh.MutiModule.persist.demo.Demo_140
 	        			key =  com.alexgaoyh.MutiModule.persist.sysman.SysmanUser_1
+	        3.2.4: 增加针对updateByPrimaryKeySelective(Model)方法的AOP操作 ： aspectUpdeteModel
+	        		用于在更新操作发生的时候，随机更新缓存中的数据 key的方式与selectByPrimaryKey方法的缓存key一致
