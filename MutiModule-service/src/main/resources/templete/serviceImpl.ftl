@@ -71,4 +71,9 @@ public class ${className}ServiceImpl implements I${className}Service {
 	public int updateByExampleSelective(${className} record, ${className}Example example) {
 		return ${smallClassName}Mapper.updateByExampleSelective(record, example);
 	}
+	
+	@Override
+	public int deleteByExample(${className}Example example) {
+		return ${smallClassName}Mapper.deleteByExample(example);
+	}
 }

@@ -1,63 +1,63 @@
-package com.alexgaoyh.MutiModule.service.${packageName};
+package com.alexgaoyh.MutiModule.service.sysman;
 
 import java.util.List;
 
-import com.alexgaoyh.MutiModule.persist.${packageName}.${className};
-import com.alexgaoyh.MutiModule.persist.${packageName}.${className}Example;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
 import com.alexgaoyh.MutiModule.persist.util.Pagination;
 
 /**
  * 
- * @desc I${className}Service e接口
+ * @desc ISysmanResourceService e接口
  *
  * @author alexgaoyh
  */
-public interface I${className}Service {
+public interface ISysmanResourceService {
 
 	/**
 	 * 插入操作
-	 * @param ${className} ${smallClassName} 插入操作实体类数据
+	 * @param SysmanResource sysmanResource 插入操作实体类数据
 	 */
-	public void insert(${className} ${smallClassName});
+	public void insert(SysmanResource sysmanResource);
 	
 	/**
 	 * 插入操作，根据实体类的相关参数，匹配插入数据
-	 * @param ${className} ${smallClassName} 插入操作实体类数据
+	 * @param SysmanResource sysmanResource 插入操作实体类数据
 	 */
-	public void insertSelective(${className} ${smallClassName});
+	public void insertSelective(SysmanResource sysmanResource);
 	
 	/**
 	 * 根据id获取实体信息
 	 * @param id
 	 */
-	public ${className} selectByPrimaryKey(Integer id);
+	public SysmanResource selectByPrimaryKey(Integer id);
 	
 	/**
 	 * 根据主键id 有选择的更新实体信息
-	 * @param ${className} ${smallClassName} 根据主键id，有选择的更新操作实体类数据
+	 * @param SysmanResource sysmanResource 根据主键id，有选择的更新操作实体类数据
 	 */
-	public int updateByPrimaryKeySelective(${className} ${smallClassName});
+	public int updateByPrimaryKeySelective(SysmanResource sysmanResource);
 	
 	/**
 	 * 根据入参信息（包含分页页码，过滤条件）返回符合条件的数据信息
 	 * @param example 过滤条件
 	 * @return 此条件下共有多少条匹配数据
 	 */
-	public int countByExample(${className}Example example);
+	public int countByExample(SysmanResourceExample example);
 	
 	/**
 	 * 根据入参信息（包含分页页码，过滤条件）返回符合条件的数据信息
 	 * @param example 过滤条件
 	 * @return 此条件下返回的数据list集合
 	 */
-	public List<${className}> selectByExample(${className}Example example);
+	public List<SysmanResource> selectByExample(SysmanResourceExample example);
 	
 	/**
 	 * 根据入参信息（包含分页页码，过滤条件）返回符合条件的数据信息
-	 * @param ${className}Example 过滤条件
+	 * @param SysmanResourceExample 过滤条件
 	 * @return 分页信息
 	 */
-	Pagination<${className}> getPanigationByRowBounds(${className}Example example);
+	Pagination<SysmanResource> getPanigationByRowBounds(SysmanResourceExample example);
 	
 	/**
 	 * 根据example查询出相关的数据信息，并将这些数据信息进行更新，更新参数如record
@@ -65,13 +65,13 @@ public interface I${className}Service {
 	 * @param example 过滤条件
 	 * @return 符合条件的数据条数
 	 */
-	public int updateByExampleSelective(${className} record, ${className}Example example);
+	public int updateByExampleSelective(SysmanResource record, SysmanResourceExample example);
 	
 	/**
 	 * 根据example删除出相关的数据集，并对其进行删除操作
 	 * @param example 过滤条件
 	 * @return 符合条件的删除数据条数
 	 */
-	public int deleteByExample(${className}Example example);
+	public int deleteByExample(SysmanResourceExample example);
 	
 }

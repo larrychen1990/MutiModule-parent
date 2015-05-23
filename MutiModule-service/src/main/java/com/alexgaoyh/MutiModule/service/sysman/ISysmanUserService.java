@@ -67,4 +67,11 @@ public interface ISysmanUserService {
 	 */
 	public int updateByExampleSelective(SysmanUser record, SysmanUserExample example);
 	
+	/**
+	 * 根据example删除出相关的数据集，并对其进行删除操作
+	 * @param example 过滤条件
+	 * @return 符合条件的删除数据条数
+	 */
+	public int deleteByExample(SysmanUserExample example);
+	
 }

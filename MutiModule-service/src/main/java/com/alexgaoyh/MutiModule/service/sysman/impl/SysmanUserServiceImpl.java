@@ -71,4 +71,9 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 	public int updateByExampleSelective(SysmanUser record, SysmanUserExample example) {
 		return sysmanUserMapper.updateByExampleSelective(record, example);
 	}
+	
+	@Override
+	public int deleteByExample(SysmanUserExample example) {
+		return sysmanUserMapper.deleteByExample(example);
+	}
 }
