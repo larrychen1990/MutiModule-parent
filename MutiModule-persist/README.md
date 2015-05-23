@@ -5,13 +5,18 @@ MutiModule-persist部分：
 	2、在模板文件中添加对应的分页支持：
 		2.1:  *Example.java 文件增加  protected MyRowBounds myRowBounds(get set方法省略)；
 		
-		2.2:  *Mapper.xml 文件增加如下部分， 并将这个  myRowBoundsSQL 添加到 selectByExample包含的select语句中
+		2.2:  *Mapper.xml 文件增加如下部分， 
 				<sql id="myRowBoundsSQL">
 					<if test="myRowBounds != null">
 						limit ${myRowBounds.offset}, ${myRowBounds.limit}
 					</if>
 				</sql>
-			
+				
+			并将这个  myRowBoundsSQL 添加到 selectByExample包含的select语句中
+				<!-- alexgaoyh begin -->
+				<include refid="myRowBoundsSQL" />
+			    <!-- alexgaoyh end -->
+						
 		2.3:  module-persist-bean.xml 里面增加对应的bean 设定
 				<bean id="*Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
 			        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
