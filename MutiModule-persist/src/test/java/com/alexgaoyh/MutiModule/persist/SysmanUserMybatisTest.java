@@ -1,5 +1,6 @@
 package com.alexgaoyh.MutiModule.persist;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -26,11 +27,26 @@ public class SysmanUserMybatisTest {
     }
 	
 	@Test
+	public void testInsert() {
+		
+		try {
+			SysmanUser sysmanUser = new SysmanUser();
+			sysmanUser.setDeleteflag(0);
+			sysmanUser.setName("alexgaoyh");
+			sysmanUser.setCreatetime(new Date());
+			sysmanUser.setPassword("alexgaoyh");
+			sysmanUserMapper.insert(sysmanUser);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
 	public void testSysmanUserExample5() {
 		SysmanUserExample sysmanUserExample = new SysmanUserExample();
 		sysmanUserExample.setOrderByClause("id desc");
 		
-		MyRowBounds myRowBounds1 = new MyRowBounds(4,10);
+		MyRowBounds myRowBounds1 = new MyRowBounds(1,10);
 		sysmanUserExample.setMyRowBounds(myRowBounds1);
 		
 		int count1 = sysmanUserMapper.countByExample(sysmanUserExample);
