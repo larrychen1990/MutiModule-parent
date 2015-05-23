@@ -12,6 +12,7 @@ import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceMapper;
 import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
+import com.alexgaoyh.MutiModule.persist.util.TreeNode;
 
 public class SysmanResourceMybatisTest {
 
@@ -57,5 +58,25 @@ public class SysmanResourceMybatisTest {
 			System.out.println("SysmanResource.getId() = " + sysmanResource.getId());
 		}
 		
+	}
+	
+	@Test
+	public void getTreeNode() {
+		List<SysmanResource> topResourceList = sysmanResourceMapper.selectTopSysmanResourceByParentId();
+		for(SysmanResource sysmanResource : topResourceList) {
+			List<TreeNode> treeNodeList = sysmanResourceMapper.selectTreeNodeBySysmanResourceId(sysmanResource.getId());
+			
+			treeMenuList(treeNodeList);
+		}
+	}
+	
+	
+	private void treeMenuList(List<TreeNode> root) {
+		for (TreeNode node : root) {
+			System.out.println("当前节点：" + node.getId() + "父节点：" + (node.getParent() == null ? "" : node.getParent().getId()));
+			if(node.getChildren() != null) {
+				treeMenuList(node.getChildren());
+			}
+		}
 	}
 }

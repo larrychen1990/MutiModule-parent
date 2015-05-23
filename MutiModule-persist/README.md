@@ -34,5 +34,36 @@ MutiModule-persist部分：
 				//查询总记录数，list集合
 				int count0 = demoMapper.countByExample(demoExample);
 				List<Demo> demoList0 = demoMapper.selectByExample(demoExample);
-			
-			
+
+	3： 树形结构
+		3.1 *。mapper.xml里面，数据库查询如下所示：
+			<!-- 树形结构查询  alexgaoyh begin -->
+			<resultMap type="com.alexgaoyh.MutiModule.persist.util.TreeNode" id="treeNodeResultMap">  
+		        <id property="id" column="id"/>  
+		        <result property="text" column="text"/>  
+		        <result property="isLeaf" column="isLeaf"/>  
+		        <result property="iconCls" column="iconCls"/>  
+		        <result property="state" column="state"/>  
+		        <!-- 查询父模块 -->  
+		        <association property="parent" column="parentId" select="getTreeNodeById" />  
+		        <!-- 查询子模块 -->  
+		        <collection property="children" column="id" select="getChildrenTreeNode" />  
+		    </resultMap>  
+		      
+		    <select id="selectTreeNodeBySysmanResourceId" parameterType="int" resultMap="treeNodeResultMap">  
+		        select * from sysmanresource where id = #{id};
+		    </select>  
+		      
+		    <select id="getTreeNodeById" parameterType="int" resultMap="treeNodeResultMap">  
+		        select * from sysmanresource where id = #{id};
+		    </select>  
+		      
+		    <select id="getChildrenTreeNode" parameterType="int" resultMap="treeNodeResultMap">  
+		        select * from sysmanresource where parentId = #{id};
+		    </select>
+		    <!-- 树形结构查询  alexgaoyh end -->			
+		3.2 *Mapper.java文件里面，相关查询如下所示：
+				//id为需要根据哪个节点开始，对此节点下的数据进行树形结构转换，测试时可以递归操作，对树形结构进行深度优先遍历。
+				//方法名称对应xml文件里面的select语句部分
+				List<TreeNode> selectTreeNodeBySysmanResourceId(Integer id);
+							

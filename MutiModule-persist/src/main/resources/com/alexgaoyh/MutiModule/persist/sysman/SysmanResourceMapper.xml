@@ -335,4 +335,36 @@
 		where sres.id = srrc.sysmanResourceId and srole.id = srrc.sysmanRoleId 
 		and srole.id = #{id,jdbcType=INTEGER}
 	</select>
+	
+	<select id="selectTopSysmanResourceByParentId" resultMap="BaseResultMap">
+		select distinct <include refid="Base_Column_List" />
+		from sysmanresource
+		where parentId is null;
+	</select>
+	
+	<!-- 树形结构查询  alexgaoyh begin -->
+	<resultMap type="com.alexgaoyh.MutiModule.persist.util.TreeNode" id="treeNodeResultMap">  
+        <id property="id" column="id"/>  
+        <result property="text" column="text"/>  
+        <result property="isLeaf" column="isLeaf"/>  
+        <result property="iconCls" column="iconCls"/>  
+        <result property="state" column="state"/>  
+        <!-- 查询父模块 -->  
+        <association property="parent" column="parentId" select="getTreeNodeById" />  
+        <!-- 查询子模块 -->  
+        <collection property="children" column="id" select="getChildrenTreeNode" />  
+    </resultMap>  
+      
+    <select id="selectTreeNodeBySysmanResourceId" parameterType="int" resultMap="treeNodeResultMap">  
+        select * from sysmanresource where id = #{id};
+    </select>  
+      
+    <select id="getTreeNodeById" parameterType="int" resultMap="treeNodeResultMap">  
+        select * from sysmanresource where id = #{id};
+    </select>  
+      
+    <select id="getChildrenTreeNode" parameterType="int" resultMap="treeNodeResultMap">  
+        select * from sysmanresource where parentId = #{id};
+    </select>
+    <!-- 树形结构查询  alexgaoyh end -->
 </mapper>

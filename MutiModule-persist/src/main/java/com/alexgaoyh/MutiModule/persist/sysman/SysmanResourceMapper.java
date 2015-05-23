@@ -1,9 +1,10 @@
 package com.alexgaoyh.MutiModule.persist.sysman;
 
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.alexgaoyh.MutiModule.persist.util.TreeNode;
 
 public interface SysmanResourceMapper {
     /**
@@ -100,4 +101,17 @@ public interface SysmanResourceMapper {
      * @return 符合条件的资源list集合
      */
     List<SysmanResource> selectResourceListBySysmanRoleId(Integer id);
+    
+    /**
+     * 查询SysmanResource表结构中，parent_id为空的资源集合
+     * @return parent_id 为空的资源集合
+     */
+    List<SysmanResource> selectTopSysmanResourceByParentId();
+    
+    /**
+     * 根据当前id。获取这个id对应资源的属性结构数据
+     * @param id sysmanResource表中的主键id
+     * @return 对应主键id下的属性结构
+     */
+    List<TreeNode> selectTreeNodeBySysmanResourceId(Integer id);
 }

@@ -81,4 +81,9 @@ public class SysmanResourceServiceImpl implements ISysmanResourceService {
 	public List<SysmanResource> selectResourceListBySysmanRoleId(Integer id) {
 		return sysmanResourceMapper.selectResourceListBySysmanRoleId(id);
 	}
+
+	@Override
+	public List<SysmanResource> selectTopSysmanResourceByParentId() {
+		return sysmanResourceMapper.selectTopSysmanResourceByParentId();
+	}
 }

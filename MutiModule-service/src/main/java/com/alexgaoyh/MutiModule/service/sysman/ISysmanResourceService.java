@@ -80,5 +80,11 @@ public interface ISysmanResourceService {
      * @return 符合条件的资源list集合
      */
     List<SysmanResource> selectResourceListBySysmanRoleId(Integer id);
+    
+    /**
+     * 查询SysmanResource表结构中，parent_id为空的资源集合
+     * @return parent_id 为空的资源集合
+     */
+    List<SysmanResource> selectTopSysmanResourceByParentId();
 	
 }
