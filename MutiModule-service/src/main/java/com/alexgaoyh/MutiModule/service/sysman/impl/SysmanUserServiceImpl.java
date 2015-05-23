@@ -42,6 +42,16 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 	public int updateByPrimaryKeySelective(SysmanUser sysmanUser) {
 		return sysmanUserMapper.updateByPrimaryKeySelective(sysmanUser);
 	}
+	
+	@Override
+	public int countByExample(SysmanUserExample example) {
+		return sysmanUserMapper.countByExample(example);
+	}
+	
+	@Override
+	public List<SysmanUser> selectByExample(SysmanUserExample example) {
+		return sysmanUserMapper.selectByExample(example);
+	}
 
 	@Override
 	public Pagination<SysmanUser> getPanigationByRowBounds(SysmanUserExample example) {

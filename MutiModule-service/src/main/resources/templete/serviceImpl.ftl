@@ -42,6 +42,16 @@ public class ${className}ServiceImpl implements I${className}Service {
 	public int updateByPrimaryKeySelective(${className} ${smallClassName}) {
 		return ${smallClassName}Mapper.updateByPrimaryKeySelective(${smallClassName});
 	}
+	
+	@Override
+	public int countByExample(${className}Example example) {
+		return ${smallClassName}Mapper.countByExample(example);
+	}
+	
+	@Override
+	public List<${className}> selectByExample(${className}Example example) {
+		return ${smallClassName}Mapper.selectByExample(example);
+	}
 
 	@Override
 	public Pagination<${className}> getPanigationByRowBounds(${className}Example example) {
