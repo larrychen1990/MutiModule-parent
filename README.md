@@ -9,3 +9,6 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 		
 20150509
 	增加针对updateByPrimaryKeySelective操作的缓存更新功能 AOP
+	
+20150523
+	persist service层增加RBAC功能权限相关处理，并对结果集进行树形结构转换功能。
