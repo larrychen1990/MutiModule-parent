@@ -21,6 +21,12 @@ public interface I${className}Service {
 	public void insert(${className} ${smallClassName});
 	
 	/**
+	 * 插入操作，根据实体类的相关参数，匹配插入数据
+	 * @param ${className} ${smallClassName} 插入操作实体类数据
+	 */
+	public void insertSelective(${className} ${smallClassName});
+	
+	/**
 	 * 根据id获取实体信息
 	 * @param id
 	 */
@@ -34,14 +40,14 @@ public interface I${className}Service {
 	
 	/**
 	 * 根据入参信息（包含分页页码，过滤条件）返回符合条件的数据信息
-	 *  @param ${className}Example 过滤条件
+	 * @param example 过滤条件
 	 * @return 此条件下共有多少条匹配数据
 	 */
 	public int countByExample(${className}Example example);
 	
 	/**
 	 * 根据入参信息（包含分页页码，过滤条件）返回符合条件的数据信息
-	 *  @param ${className}Example 过滤条件
+	 * @param example 过滤条件
 	 * @return 此条件下返回的数据list集合
 	 */
 	public List<${className}> selectByExample(${className}Example example);
@@ -52,5 +58,13 @@ public interface I${className}Service {
 	 * @return 分页信息
 	 */
 	Pagination<${className}> getPanigationByRowBounds(${className}Example example);
+	
+	/**
+	 * 根据example查询出相关的数据信息，并将这些数据信息进行更新，更新参数如record
+	   @param record 更新的值
+	 * @param example 过滤条件
+	 * @return 符合条件的数据条数
+	 */
+	public int updateByExampleSelective(${className} record, ${className}Example example);
 	
 }

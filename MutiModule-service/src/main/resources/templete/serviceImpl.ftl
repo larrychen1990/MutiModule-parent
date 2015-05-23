@@ -32,6 +32,11 @@ public class ${className}ServiceImpl implements I${className}Service {
 	public void insert(${className} ${smallClassName}) {
 		${smallClassName}Mapper.insert(${smallClassName});
 	}
+	
+	@Override
+	public void insertSelective(${className} ${smallClassName}) {
+		${smallClassName}Mapper.insertSelective(${smallClassName});
+	}
 
 	@Override
 	public ${className} selectByPrimaryKey(Integer id) {
@@ -62,4 +67,8 @@ public class ${className}ServiceImpl implements I${className}Service {
 		return new Pagination(example.getMyRowBounds(), count, list);
 	}
 
+	@Override
+	public int updateByExampleSelective(${className} record, ${className}Example example) {
+		return ${smallClassName}Mapper.updateByExampleSelective(record, example);
+	}
 }

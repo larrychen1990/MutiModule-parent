@@ -32,6 +32,11 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 	public void insert(SysmanUser sysmanUser) {
 		sysmanUserMapper.insert(sysmanUser);
 	}
+	
+	@Override
+	public void insertSelective(SysmanUser sysmanUser) {
+		sysmanUserMapper.insertSelective(sysmanUser);
+	}
 
 	@Override
 	public SysmanUser selectByPrimaryKey(Integer id) {
@@ -62,4 +67,8 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 		return new Pagination(example.getMyRowBounds(), count, list);
 	}
 
+	@Override
+	public int updateByExampleSelective(SysmanUser record, SysmanUserExample example) {
+		return sysmanUserMapper.updateByExampleSelective(record, example);
+	}
 }
