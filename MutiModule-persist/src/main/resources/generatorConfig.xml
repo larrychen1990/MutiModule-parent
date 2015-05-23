@@ -16,7 +16,10 @@
         <javaClientGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" type="XMLMAPPER" />
         
         <!-- domainObjectName 部分，如果不加的话，好像数据库表结构是驼峰式的话，生成的*。java类文件不是驼峰式的结构，故加上这个配置部分 -->
-        <table schema="" tableName="SysmanUser" domainObjectName="SysmanUser"/>
+        <table schema="" tableName="SysmanUserRoleRel" domainObjectName="SysmanUserRoleRel" delimitAllColumns="true">
+        	<!-- 生成代码字段名默认按驼峰命名 -->
+        	<property name="useActualColumnNames" value="true"/>
+        </table>
         
     </context>
 	    

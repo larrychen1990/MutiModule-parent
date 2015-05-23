@@ -14,4 +14,24 @@
         <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.sysman.SysmanUserMapper" />  
 	</bean>
 	
+	<bean id="sysmanRoleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleMapper" />  
+	</bean>
+	
+	<bean id="sysmanResourceMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceMapper" />  
+	</bean>
+	
+	<bean id="sysmanUserRoleRelMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelMapper" />  
+	</bean>
+	
+	<bean id="sysmanRoleResourceRelMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRelMapper" />  
+	</bean>
+				
 </beans>
