@@ -85,4 +85,20 @@
 		<property name="sysmanUserMapper" ref="sysmanUserMapper" />
 	</bean>
 	
+	<bean id="sysmanRoleService" class="com.alexgaoyh.MutiModule.service.sysman.impl.SysmanRoleServiceImpl">
+		<property name="sysmanRoleMapper" ref="sysmanRoleMapper" />
+	</bean>
+	
+	<bean id="sysmanResourceService" class="com.alexgaoyh.MutiModule.service.sysman.impl.SysmanResourceServiceImpl">
+		<property name="sysmanResourceMapper" ref="sysmanResourceMapper" />
+	</bean>
+	
+	<bean id="sysmanUserRoleRelService" class="com.alexgaoyh.MutiModule.service.sysman.impl.SysmanUserRoleRelServiceImpl">
+		<property name="sysmanUserRoleRelMapper" ref="sysmanUserRoleRelMapper" />
+	</bean>
+	
+	<bean id="sysmanRoleResourceRelService" class="com.alexgaoyh.MutiModule.service.sysman.impl.SysmanRoleResourceRelServiceImpl">
+		<property name="sysmanRoleResourceRelMapper" ref="sysmanRoleResourceRelMapper" />
+	</bean>
+	
 </beans>

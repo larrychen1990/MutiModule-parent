@@ -64,7 +64,7 @@ public class ${className}ServiceImpl implements I${className}Service {
 		int count = ${smallClassName}Mapper.countByExample(example);
 		List<${className}> list = ${smallClassName}Mapper.selectByExample(example);
 		
-		return new Pagination(example.getMyRowBounds(), count, list);
+		return new Pagination<${className}>(example.getMyRowBounds(), count, list);
 	}
 
 	@Override

@@ -64,7 +64,7 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 		int count = sysmanUserMapper.countByExample(example);
 		List<SysmanUser> list = sysmanUserMapper.selectByExample(example);
 		
-		return new Pagination(example.getMyRowBounds(), count, list);
+		return new Pagination<SysmanUser>(example.getMyRowBounds(), count, list);
 	}
 
 	@Override

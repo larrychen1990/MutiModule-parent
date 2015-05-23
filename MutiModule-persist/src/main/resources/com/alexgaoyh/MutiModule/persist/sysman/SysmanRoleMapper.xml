@@ -275,4 +275,12 @@
 		description = #{description,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	
+	<!-- alexgaoyh add begin here -->
+	<select id="selectRoleListBySysmanUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select DISTINCT sr.* 
+		from sysmanrole sr, sysmanuser su, sysmanuserrolerel surr
+		where sr.id = surr.sysmanRoleId and su.id = surr.sysmanUserId 
+		and su.id = #{id,jdbcType=INTEGER}
+	</select>
 </mapper>

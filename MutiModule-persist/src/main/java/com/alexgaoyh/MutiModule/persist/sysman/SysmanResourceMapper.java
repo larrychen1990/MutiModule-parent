@@ -93,4 +93,11 @@ public interface SysmanResourceMapper {
      * @mbggenerated Sat May 23 12:18:15 CST 2015
      */
     int updateByPrimaryKey(SysmanResource record);
+    
+    /**
+     * 根据角色id，获取到这个角色下所包含的资源集合
+     * @param id 角色id
+     * @return 符合条件的资源list集合
+     */
+    List<SysmanResource> selectResourceListBySysmanRoleId(Integer id);
 }

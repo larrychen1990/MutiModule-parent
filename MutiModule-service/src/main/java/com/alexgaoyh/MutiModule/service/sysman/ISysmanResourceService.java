@@ -74,4 +74,11 @@ public interface ISysmanResourceService {
 	 */
 	public int deleteByExample(SysmanResourceExample example);
 	
+	/**
+     * 根据角色id，获取到这个角色下所包含的资源集合
+     * @param id 角色id
+     * @return 符合条件的资源list集合
+     */
+    List<SysmanResource> selectResourceListBySysmanRoleId(Integer id);
+	
 }

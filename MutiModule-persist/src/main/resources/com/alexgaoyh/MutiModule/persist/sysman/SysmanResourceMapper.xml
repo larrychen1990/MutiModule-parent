@@ -327,4 +327,12 @@
 		parentId = #{parentid,jdbcType=INTEGER}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	
+	<!-- alexgaoyh add begin here -->
+	<select id="selectResourceListBySysmanRoleId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select DISTINCT sres.* 
+		from sysmanresource sres, sysmanrole srole, sysmanroleresourcerel srrc
+		where sres.id = srrc.sysmanResourceId and srole.id = srrc.sysmanRoleId 
+		and srole.id = #{id,jdbcType=INTEGER}
+	</select>
 </mapper>

@@ -1,11 +1,8 @@
 package com.alexgaoyh.MutiModule.service.sysman.impl;
 
-import java.util.List;
-
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRelExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRelMapper;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleResourceRelService;
 
 /**

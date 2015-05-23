@@ -93,4 +93,11 @@ public interface SysmanRoleMapper {
      * @mbggenerated Sat May 23 12:13:24 CST 2015
      */
     int updateByPrimaryKey(SysmanRole record);
+    
+    /**
+     * 根据用户id，获取这个用户所包含的所有角色信息集合
+     * @param id 用户id
+     * @return  返回这个用户id所包含的角色集合
+     */
+    List<SysmanRole> selectRoleListBySysmanUserId(Integer id);
 }

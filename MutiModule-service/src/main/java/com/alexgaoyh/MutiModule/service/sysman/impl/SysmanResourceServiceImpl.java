@@ -64,7 +64,7 @@ public class SysmanResourceServiceImpl implements ISysmanResourceService {
 		int count = sysmanResourceMapper.countByExample(example);
 		List<SysmanResource> list = sysmanResourceMapper.selectByExample(example);
 		
-		return new Pagination(example.getMyRowBounds(), count, list);
+		return new Pagination<SysmanResource>(example.getMyRowBounds(), count, list);
 	}
 
 	@Override
@@ -75,5 +75,10 @@ public class SysmanResourceServiceImpl implements ISysmanResourceService {
 	@Override
 	public int deleteByExample(SysmanResourceExample example) {
 		return sysmanResourceMapper.deleteByExample(example);
+	}
+
+	@Override
+	public List<SysmanResource> selectResourceListBySysmanRoleId(Integer id) {
+		return sysmanResourceMapper.selectResourceListBySysmanRoleId(id);
 	}
 }

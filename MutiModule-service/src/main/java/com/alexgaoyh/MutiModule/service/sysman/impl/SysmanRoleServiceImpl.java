@@ -64,7 +64,7 @@ public class SysmanRoleServiceImpl implements ISysmanRoleService {
 		int count = sysmanRoleMapper.countByExample(example);
 		List<SysmanRole> list = sysmanRoleMapper.selectByExample(example);
 		
-		return new Pagination(example.getMyRowBounds(), count, list);
+		return new Pagination<SysmanRole>(example.getMyRowBounds(), count, list);
 	}
 
 	@Override
@@ -75,5 +75,10 @@ public class SysmanRoleServiceImpl implements ISysmanRoleService {
 	@Override
 	public int deleteByExample(SysmanRoleExample example) {
 		return sysmanRoleMapper.deleteByExample(example);
+	}
+
+	@Override
+	public List<SysmanRole> selectRoleListBySysmanUserId(Integer id) {
+		return sysmanRoleMapper.selectRoleListBySysmanUserId(id);
 	}
 }

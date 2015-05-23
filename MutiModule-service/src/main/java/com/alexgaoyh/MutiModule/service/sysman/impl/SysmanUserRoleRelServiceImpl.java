@@ -1,11 +1,8 @@
 package com.alexgaoyh.MutiModule.service.sysman.impl;
 
-import java.util.List;
-
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelMapper;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserRoleRelService;
 
 /**
