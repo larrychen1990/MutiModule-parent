@@ -6,6 +6,7 @@ import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceMapper;
 import com.alexgaoyh.MutiModule.persist.util.Pagination;
+import com.alexgaoyh.MutiModule.persist.util.TreeNode;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
 
 /**
@@ -86,4 +87,10 @@ public class SysmanResourceServiceImpl implements ISysmanResourceService {
 	public List<SysmanResource> selectTopSysmanResourceByParentId() {
 		return sysmanResourceMapper.selectTopSysmanResourceByParentId();
 	}
+
+	@Override
+	public List<TreeNode> selectTreeNodeBySysmanResourceId(Integer id) {
+		return sysmanResourceMapper.selectTreeNodeBySysmanResourceId(id);
+	}
+	
 }
