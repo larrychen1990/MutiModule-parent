@@ -10,9 +10,6 @@
         http://www.springframework.org/schema/tx   
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
         
-    <!-- redis 配置 -->
-	<import resource="redis-config.xml"/>
-        
 	<!--  事务控制  begin -->
 	        
     <!-- 事务相关控制 -->
@@ -44,7 +41,6 @@
 	<!-- redis 缓存控制层 begin-->
 	
 	<bean id="redisHandler" class="com.alexgaoyh.MutiModule.aop.redis.RedisAdvice" >
-		<property name="redisTemplate" ref="redisTemplate"></property>
 	</bean>
 	
 	<aop:config>

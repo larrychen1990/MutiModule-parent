@@ -12,18 +12,10 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
+import com.alexgaoyh.MutiModule.util.redis.RedisClient;
+
 public class RedisAdvice {
 	
-	protected RedisTemplate<Serializable, Serializable> redisTemplate;
-
-	public RedisTemplate<Serializable, Serializable> getRedisTemplate() {
-		return redisTemplate;
-	}
-
-	public void setRedisTemplate(
-			RedisTemplate<Serializable, Serializable> redisTemplate) {
-		this.redisTemplate = redisTemplate;
-	}
 	/**
 	 * 在核心业务执行前执行，不能阻止核心业务的调用。
 	 * @param joinPoint
@@ -79,7 +71,7 @@ public class RedisAdvice {
         	
         	ObjectMapper mapper = new ObjectMapper();
         	
-        	Object obj = this.get(baseKey + "_"  +args[0]);
+        	Object obj = RedisClient.get(baseKey + "_"  +args[0]);
 
         	
         	if(obj == null) {
@@ -87,7 +79,7 @@ public class RedisAdvice {
         		//调用核心逻辑
         		Object retVal = pjp.proceed();
         		
-        		this.add(baseKey + "_"  +args[0], mapper.writeValueAsString(retVal));
+        		RedisClient.add(baseKey + "_"  +args[0], mapper.writeValueAsString(retVal));
         		
         		System.out.println("缓存为空");
         		
@@ -127,10 +119,10 @@ public class RedisAdvice {
         	
         	//根据入参的主键ID值，拼接缓存key ，并且对缓存key对应的键值进行更新操作
         	String key = args[0].getClass().getName() + "_" + IDValue;
-    		Object obj = this.get(key);
+    		Object obj = RedisClient.get(key);
         	if(obj != null) {
         		ObjectMapper mapper = new ObjectMapper();
-        		this.add(key, mapper.writeValueAsString(args[0]));
+        		RedisClient.add(key, mapper.writeValueAsString(args[0]));
         	}
         	
         }
@@ -174,51 +166,4 @@ public class RedisAdvice {
 		System.out.println("-----End of doThrowing()------");
 	}*/
 	
-	
-	/**
-	 * 添加
-	 * @param key
-	 * @param value
-	 */
-	public void add(final String key, final String value) {
-		if(redisTemplate != null) {
-			redisTemplate.execute(new RedisCallback<Object>() {
-				@Override
-				public Object doInRedis(RedisConnection connection)
-						throws DataAccessException {
-					connection.set(
-							redisTemplate.getStringSerializer().serialize(key),
-							redisTemplate.getStringSerializer().serialize(value));
-					return null;
-				}
-			});
-		}
-    }
-	
-	/**
-     * 根据key获取对象
-     */
-    public Object get(final String key) {
-    	return redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection connection)
-					throws DataAccessException {
-				
-				byte[] keyByte = redisTemplate.getStringSerializer().serialize(key);
-				byte[] value = connection.get(keyByte);
-				
-				String str = redisTemplate.getStringSerializer().deserialize(value);
-				
-				return str;
-			}
-    	} );
-    }  
-	
-	 /** 
-     * 获取 RedisSerializer 
-     * 
-     */  
-    protected RedisSerializer<String> getRedisSerializer() {  
-        return redisTemplate.getStringSerializer();  
-    }  
 }
