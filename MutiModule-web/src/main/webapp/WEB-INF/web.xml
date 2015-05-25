@@ -29,5 +29,30 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- captcha servlet config-->
+	<servlet>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<servlet-class>com.alexgaoyh.MutiModule.web.admin.sysman.captcha.CaptchaServlet</servlet-class>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<url-pattern>/servlet/captchaCode</url-pattern>
+	</servlet-mapping>
+	
+	<!-- session超时定义,单位为分钟 -->  
+    <session-config>  
+        <session-timeout>30</session-timeout>  
+    </session-config>  
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>  
+		<error-code>404</error-code>  
+		<location>/404.jsp</location>  
+	</error-page> 
 
 </web-app>

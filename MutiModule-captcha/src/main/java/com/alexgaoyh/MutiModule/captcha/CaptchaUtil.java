@@ -96,15 +96,25 @@ public class CaptchaUtil {
 	}
 
 	/**
-	 * 获取随机的字符
+	 * 随机四位数字
+	 * @param count
+	 * @return
 	 */
-	private String getRandomString(int num) {
-		return String.valueOf(RANDOM_STRS.charAt(num));
-	}
+	public static StringBuffer randomCode(int count){
+        StringBuffer sb = new StringBuffer();
+        Random r = new Random();
+        for(int i=0;i<count;i++){
+            int num = r.nextInt(RANDOM_STRS.length());
+            sb.append(RANDOM_STRS.charAt(num));
+        }
+        return sb;
+    }
 
 	public static void main(String[] args) {
 		CaptchaUtil tool = new CaptchaUtil();
 		StringBuffer code = new StringBuffer();
+		//四位随机数字
+		code.append(randomCode(4));
 		BufferedImage image = tool.genRandomCodeImage(code);
 		System.out.println(">>> random code =: " + code);
 		try {

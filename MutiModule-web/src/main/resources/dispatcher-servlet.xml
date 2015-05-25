@@ -11,8 +11,16 @@
         http://www.springframework.org/schema/mvc   
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
         
+    <mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:resources location="/css/" mapping="/css/**"/>
+	<mvc:resources location="/image/" mapping="/image/**"/>
+	<mvc:resources location="/ueditor/" mapping="/ueditor/**"/>
+	<mvc:resources location="/upload/" mapping="/upload/**"/>
+	<mvc:resources location="/front/" mapping="/front/**"/>
+
 	<!-- 注解扫描包 -->  
     <context:component-scan base-package="com.alexgaoyh.MutiModule.web" />
+    
     
     <!-- 开启注解 -->  
     <mvc:annotation-driven/>
