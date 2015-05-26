@@ -1,7 +1,11 @@
 package com.alexgaoyh.MutiModule.persist;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +38,7 @@ public class SysmanUserMybatisTest {
 			sysmanUser.setDeleteflag(0);
 			sysmanUser.setName("alexgaoyh");
 			sysmanUser.setCreatetime(new Date());
-			sysmanUser.setPassword("alexgaoyh");
+			sysmanUser.setPassword("alexgaoyh" + new Random(1000).nextInt());
 			sysmanUserMapper.insert(sysmanUser);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,5 +61,14 @@ public class SysmanUserMybatisTest {
 			System.out.println("SysmanUser.getId() = " + SysmanUser.getId());
 		}
 		
+	}
+	
+	@Test
+	public void checkUserInfo() {
+		SysmanUser su = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh", "alexgaoyh");
+		assertNotNull(su);
+		
+		SysmanUser su1 = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh", "alexgaoyh1");
+		assertNull(su1);
 	}
 }

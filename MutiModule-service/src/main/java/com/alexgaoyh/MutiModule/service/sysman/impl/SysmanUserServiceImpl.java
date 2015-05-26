@@ -76,4 +76,9 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 	public int deleteByExample(SysmanUserExample example) {
 		return sysmanUserMapper.deleteByExample(example);
 	}
+
+	@Override
+	public SysmanUser selectUserByNameAndPasswd(String name, String passWord) {
+		return sysmanUserMapper.selectUserByNameAndPasswd(name, passWord);
+	}
 }

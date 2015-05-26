@@ -1,8 +1,7 @@
 package com.alexgaoyh.MutiModule.persist.sysman;
 
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysmanUserMapper {
@@ -93,4 +92,12 @@ public interface SysmanUserMapper {
      * @mbggenerated Sat May 23 11:26:37 CST 2015
      */
     int updateByPrimaryKey(SysmanUser record);
+    
+    /**
+     * 验证用户名和密码，返回符合条件的用户信息
+     * @param userName
+     * @param passWord
+     * @return
+     */
+    public SysmanUser selectUserByNameAndPasswd(@Param("name")String name, @Param("password")String passWord); 
 }

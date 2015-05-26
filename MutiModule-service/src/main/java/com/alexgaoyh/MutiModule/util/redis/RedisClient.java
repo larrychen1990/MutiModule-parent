@@ -57,4 +57,20 @@ public class RedisClient {
 		
 		return returnStr;
 	}
+	
+	/**
+	 * 删除缓存
+	 * @param key
+	 * @return
+	 */
+	public static Long del(String key) {
+		Jedis jedis = jedisPool.getResource();
+		
+		Long returnLong = jedis.del(key);
+		
+		//归还 释放
+		jedisPool.returnResource(jedis);
+		
+		return returnLong;
+	}
 }

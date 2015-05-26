@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alexgaoyh.MutiModule.captcha.CaptchaUtil;
+import com.alexgaoyh.MutiModule.util.redis.RedisClient;
+import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 
 
 /**
@@ -37,7 +39,9 @@ public class CaptchaServlet extends HttpServlet {
 			//code为 随机的4位整数验证码
 			StringBuffer code = CaptchaUtil.randomCode(4);
 			BufferedImage image = tool.genRandomCodeImage(code);
-
+			
+			RedisClient.add(ConstantsUtil.ADMIN_CAPTCHA_CONSTANTS, code.toString());
+			
 			// 将内存中的图片通过流动形式输出到客户端
 			ImageIO.write(image, "JPEG", resp.getOutputStream());
 

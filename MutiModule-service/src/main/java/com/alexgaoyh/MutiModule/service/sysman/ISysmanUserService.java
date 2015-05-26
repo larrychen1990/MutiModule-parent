@@ -74,4 +74,12 @@ public interface ISysmanUserService {
 	 */
 	public int deleteByExample(SysmanUserExample example);
 	
+	/**
+	 * 根据用户名密码获取到是否有这个用户信息
+	 * @param name 	用户名
+	 * @param passWord 密码
+	 * @return 符合条件的用户信息
+	 */
+	public SysmanUser selectUserByNameAndPasswd(String name, String passWord);
+	
 }

@@ -14,12 +14,12 @@
 </head>
 <body>
 
-	<form id="login" action="${pageContext.request.contextPath}/admin/doLogin" method="post">
+	<form id="login" action="${pageContext.request.contextPath}/admin/sysmanUser/doLogin" method="post">
 		<h1>Log In</h1>
 		<fieldset id="inputs">
 			<input name="userName" id="userName" type="text" placeholder="Username" autofocus required> 
-			<input name="password" id="password"  type="password" placeholder="Password" required>
-			<input name="Captcha" id="Captcha"  type="text" placeholder="验证码" required>
+			<input name="passWord" id="passWord"  type="password" placeholder="Password" required>
+			<input name="captcha" id="captcha"  type="text" placeholder="验证码" required>
 			<img style=" float:right;" title="点击更换" id="img_captcha" onclick="javascript:refreshCaptcha();" src="${pageContext.request.contextPath}/servlet/captchaCode">
 		</fieldset>
 		<input type="checkbox" name="rememberMe" value="true" /> Remember me
