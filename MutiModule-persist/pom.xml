@@ -43,8 +43,8 @@
 			<artifactId>mybatis-spring</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.mchange</groupId>
-			<artifactId>c3p0</artifactId>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
