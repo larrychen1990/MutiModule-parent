@@ -65,10 +65,10 @@ public class SysmanUserMybatisTest {
 	
 	@Test
 	public void checkUserInfo() {
-		SysmanUser su = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh", "alexgaoyh");
+		SysmanUser su = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh", "alexgaoyh1");
 		assertNotNull(su);
 		
-		SysmanUser su1 = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh", "alexgaoyh1");
+		SysmanUser su1 = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh1", "alexgaoyh");
 		assertNull(su1);
 	}
 }

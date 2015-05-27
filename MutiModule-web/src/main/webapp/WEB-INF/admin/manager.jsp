@@ -17,7 +17,7 @@
 		<div class="easyui-panel,border:false" style="height:40px;">
 			<div class="easyui-layout" data-options="fit:true">
 				<div data-options="region:'west',border:false" style="width:500px;">
-					Welcome, ${sysmanUser.realName}
+					Welcome, ${sysmanUser.name}
 				</div>
 				<div data-options="region:'east',border:false">
 					

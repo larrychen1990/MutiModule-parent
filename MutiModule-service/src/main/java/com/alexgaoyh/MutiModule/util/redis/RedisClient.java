@@ -6,6 +6,11 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+/**
+ * RedisClient 客户端功能
+ * @author alexgaoyh
+ *
+ */
 public class RedisClient {
 	
 	//连接池
@@ -34,6 +39,11 @@ public class RedisClient {
 		
 	}
 	
+	/**
+	 * 从redis中获取信息
+	 * @param key 键
+	 * @return 值
+	 */
 	public static String get(String key) {
 		
 		Jedis jedis = jedisPool.getResource();
@@ -46,11 +56,35 @@ public class RedisClient {
 		return returnStr;
 	}
 	
+	/**
+	 * 将值value放入键key的redis缓存中
+	 * @param key	键
+	 * @param value 值
+	 * @return
+	 */
 	public static String add(String key, String value) {
 		
 		Jedis jedis = jedisPool.getResource();
 		
 		String returnStr = jedis.set(key, value);
+		
+		//归还 释放
+		jedisPool.returnResource(jedis);
+		
+		return returnStr;
+	}
+	
+	/**
+	 * 将值value放入键key的redis缓存中 有效期为 second
+	 * @param key	键
+	 * @param value 值
+	 * @param seconds	有效期
+	 * @return
+	 */
+	public static String add(String key, String value, int seconds) {
+		Jedis jedis = jedisPool.getResource();
+		
+		String returnStr = jedis.setex(key, seconds, value);
 		
 		//归还 释放
 		jedisPool.returnResource(jedis);

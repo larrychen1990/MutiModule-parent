@@ -1,17 +1,11 @@
 package com.alexgaoyh.MutiModule.aop.redis;
 
-import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
 
+import com.alexgaoyh.MutiModule.util.jackson.JacksonUtil;
 import com.alexgaoyh.MutiModule.util.redis.RedisClient;
 
 public class RedisAdvice {
@@ -69,8 +63,6 @@ public class RedisAdvice {
         if (args != null && args.length == 1 && args[0].getClass() == Integer.class) {
         	System.out.println("key =  " + baseKey + "_"  + args[0]);
         	
-        	ObjectMapper mapper = new ObjectMapper();
-        	
         	Object obj = RedisClient.get(baseKey + "_"  +args[0]);
 
         	
@@ -79,7 +71,7 @@ public class RedisAdvice {
         		//调用核心逻辑
         		Object retVal = pjp.proceed();
         		
-        		RedisClient.add(baseKey + "_"  +args[0], mapper.writeValueAsString(retVal));
+        		RedisClient.add(baseKey + "_"  +args[0], JacksonUtil.toJSon(retVal));
         		
         		System.out.println("缓存为空");
         		
@@ -89,7 +81,7 @@ public class RedisAdvice {
         		
         		System.out.println("缓存不为空");
         		
-        		obj = mapper.readValue(obj.toString(), pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),
+        		obj = JacksonUtil.readValue(obj.toString(), pjp.getTarget().getClass().getDeclaredMethod(pjp.getSignature().getName(),
         				((MethodSignature)pjp.getSignature()).getMethod().getParameterTypes()).getReturnType());
 
         		return obj;
@@ -121,8 +113,7 @@ public class RedisAdvice {
         	String key = args[0].getClass().getName() + "_" + IDValue;
     		Object obj = RedisClient.get(key);
         	if(obj != null) {
-        		ObjectMapper mapper = new ObjectMapper();
-        		RedisClient.add(key, mapper.writeValueAsString(args[0]));
+        		RedisClient.add(key, JacksonUtil.toJSon(args[0]));
         	}
         	
         }
