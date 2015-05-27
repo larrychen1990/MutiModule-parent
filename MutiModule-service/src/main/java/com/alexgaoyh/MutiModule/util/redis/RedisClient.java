@@ -93,6 +93,23 @@ public class RedisClient {
 	}
 	
 	/**
+	 * 设置当前键key的过期时间为seconds
+	 * @param key 	键
+	 * @param seconds 过期时间
+	 * @return
+	 */
+	public static Long expire(String key, int seconds) {
+		Jedis jedis = jedisPool.getResource();
+		
+		Long returnLong = jedis.expire(key, seconds);
+		
+		//归还 释放
+		jedisPool.returnResource(jedis);
+		
+		return returnLong;
+	}
+	
+	/**
 	 * 删除缓存
 	 * @param key
 	 * @return

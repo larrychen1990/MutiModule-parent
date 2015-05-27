@@ -57,6 +57,9 @@ public class LoginFilter implements Filter {
             servletResponse.sendRedirect(servletRequest.getContextPath() + "/admin/sysmanUser/login");
         } else {
             // 已经登陆,继续此次请求
+        	//每次在对admin下的路径进行请求，如果当前状态时已经登陆状态的话，这里这个用户又重新进行访问，可以对过期时间进行重新设定
+        	// redis-cli 下执行  ttl 命令，可以查看当前这个键的过期时间 
+        	RedisClient.expire(ConstantsUtil.ADMIN_LOGIN_CONSTANTS, ConstantsUtil.EXPIRE_TIME_30_MINUTE);
             chain.doFilter(request, response);
         }
 
