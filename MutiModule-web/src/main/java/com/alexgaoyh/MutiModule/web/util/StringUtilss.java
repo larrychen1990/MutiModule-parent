@@ -1,5 +1,10 @@
 package com.alexgaoyh.MutiModule.web.util;
 
+/**
+ * 自定义的stringUtil类
+ * @author alexgaoyh
+ *
+ */
 public class StringUtilss {
 
 	public static boolean isEmpty(String str) {

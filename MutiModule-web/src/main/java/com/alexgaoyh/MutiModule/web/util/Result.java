@@ -7,12 +7,21 @@ package com.alexgaoyh.MutiModule.web.util;
  */
 public class Result {
 
+	/**
+	 * 成功（无消息内容）
+	 * @return
+	 */
 	public static Result  ok(){
 		Result result = new Result();
 		result.setSuccess(true);
 		return result ;
 	}
 	
+	/**
+	 * 成功（带消息内容）
+	 * @param msg	附带消息内容
+	 * @return
+	 */
 	public static Result  ok(String msg){
 		Result result = new Result();
 		result.setSuccess(true);
@@ -20,6 +29,11 @@ public class Result {
 		return result ;
 	}
 	
+	/**
+	 * 成功 （附带数据内容）
+	 * @param data
+	 * @return
+	 */
 	public static Result  ok(Object data){
 		Result result = new Result();
 		result.setSuccess(true);
@@ -27,12 +41,21 @@ public class Result {
 		return result ;
 	}
 	
+	/**
+	 * 失败(无消息内容)
+	 * @return
+	 */
 	public static Result fail(){
 		Result result = new Result();
 		result.setSuccess(false);
 		return result ;
 	}
 	
+	/**
+	 * 失败 （附带消息内容）
+	 * @param msg
+	 * @return
+	 */
 	public static Result fail(String msg ){
 		Result result = new Result();
 		result.setSuccess(false);
@@ -43,6 +66,8 @@ public class Result {
 	//常用操作码
 	public static final  int  OPERATE_CODE_LOGIN = 100 ; //未
 	
+	//-----------------
+	// 树形 get set方法
 	private boolean success;
 	private String msg ;
 	private Object data;
