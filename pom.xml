@@ -49,6 +49,8 @@
 		<org.codehaus.jackson>1.9.13</org.codehaus.jackson>
 		<cglib>3.1</cglib>
 		<commons-codec>1.9</commons-codec>
+		<commons-dbcp>1.4</commons-dbcp>
+		<commons-pool>1.6</commons-pool>
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
@@ -176,6 +178,16 @@
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
 				<version>${commons-codec}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>${commons-dbcp}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>${commons-pool}</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>

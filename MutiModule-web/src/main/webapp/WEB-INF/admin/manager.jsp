@@ -31,7 +31,7 @@
 	
 	<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">
 		<ul id="subMenus" class="easyui-tree" 
-			data-options="url:'${pageContext.request.contextPath}/admin/sysmanUser/getMenus',
+			data-options="url:'${pageContext.request.contextPath}/admin/sysmanResource/getMenus',
 						method:'get',animate:true,
 						onClick: function(node){
 							openTab(node.text, node.attributes.href);

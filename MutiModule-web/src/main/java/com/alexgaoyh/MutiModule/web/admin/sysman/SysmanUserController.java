@@ -26,16 +26,6 @@ public class SysmanUserController {
 	@Resource
 	private ISysmanUserService sysmanUserService;
 
-	// service　层 get/set 方法
-	public ISysmanUserService getSysmanUserService() {
-		return sysmanUserService;
-	}
-
-	public void setSysmanUserService(ISysmanUserService sysmanUserService) {
-		this.sysmanUserService = sysmanUserService;
-	}
-	// service 层get/set 方法
-	
 	/**
 	 * 登陆页面
 	 * @return

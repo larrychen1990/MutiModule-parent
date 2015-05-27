@@ -73,7 +73,7 @@ public class SysmanResourceMybatisTest {
 	
 	private void treeMenuList(List<TreeNode> root) {
 		for (TreeNode node : root) {
-			System.out.println("当前节点：" + node.getId() + "父节点：" + (node.getParent() == null ? "" : node.getParent().getId()));
+			System.out.println("当前节点：" + node.getId());
 			if(node.getChildren() != null) {
 				treeMenuList(node.getChildren());
 			}

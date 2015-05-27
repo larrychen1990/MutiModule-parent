@@ -345,21 +345,15 @@
 	<!-- 树形结构查询  alexgaoyh begin -->
 	<resultMap type="com.alexgaoyh.MutiModule.persist.util.TreeNode" id="treeNodeResultMap">  
         <id property="id" column="id"/>  
-        <result property="text" column="text"/>  
+        <result property="text" column="name"/>  
         <result property="isLeaf" column="isLeaf"/>  
         <result property="iconCls" column="iconCls"/>  
-        <result property="state" column="state"/>  
-        <!-- 查询父模块 -->  
-        <association property="parent" column="parentId" select="getTreeNodeById" />  
+        <result property="state" column="href"/>  
         <!-- 查询子模块 -->  
         <collection property="children" column="id" select="getChildrenTreeNode" />  
     </resultMap>  
       
     <select id="selectTreeNodeBySysmanResourceId" parameterType="int" resultMap="treeNodeResultMap">  
-        select * from sysmanresource where id = #{id};
-    </select>  
-      
-    <select id="getTreeNodeById" parameterType="int" resultMap="treeNodeResultMap">  
         select * from sysmanresource where id = #{id};
     </select>  
       

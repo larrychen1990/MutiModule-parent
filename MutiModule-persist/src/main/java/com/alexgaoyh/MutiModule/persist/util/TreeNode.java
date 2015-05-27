@@ -21,8 +21,6 @@ public class TreeNode {
 	
 	private String state; //closed open
 	
-	private TreeNode parent;
-	
 	private List<TreeNode> children;
 	
 	private Map<String,Object> attributes;
@@ -65,14 +63,6 @@ public class TreeNode {
 
 	public void setState(String state) {
 		this.state = state;
-	}
-
-	public TreeNode getParent() {
-		return parent;
-	}
-
-	public void setParent(TreeNode parent) {
-		this.parent = parent;
 	}
 
 	public List<TreeNode> getChildren() {
