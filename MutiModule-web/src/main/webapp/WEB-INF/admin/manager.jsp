@@ -23,7 +23,7 @@
 					
 				</div>
 				<div data-options="region:'center',border:false" style="width:500px;">
-					<a href="${pageContext.request.contextPath}/admin/logout">Logout</a>
+					<a href="${pageContext.request.contextPath}/admin/sysmanUser/logout">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 	
 	<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">
 		<ul id="subMenus" class="easyui-tree" 
-			data-options="url:'${pageContext.request.contextPath}/admin/getMenus',
+			data-options="url:'${pageContext.request.contextPath}/admin/sysmanUser/getMenus',
 						method:'get',animate:true,
 						onClick: function(node){
 							openTab(node.text, node.attributes.href);
@@ -49,7 +49,7 @@
 			
 		</div>
 	</div>
-	<a href="${pageContext.request.contextPath}/admin/logout"><i class="icon-key"></i> Log Out</a>
+	<a href="${pageContext.request.contextPath}/admin/sysmanUser/logout"><i class="icon-key"></i> Log Out</a>
 </body>
 	<script type="text/javascript">
 	
@@ -91,7 +91,7 @@
 			var resultStr = '';
 			
 			$.ajax({
-				url : context_+'/admin/permissionsCheck',
+				url : context_+'/admin/sysmanUser/permissionsCheck',
 				type : "POST",
 				data:{
 					"url":url
@@ -101,7 +101,7 @@
 					if(objJson.success == true) {
 						resultStr = url;
 					}else{
-						resultStr = "/admin/denied";
+						resultStr = "/admin/sysmanUser/denied";
 					}
 				},
 				dataType : "json"

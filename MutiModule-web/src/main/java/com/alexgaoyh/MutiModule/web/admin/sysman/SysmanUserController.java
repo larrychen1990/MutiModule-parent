@@ -103,4 +103,15 @@ public class SysmanUserController {
 		
 		return new ModelAndView("admin/manager", map);
 	}
+	
+	/**
+	 * 登出方法
+	 * @return
+	 */
+	@RequestMapping(value="logout")
+	public ModelAndView logout() {
+		//删除登陆的缓存信息
+		RedisClient.del(ConstantsUtil.ADMIN_LOGIN_CONSTANTS);
+		return new ModelAndView("redirect:login");
+	}
 }
