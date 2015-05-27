@@ -92,5 +92,10 @@ public class SysmanResourceServiceImpl implements ISysmanResourceService {
 	public List<TreeNode> selectTreeNodeBySysmanResourceId(Integer id) {
 		return sysmanResourceMapper.selectTreeNodeBySysmanResourceId(id);
 	}
+
+	@Override
+	public Boolean checkSysmanResourcePermission(Integer sysmanResourceId, Integer sysmanUserId) {
+		return sysmanResourceMapper.checkSysmanResourcePermission(sysmanResourceId, sysmanUserId);
+	}
 	
 }

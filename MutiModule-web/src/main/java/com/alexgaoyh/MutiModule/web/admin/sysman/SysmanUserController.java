@@ -104,4 +104,14 @@ public class SysmanUserController {
 		RedisClient.del(ConstantsUtil.ADMIN_LOGIN_CONSTANTS);
 		return new ModelAndView("redirect:login");
 	}
+	
+	/**
+	 * 指定无访问额权限页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/denied", method = RequestMethod.GET)
+	public ModelAndView denied() {
+		return new ModelAndView("admin/denied");
+	}
 }

@@ -361,4 +361,18 @@
         select * from sysmanresource where parentId = #{id};
     </select>
     <!-- 树形结构查询  alexgaoyh end -->
+    
+    <!-- Mybatis是根据查询到的记录数进行转换的(1=true,0=false)  -->
+    <!-- 需要注意的地方：如果查询到多条记录(大于1)，返回的却是false, 这时就与我们的期望的刚好相反。这里，可以换其它方法，可以通过返回记录数，进行判断，也可以保证记录在数据库是唯一的。 -->
+    <select id="checkSysmanResourcePermission" resultType="boolean"> 
+	    <![CDATA[ 
+	    	select count(sresource.id)
+			from sysmanuser suser, 
+			sysmanuserrolerel surr, sysmanrole srole, 
+			sysmanroleresourcerel srrc, sysmanresource sresource
+			where suser.id = surr.sysmanUserId 
+			and surr.sysmanRoleId = srole.id and srole.id = srrc.sysmanRoleId and srrc.sysmanResourceId = sresource.id
+			and suser.id = #{sysmanUserId} and sresource.id = #{sysmanResourceId} 
+		]]> 
+	</select> 
 </mapper>

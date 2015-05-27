@@ -1,7 +1,9 @@
 package com.alexgaoyh.MutiModule.service;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
@@ -77,5 +79,14 @@ public class SysmanResourceServiceTest {
 		for(SysmanResource sysmanResource : sysmanResourceList) {
 			System.out.println("selectResourceListBySysmanRoleId:sysmanResource.getId() = " + sysmanResource.getId());
 		}
+	}
+	
+	@Test
+	public void checkSysmanResourcePermission() {
+		Boolean trueBoolean = sysmanResourceService.checkSysmanResourcePermission(1, 1);
+		assertTrue(trueBoolean);
+		
+		Boolean falseBoolean = sysmanResourceService.checkSysmanResourcePermission(10, 10);
+		assertFalse(falseBoolean);
 	}
 }

@@ -34,7 +34,7 @@
 			data-options="url:'${pageContext.request.contextPath}/admin/sysmanResource/getMenus',
 						method:'get',animate:true,
 						onClick: function(node){
-							openTab(node.text, node.attributes.href);
+							openTab(node.text, node.attributes.href,node.id);
 						}">
 			
 		</ul>  
@@ -60,9 +60,9 @@
 		
 		
 		var mainTabs = $("#main-tabs");
-		function openTab(title, url) {
+		function openTab(title, url, id) {
 			
-			url = permissionsCheck(url);
+			url = permissionsCheck(id);
 			
 			if (mainTabs.tabs('exists', title)) {
 				mainTabs.tabs('select', title);
@@ -86,15 +86,15 @@
 			return s;
 		}
 		
-		function permissionsCheck(url) {
+		function permissionsCheck(id) {
 			
 			var resultStr = '';
 			
 			$.ajax({
-				url : context_+'/admin/sysmanUser/permissionsCheck',
+				url : context_+'/admin/sysmanResource/checkSysmanResourcePermission',
 				type : "POST",
 				data:{
-					"url":url
+					"sysmanResourceId":id
 				},
 				async : false,
 				success : function(objJson) {

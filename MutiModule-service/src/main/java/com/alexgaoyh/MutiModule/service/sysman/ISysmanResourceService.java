@@ -94,5 +94,13 @@ public interface ISysmanResourceService {
      * @return 对应主键id下的属性结构
      */
     List<TreeNode> selectTreeNodeBySysmanResourceId(Integer id);
+    
+    /**
+     * 查询sysmanUserId用户是否有操作sysmanResourceId的权限
+     * @param sysmanResourceId	资源id
+     * @param sysmanUserId	用户id
+     * @return
+     */
+    Boolean checkSysmanResourcePermission(Integer sysmanResourceId, Integer sysmanUserId);
 	
 }
