@@ -19,3 +19,4 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 	后台登陆增加filter(登陆与否状态校验)，后台管理页面顶部功能,左边sysmanResource树结构实现，
 	RedisClient增加方法（过期时间），重置某个key的过期时间；
 	对LoginFilter在登陆状态下重置过期时间，避免登陆后即便操作状态下，缓存也会过期；
+	后台管理页面用户是否有操作当前资源的权限判定；
