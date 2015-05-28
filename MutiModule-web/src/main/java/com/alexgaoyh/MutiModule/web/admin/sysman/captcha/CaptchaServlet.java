@@ -40,7 +40,7 @@ public class CaptchaServlet extends HttpServlet {
 			StringBuffer code = CaptchaUtil.randomCode(4);
 			BufferedImage image = tool.genRandomCodeImage(code);
 			
-			RedisClient.add(ConstantsUtil.ADMIN_CAPTCHA_CONSTANTS, code.toString());
+			req.getSession().setAttribute(ConstantsUtil.ADMIN_CAPTCHA_CONSTANTS, code.toString());
 			
 			// 将内存中的图片通过流动形式输出到客户端
 			ImageIO.write(image, "JPEG", resp.getOutputStream());

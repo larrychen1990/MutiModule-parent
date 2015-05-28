@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,17 +45,21 @@ public class SysmanUserController {
 	 * @return
 	 */
 	@RequestMapping(value="doLogin", method = RequestMethod.POST)
-	public ModelAndView doLogin(@RequestParam("userName") String userName, 
-			@RequestParam("passWord") String passWord, @RequestParam("captcha") String captcha) {
+	public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response, 
+			@RequestParam("userName") String userName, 
+			@RequestParam("passWord") String passWord, 
+			@RequestParam("captcha") String captcha) {
 		
 		ModelAndView mv = new ModelAndView();
 		
 		if(StringUtilss.isNotEmpty(userName) && StringUtilss.isNotEmpty(passWord) && StringUtilss.isNotEmpty(captcha)) {
-			if(captcha.equals(RedisClient.get(ConstantsUtil.ADMIN_CAPTCHA_CONSTANTS))) {
+			
+			
+			if(captcha.equals(request.getSession().getAttribute(ConstantsUtil.ADMIN_CAPTCHA_CONSTANTS))) {
 				SysmanUser su = sysmanUserService.selectUserByNameAndPasswd(userName, passWord);
 				if(su != null) {
-					//用户信息加入缓存
-					RedisClient.add(ConstantsUtil.ADMIN_LOGIN_CONSTANTS, JacksonUtil.toJSon(su), ConstantsUtil.EXPIRE_TIME_30_MINUTE);
+					//session 存值
+					request.getSession().setAttribute(ConstantsUtil.ADMIN_LOGIN_CONSTANTS, su.getId());
 					//登陆成功，页面重定向
 					mv.setViewName("redirect:manager");
 				} else {
