@@ -102,5 +102,20 @@ public interface ISysmanResourceService {
      * @return
      */
     Boolean checkSysmanResourcePermission(Integer sysmanResourceId, Integer sysmanUserId);
+    
+    /**
+	 * 根据ids数组，逻辑删除对象
+	 * @param deleteFlag
+	 * @param ids
+	 * @return
+	 */
+	public int deleteLogicByIds(Integer deleteFlag, Integer[] ids);
+	
+	/**
+   	 * 根据parentid返回符合条件的孩子节点集合
+   	 * @param parentId	父亲id
+   	 * @return
+   	 */
+   	List<SysmanResource> selectSysmanResourceListByParentId(Integer parentId);
 	
 }

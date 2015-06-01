@@ -16,15 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
 import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
 import com.alexgaoyh.MutiModule.web.admin.vo.EasyUIData;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
-import com.alexgaoyh.MutiModule.web.util.MD5Util;
 import com.alexgaoyh.MutiModule.web.util.Result;
 import com.alexgaoyh.MutiModule.web.util.StringUtilss;
 

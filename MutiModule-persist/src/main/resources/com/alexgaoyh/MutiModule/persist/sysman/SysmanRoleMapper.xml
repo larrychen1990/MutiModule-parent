@@ -285,11 +285,13 @@
 	</select>
 	
 	<update id="deleteLogicByIds">
-	update sysmanrole
-	set deleteFlag = #{deleteflag,jdbcType=INTEGER}
-	where id in
-	<foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
-            #{item}
-        </foreach>
-  </update>
+		update sysmanrole
+		set deleteFlag = #{deleteflag,jdbcType=INTEGER}
+		where
+		id in
+		<foreach item="item" index="index" collection="ids" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
 </mapper>

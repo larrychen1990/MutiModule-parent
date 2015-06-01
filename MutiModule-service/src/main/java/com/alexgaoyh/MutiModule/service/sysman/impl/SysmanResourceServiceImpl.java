@@ -97,5 +97,16 @@ public class SysmanResourceServiceImpl implements ISysmanResourceService {
 	public Boolean checkSysmanResourcePermission(Integer sysmanResourceId, Integer sysmanUserId) {
 		return sysmanResourceMapper.checkSysmanResourcePermission(sysmanResourceId, sysmanUserId);
 	}
+
+	@Override
+	public int deleteLogicByIds(Integer deleteFlag, Integer[] ids) {
+		return sysmanResourceMapper.deleteLogicByIds(deleteFlag, ids);
+	}
+
+	@Override
+	public List<SysmanResource> selectSysmanResourceListByParentId(
+			Integer parentId) {
+		return sysmanResourceMapper.selectSysmanResourceListByParentId(parentId);
+	}
 	
 }

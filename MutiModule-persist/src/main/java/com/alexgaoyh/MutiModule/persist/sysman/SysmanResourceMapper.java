@@ -123,4 +123,18 @@ public interface SysmanResourceMapper {
      */
     Boolean checkSysmanResourcePermission(@Param("sysmanResourceId")Integer sysmanResourceId, 
     		@Param("sysmanUserId")Integer sysmanUserId);
+    
+    /**
+   	 * 根据ids数组，逻辑删除对象
+   	 * @param ids
+   	 * @return
+   	 */
+   	public int deleteLogicByIds(@Param("deleteflag")Integer deleteFlag, @Param("ids")Integer[] ids);
+   	
+   	/**
+   	 * 根据parentid返回符合条件的孩子节点集合
+   	 * @param parentId	父亲id
+   	 * @return
+   	 */
+   	List<SysmanResource> selectSysmanResourceListByParentId(Integer parentId);
 }

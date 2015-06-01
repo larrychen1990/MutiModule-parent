@@ -79,4 +79,9 @@ public class SysmanResourceMybatisTest {
 			}
 		}
 	}
+	
+	@Test
+	public void getSysmanResourceByParentId() {
+		sysmanResourceMapper.selectSysmanResourceListByParentId(1);
+	}
 }

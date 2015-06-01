@@ -25,3 +25,4 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 #20150601
 	persist层增加逻辑删除sql相关；service层增加逻辑删除相关（通用方法写入模板文件中）
 	后台管理页面，逻辑删除功能实现，修复后台用户登陆后，登陆信息session与redis缓存匹配的bug
+	以实现RBAC相关单表CRUD,下一步实现rel关系处理
