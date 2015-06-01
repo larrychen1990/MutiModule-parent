@@ -76,4 +76,9 @@ public class ${className}ServiceImpl implements I${className}Service {
 	public int deleteByExample(${className}Example example) {
 		return ${smallClassName}Mapper.deleteByExample(example);
 	}
+	
+	@Override
+	public int deleteLogicByIds(Integer deleteFlag, Integer[] ids) {
+		return ${smallClassName}Mapper.deleteLogicByIds(deleteFlag, ids);
+	}
 }

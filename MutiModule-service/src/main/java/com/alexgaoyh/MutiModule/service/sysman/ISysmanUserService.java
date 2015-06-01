@@ -82,4 +82,12 @@ public interface ISysmanUserService {
 	 */
 	public SysmanUser selectUserByNameAndPasswd(String name, String passWord);
 	
+	/**
+	 * 根据ids数组，逻辑删除对象
+	 * @param deleteFlag
+	 * @param ids
+	 * @return
+	 */
+	public int deleteLogicByIds(Integer deleteFlag, Integer[] ids);
+	
 }

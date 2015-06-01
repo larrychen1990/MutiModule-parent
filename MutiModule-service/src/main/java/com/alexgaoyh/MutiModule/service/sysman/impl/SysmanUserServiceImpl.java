@@ -81,4 +81,9 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 	public SysmanUser selectUserByNameAndPasswd(String name, String passWord) {
 		return sysmanUserMapper.selectUserByNameAndPasswd(name, passWord);
 	}
+
+	@Override
+	public int deleteLogicByIds(Integer deleteFlag, Integer[] ids) {
+		return sysmanUserMapper.deleteLogicByIds(deleteFlag, ids);
+	}
 }
