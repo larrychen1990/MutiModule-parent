@@ -21,6 +21,6 @@ public class MD5Util {
     }
     
     public static void main(String[] args) {  
-        MD5Util.encrypByMd5Jar("yang");  
+        MD5Util.encrypByMd5Jar("alexgaoyh1");  
     }  
 }

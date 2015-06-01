@@ -27,6 +27,7 @@ import com.alexgaoyh.MutiModule.util.redis.RedisClient;
 import com.alexgaoyh.MutiModule.web.admin.vo.EasyUIData;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
+import com.alexgaoyh.MutiModule.web.util.MD5Util;
 import com.alexgaoyh.MutiModule.web.util.Result;
 import com.alexgaoyh.MutiModule.web.util.StringUtilss;
 
@@ -66,7 +67,7 @@ public class SysmanUserController {
 			
 			
 			if(captcha.equals(request.getSession().getAttribute(ConstantsUtil.ADMIN_CAPTCHA_CONSTANTS))) {
-				SysmanUser su = sysmanUserService.selectUserByNameAndPasswd(userName, passWord);
+				SysmanUser su = sysmanUserService.selectUserByNameAndPasswd(userName, MD5Util.encrypByMd5Jar(passWord));
 				if(su != null) {
 					//session 存值
 					request.getSession().setAttribute(ConstantsUtil.ADMIN_LOGIN_CONSTANTS, su.getId());
@@ -234,6 +235,7 @@ public class SysmanUserController {
 	protected void beforeDoSave(HttpServletRequest request, SysmanUser entity) throws Exception {
 		entity.setDeleteflag(ConstantsUtil.DELETE_NO);
 		entity.setCreatetime(new Date());
+		entity.setPassword(MD5Util.encrypByMd5Jar("admin"));
 	}
 	
 	/** 通用方法 
