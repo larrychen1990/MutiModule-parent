@@ -113,7 +113,7 @@ $.extend(DataGridEasyui.prototype, {
 				if (r) {
 					$.post(context_ + "/" + this_.getController("logicDelete"), {
 						pids : $.map(rows, function(row) {
-							return row.pid;
+							return row.id;
 						}).join("::")
 
 					}, function(result) {

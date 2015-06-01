@@ -99,7 +99,7 @@
 				async : false,
 				success : function(objJson) {
 					if(objJson.success == true) {
-						resultStr = url;
+						resultStr = objJson.msg;
 					}else{
 						resultStr = "/admin/sysmanUser/denied";
 					}
