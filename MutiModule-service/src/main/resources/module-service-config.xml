@@ -27,7 +27,7 @@
 			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="check*" propagation="REQUIRED" />
-			<tx:method name="delete*" read-only="true" />
+			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="*" read-only="false" />
 		</tx:attributes>
 	</tx:advice>
