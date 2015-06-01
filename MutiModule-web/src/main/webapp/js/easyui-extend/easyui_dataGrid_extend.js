@@ -112,7 +112,7 @@ $.extend(DataGridEasyui.prototype, {
 			$.messager.confirm('确认', '你确定要删除所选的记录吗?', function(r) {
 				if (r) {
 					$.post(context_ + "/" + this_.getController("logicDelete"), {
-						pids : $.map(rows, function(row) {
+						ids : $.map(rows, function(row) {
 							return row.id;
 						}).join("::")
 
@@ -304,7 +304,7 @@ $.extend(DataGridEasyui.prototype, {
 		var this_ = this;
 		var form = this.dlg.find('form:eq(0)');
 		var url;
-		if (form[0].pid.value) {
+		if (form[0].id.value) {
 			url = this.getController("doUpdate");
 		} else {
 			url = this.getController("doSave");
@@ -324,9 +324,8 @@ $.extend(DataGridEasyui.prototype, {
 			},
 			success : function(result) {
 				this_.saving = false ;
-				var result ;
 				try{
-					result = jQuery.parseJSON(result)
+					result = jQuery.parseJSON(result);
 				}catch(e){
 					$.messager.alert('错误', "服务端出错！"); // show error
 					return ;

@@ -1,6 +1,7 @@
 package com.alexgaoyh.MutiModule.web.admin.sysman;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -199,6 +200,96 @@ public class SysmanUserController {
 	}
 	
 	/** 通用方法 
+	 * 新增，保存
+	 * @param request
+	 * @param response
+	 * @param bean 请求对象的bean
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping(value="doSave")
+    @ResponseBody
+	public String save(HttpServletRequest request, HttpServletResponse response, SysmanUser entity) throws Exception {
+		Result result = null;
+		try {
+			beforeDoSave(request, entity);
+			sysmanUserService.insert(entity);
+			afterDoSave(request, entity);
+			result = new Result(true, "保存成功！");
+		} catch (Exception e) {
+			result = new Result(false, "保存失败！"+e.getMessage());
+		} finally {
+			JSONUtilss.renderJson(result, response);
+		}
+
+		return null;
+	}
+	
+	/** 通用方法 
+	 * 调用保存方法之前进行的方法调用
+	 * @param request
+	 * @param entity 对应实体信息
+	 * @throws Exception
+	 */
+	protected void beforeDoSave(HttpServletRequest request, SysmanUser entity) throws Exception {
+		entity.setDeleteflag(ConstantsUtil.DELETE_NO);
+		entity.setCreatetime(new Date());
+	}
+	
+	/** 通用方法 
+	 * 电泳保存方法之后进行的方法调用
+	 * @param request
+	 * @param entity 对应实体信息
+	 * @throws Exception
+	 */
+	protected void afterDoSave(HttpServletRequest request, SysmanUser entity) throws Exception {
+		
+	}
+	
+	/**
+	 * 更新
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="doUpdate")
+    @ResponseBody
+	public String doUpdate(HttpServletRequest request, HttpServletResponse response, SysmanUser entity) throws IOException {
+		Result result = null;
+		try {
+			beforeDoUpdate(request, entity);
+			sysmanUserService.updateByPrimaryKeySelective(entity);
+			afterDoUpdate(request, entity);
+			result = new Result(true, "更新成功！");
+		} catch (Exception e) {
+			result = new Result(false, "更新失败！"+e.getMessage());
+		} finally {
+			JSONUtilss.renderJson(result, response);
+		}
+		return null;
+	}
+
+	/**
+	 * 调用更新操作之前进行的操作
+	 * @param request
+	 * @param entity
+	 * @throws Exception
+	 */
+	protected void beforeDoUpdate(HttpServletRequest request, SysmanUser entity) throws Exception {
+		
+	}
+	
+	/**
+	 * 调用更新操作之后进行的操作
+	 * @param request
+	 * @param entity
+	 * @throws Exception
+	 */
+	protected void afterDoUpdate(HttpServletRequest request, SysmanUser entity) throws Exception {
+		
+	}
+	
+	/** 通用方法 
 	 * 删除
 	 * @param request
 	 * @return
@@ -209,10 +300,10 @@ public class SysmanUserController {
 	public String logicDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Result result = null;
 		try {
-			String pids = request.getParameter("pids");
+			String pids = request.getParameter("ids");
 			if (pids != null) {
-				sysmanUserService.deleteLogicByIds(ConstantsUtil.DELETE_YES, StringUtilss.stringToIntegerArray(pids.split("::")));
-				result = new Result(true, "删除成功！");
+				int deleteCount = sysmanUserService.deleteLogicByIds(ConstantsUtil.DELETE_YES, StringUtilss.stringToIntegerArray(pids.split("::")));
+				result = new Result(true, "删除成功！操作" + deleteCount + "条数据");
 			} else {
 				result = new Result(false, "没有参数，非法操作！");
 			}
