@@ -66,4 +66,18 @@ MutiModule-persist部分：
 				//id为需要根据哪个节点开始，对此节点下的数据进行树形结构转换，测试时可以递归操作，对树形结构进行深度优先遍历。
 				//方法名称对应xml文件里面的select语句部分
 				List<TreeNode> selectTreeNodeBySysmanResourceId(Integer id);
+				
+	4: 删除操作，本例的删除只是逻辑删除(deleteFlag)状态改变
+		4.1	*。Mapper.java 类增加
+				public int deleteLogicByIds(@Param("deleteflag")Integer deleteFlag, @Param("ids")Integer[] ids);
+		4.2 *。Mpaaer.xml 增加
+				<update id="deleteLogicByIds">
+					update sysmanuser
+					set deleteFlag = #{deleteflag,jdbcType=INTEGER}
+					where id in
+					<foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+				            #{item}
+				        </foreach>
+				  </update>
+		4.3 增加测试方法，返回更新状态的数据
 							

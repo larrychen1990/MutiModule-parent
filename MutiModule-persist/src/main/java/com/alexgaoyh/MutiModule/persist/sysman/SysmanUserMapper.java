@@ -100,4 +100,11 @@ public interface SysmanUserMapper {
      * @return
      */
     public SysmanUser selectUserByNameAndPasswd(@Param("name")String name, @Param("password")String passWord); 
+    
+    /**
+	 * 根据ids数组，逻辑删除对象
+	 * @param ids
+	 * @return
+	 */
+	public int deleteLogicByIds(@Param("deleteflag")Integer deleteFlag, @Param("ids")Integer[] ids);
 }

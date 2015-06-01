@@ -302,4 +302,13 @@
       password = #{password,jdbcType=VARCHAR}
   </select>
   
+  <update id="deleteLogicByIds">
+	update sysmanuser
+	set deleteFlag = #{deleteflag,jdbcType=INTEGER}
+	where id in
+	<foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+  </update>
+  
 </mapper>

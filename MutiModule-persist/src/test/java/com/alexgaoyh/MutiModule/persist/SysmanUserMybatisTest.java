@@ -71,4 +71,11 @@ public class SysmanUserMybatisTest {
 		SysmanUser su1 = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh1", "alexgaoyh");
 		assertNull(su1);
 	}
+	
+	@Test
+	public void deleteLogicByIds() {
+		Integer[] ids = {4,5,6,7,8};
+		int resultUpdateConut = sysmanUserMapper.deleteLogicByIds(1, ids);
+		System.out.println("resultUpdateConut = " + resultUpdateConut);
+	}
 }
