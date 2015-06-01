@@ -81,4 +81,9 @@ public class SysmanRoleServiceImpl implements ISysmanRoleService {
 	public List<SysmanRole> selectRoleListBySysmanUserId(Integer id) {
 		return sysmanRoleMapper.selectRoleListBySysmanUserId(id);
 	}
+
+	@Override
+	public int deleteLogicByIds(Integer deleteFlag, Integer[] ids) {
+		return sysmanRoleMapper.deleteLogicByIds(deleteFlag, ids);
+	}
 }

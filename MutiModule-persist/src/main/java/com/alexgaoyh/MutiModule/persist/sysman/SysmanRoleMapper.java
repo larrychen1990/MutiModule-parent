@@ -2,7 +2,9 @@ package com.alexgaoyh.MutiModule.persist.sysman;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysmanRoleMapper {
@@ -100,4 +102,11 @@ public interface SysmanRoleMapper {
      * @return  返回这个用户id所包含的角色集合
      */
     List<SysmanRole> selectRoleListBySysmanUserId(Integer id);
+    
+    /**
+	 * 根据ids数组，逻辑删除对象
+	 * @param ids
+	 * @return
+	 */
+	public int deleteLogicByIds(@Param("deleteflag")Integer deleteFlag, @Param("ids")Integer[] ids);
 }

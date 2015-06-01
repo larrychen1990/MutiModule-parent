@@ -80,4 +80,12 @@ public interface ISysmanRoleService {
      * @return  返回这个用户id所包含的角色集合
      */
     List<SysmanRole> selectRoleListBySysmanUserId(Integer id);
+    
+    /**
+	 * 根据ids数组，逻辑删除对象
+	 * @param deleteFlag
+	 * @param ids
+	 * @return
+	 */
+	public int deleteLogicByIds(Integer deleteFlag, Integer[] ids);
 }
