@@ -16,7 +16,7 @@
 <body>
 	<div id="toolbar-1">
 		<a href="javascript:history.go(-1);" class="easyui-linkbutton" iconCls="icon-back" plain="true">返回</a>
-		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="sub">保存</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-save" plain="true" id="saveClick">保存</a>
 	</div>
 	<div><p>当前用户信息： 编号：${object.id }; 姓名： ${object.name }</p></div>
 	<div class="select_side">
@@ -68,7 +68,7 @@
 			});
 		});
 		//将右侧选择框中的项组成一个字符串或数组提交给后台
-		$("#sub").click(function() {
+		$("#saveClick").click(function() {
 			var selVal = [];
 			rightSel.find("option").each(function() {
 				selVal.push(this.value);

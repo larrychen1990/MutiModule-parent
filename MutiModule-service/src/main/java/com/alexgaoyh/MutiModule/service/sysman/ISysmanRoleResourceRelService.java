@@ -1,5 +1,7 @@
 package com.alexgaoyh.MutiModule.service.sysman;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRelExample;
 
@@ -44,5 +46,14 @@ public interface ISysmanRoleResourceRelService {
 	 * @param sysmanResourceIds	资源ids,字符串（","分隔）
 	 */
 	public void removeOldRelAndSaveNewRel(Integer sysmanRoleId, String sysmanResourceIds);
+	
+	/**
+     * 檢查當前sysmanRoleId角色id和sysmanResourceId資源id是否存在
+     * @param sysmanRoleId
+     * @param sysmanResourceId
+     * @return
+     */
+    Boolean checkRoleIdResourceIdExisted(@Param("sysmanRoleId")Integer sysmanRoleId,
+    		@Param("sysmanResourceId")Integer sysmanResourceId);
 	
 }

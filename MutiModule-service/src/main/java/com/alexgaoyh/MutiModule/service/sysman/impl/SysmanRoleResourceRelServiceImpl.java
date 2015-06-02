@@ -67,4 +67,10 @@ public class SysmanRoleResourceRelServiceImpl implements ISysmanRoleResourceRelS
 		
 		sysmanRoleResourceRelMapper.insertbatch(list);
 	}
+
+	@Override
+	public Boolean checkRoleIdResourceIdExisted(Integer sysmanRoleId,
+			Integer sysmanResourceId) {
+		return sysmanRoleResourceRelMapper.checkRoleIdResourceIdExisted(sysmanRoleId, sysmanResourceId);
+	}
 }

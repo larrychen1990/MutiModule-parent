@@ -38,6 +38,7 @@
 		<a href="#" class="easyui-linkbutton add" iconCls="icon-add" plain="true">新增</a> 
 		<a href="#" class="easyui-linkbutton edit" iconCls="icon-edit" plain="true">修改</a> 
 		<a href="#" class="easyui-linkbutton remove" iconCls="icon-remove" plain="true">删除</a>
+		<a href="#" class="easyui-linkbutton releation" iconCls="icon-add" plain="true">包含资源</a>
 	</div>
 	
 	<div id="dlg-1" class="easyui-dialog" title="数据参数" style="z-Index: 100px;" fit="true" closed="true" buttons="#dlg-buttons-1">
@@ -66,24 +67,29 @@
 	<script type="text/javascript">
 		$( function() {
 			var dg1 = new DataGridEasyui(context_, 1 , templateUrl, 'crud');
+			
+			$.extend(dg1, {
+				init : function() {
+					DataGridEasyui.prototype.init.call(this);
+					//add 关联关系处理 begin
+					this.toolBar.find(".releation").bind('click', this.proxy(function(){
+						var rows = this.dataGrid.datagrid('getSelections');
+						if (!rows || rows.length == 0) {
+							$.messager.alert('提示', '请选择记录！');
+						} else {
+							if (rows.length == 1) {
+								document.location.href = this.context + "/admin/sysmanRoleResourceRel/list?id="+rows[0].id;
+							} else {
+								$.messager.alert('提示', '请选择单行记录！');
+							}
+						}
+					},this,this.toolBar.find(".releation")));
+					//add 关联关系处理 end
+				}
+			});
+			
 			dg1.init();
 		});
-		
-		function parseDate(date){
-			return timeStamp2String(date);
-		}
-		
-		function timeStamp2String(time){  
-		    var datetime = new Date();  
-		    datetime.setTime(time);  
-		    var year = datetime.getFullYear();  
-		    var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;  
-		    var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();  
-		    var hour = datetime.getHours()< 10 ? "0" + datetime.getHours() : datetime.getHours();  
-		    var minute = datetime.getMinutes()< 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();  
-		    var second = datetime.getSeconds()< 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();  
-		    return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;  
-		} 
 	</script>
 	
 </body>

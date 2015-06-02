@@ -1,23 +1,18 @@
 package com.alexgaoyh.MutiModule.persist;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserMapper;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelMapper;
 
 public class SysmanUserRoleRelMybatisTest {
 
-private SysmanUserRoleRelMapper sysmanUserRoleRelMapper;
+	private SysmanUserRoleRelMapper sysmanUserRoleRelMapper;
 	
 	@Before
     public void prepare() throws Exception {

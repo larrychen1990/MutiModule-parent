@@ -1,6 +1,5 @@
 package com.alexgaoyh.MutiModule.web.admin.sysman;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;

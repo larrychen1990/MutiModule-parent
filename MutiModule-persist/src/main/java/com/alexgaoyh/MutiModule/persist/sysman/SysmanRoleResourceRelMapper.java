@@ -82,4 +82,13 @@ public interface SysmanRoleResourceRelMapper {
      * @return
      */
     int insertbatch(List<SysmanRoleResourceRel> list);
+    
+    /**
+     * 檢查當前sysmanRoleId角色id和sysmanResourceId資源id是否存在
+     * @param sysmanRoleId
+     * @param sysmanResourceId
+     * @return
+     */
+    Boolean checkRoleIdResourceIdExisted(@Param("sysmanRoleId")Integer sysmanRoleId,
+    		@Param("sysmanResourceId")Integer sysmanResourceId);
 }
