@@ -80,4 +80,6 @@ MutiModule-persist部分：
 				        </foreach>
 				  </update>
 		4.3 增加测试方法，返回更新状态的数据
+	5： sysmanRole类，重写父类方法 hashCode() equals()
+		保证在对形如集合处理操作的时候，保证id相同的话，两个对象实际是相同的，例如 List.removeALL(?) 
 							
