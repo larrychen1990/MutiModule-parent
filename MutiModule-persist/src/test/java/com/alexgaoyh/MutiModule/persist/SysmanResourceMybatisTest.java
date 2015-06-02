@@ -27,7 +27,7 @@ public class SysmanResourceMybatisTest {
         
     }
 	
-	@Test
+	//@Test
 	public void testInsert() {
 		
 		try {
@@ -42,7 +42,7 @@ public class SysmanResourceMybatisTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testSysmanResourceExample() {
 		SysmanResourceExample sysmanResourceExample = new SysmanResourceExample();
 		sysmanResourceExample.setOrderByClause("id desc");
@@ -60,7 +60,7 @@ public class SysmanResourceMybatisTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void getTreeNode() {
 		List<SysmanResource> topResourceList = sysmanResourceMapper.selectTopSysmanResourceByParentId();
 		for(SysmanResource sysmanResource : topResourceList) {
@@ -80,7 +80,7 @@ public class SysmanResourceMybatisTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void getSysmanResourceByParentId() {
 		sysmanResourceMapper.selectSysmanResourceListByParentId(1);
 	}

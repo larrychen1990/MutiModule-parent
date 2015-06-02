@@ -1,14 +1,15 @@
 package com.alexgaoyh.MutiModule.service;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleResourceRelService;
+import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserRoleRelService;
 
-public class SysmanRoleResourceRelResourceRelServiceTest {
+public class SysmanUserRoleRelServiceTest {
 
-	private ISysmanRoleResourceRelService sysmanRoleResourceRelService;
+	private ISysmanUserRoleRelService sysmanUserRoleRelService;
 	
 	@Before
     public void prepare() throws Exception  {
@@ -17,8 +18,13 @@ public class SysmanRoleResourceRelResourceRelServiceTest {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext( springConfigFiles );
 
-        sysmanRoleResourceRelService = (ISysmanRoleResourceRelService) ctx.getBean( "sysmanRoleResourceRelService" );
+        sysmanUserRoleRelService = (ISysmanUserRoleRelService) ctx.getBean( "sysmanUserRoleRelService" );
         
     }
+	
+	@Test
+	public void removeOldRelAndSaveNewRel() {
+		sysmanUserRoleRelService.removeOldRelAndSaveNewRel(2, "2,3,4,");
+	}
 	
 }

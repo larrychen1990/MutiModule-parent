@@ -1,0 +1,35 @@
+.select_side {
+	float: left;
+	width: 40%;
+	height: 300px;
+	text-align: center;
+}
+
+select {
+	width: 40%;
+	height: 300px;
+}
+
+.select_opt {
+	float: left;
+	width: 10%;
+	height: 300px;
+	margin-top: 36px
+}
+
+.select_opt p {
+	width: 26px;
+	height: 26px;
+	margin-top: 6px;
+	background: url(../../../image/arr.gif) no-repeat;
+	cursor: pointer;
+	text-indent: -999em
+}
+
+.select_opt p#toright {
+	background-position: 2px 0
+}
+
+.select_opt p#toleft {
+	background-position: 2px -22px
+}

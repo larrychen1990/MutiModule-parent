@@ -30,7 +30,7 @@ public class SysmanUserMybatisTest {
         
     }
 	
-	@Test
+	//@Test
 	public void testInsert() {
 		
 		try {
@@ -45,7 +45,7 @@ public class SysmanUserMybatisTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testSysmanUserExample5() {
 		SysmanUserExample sysmanUserExample = new SysmanUserExample();
 		sysmanUserExample.setOrderByClause("id desc");
@@ -63,7 +63,7 @@ public class SysmanUserMybatisTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void checkUserInfo() {
 		SysmanUser su = sysmanUserMapper.selectUserByNameAndPasswd("alexgaoyh", "17ec80aebe6c2bedf0e36b75eabe9519");
 		assertNotNull(su);
@@ -72,7 +72,7 @@ public class SysmanUserMybatisTest {
 		assertNull(su1);
 	}
 	
-	@Test
+	//@Test
 	public void deleteLogicByIds() {
 		Integer[] ids = {4,5,6,7,8};
 		int resultUpdateConut = sysmanUserMapper.deleteLogicByIds(1, ids);

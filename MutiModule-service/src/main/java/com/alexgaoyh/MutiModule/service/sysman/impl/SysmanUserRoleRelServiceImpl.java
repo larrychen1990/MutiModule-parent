@@ -1,5 +1,8 @@
 package com.alexgaoyh.MutiModule.service.sysman.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelMapper;
@@ -43,5 +46,26 @@ public class SysmanUserRoleRelServiceImpl implements ISysmanUserRoleRelService {
 	@Override
 	public int deleteByExample(SysmanUserRoleRelExample example) {
 		return sysmanUserRoleRelMapper.deleteByExample(example);
+	}
+
+	@Override
+	public void removeOldRelAndSaveNewRel(Integer sysmanUserId,
+			String sysmanRoleIds) {
+		sysmanUserRoleRelMapper.deleteByUserId(sysmanUserId);
+		
+		String[] sysmanRoleIdsArray = sysmanRoleIds.split(",");
+		int sysmanRoleIdsLength = sysmanRoleIdsArray.length;
+		
+		List<SysmanUserRoleRel> list = new ArrayList<SysmanUserRoleRel>();
+		for(int i = 0; i < sysmanRoleIdsLength; i++) {
+			SysmanUserRoleRel surr = new SysmanUserRoleRel();
+			surr.setSysmanUserId(sysmanUserId);
+			surr.setSysmanRoleId(Integer.parseInt(sysmanRoleIdsArray[i].trim()));
+			list.add(surr);
+		}
+		
+		sysmanUserRoleRelMapper.insertbatch(list);
+		
+		
 	}
 }

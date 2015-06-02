@@ -38,4 +38,12 @@ public interface ISysmanUserRoleRelService {
 	 */
 	public int deleteByExample(SysmanUserRoleRelExample example);
 	
+	/**
+	 * 根据sysmanUserId 用户id，先删除此用户的所有角色信息，之后根据sysmanRoleIds（ids字符串），将新的关系保存起来
+	 * @param sysmanUserId	sysmanUser用户id
+	 * @param sysmanRoleIds	sysmanRole角色id集合，','分隔字符串
+	 * @return
+	 */
+	public void removeOldRelAndSaveNewRel(Integer sysmanUserId, String sysmanRoleIds);
+	
 }

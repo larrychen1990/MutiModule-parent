@@ -26,7 +26,7 @@ public class SysmanRoleMybatisTest {
         
     }
 	
-	@Test
+	//@Test
 	public void testInsert() {
 		
 		try {
@@ -41,7 +41,7 @@ public class SysmanRoleMybatisTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testSysmanRoleExample() {
 		SysmanRoleExample sysmanRoleExample = new SysmanRoleExample();
 		sysmanRoleExample.setOrderByClause("id desc");

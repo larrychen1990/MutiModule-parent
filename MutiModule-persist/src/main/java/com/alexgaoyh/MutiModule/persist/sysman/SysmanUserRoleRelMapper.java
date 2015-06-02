@@ -2,7 +2,9 @@ package com.alexgaoyh.MutiModule.persist.sysman;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysmanUserRoleRelMapper {
@@ -69,4 +71,18 @@ public interface SysmanUserRoleRelMapper {
      * @mbggenerated Sat May 23 13:20:15 CST 2015
      */
     int updateByExample(@Param("record") SysmanUserRoleRel record, @Param("example") SysmanUserRoleRelExample example);
+    
+    /**
+     * 根据sysmanUserId删除关联关系
+     * @param sysmanUserId	sysmanUser表中id，用户id
+     * @return
+     */
+    int deleteByUserId(@Param("sysmanUserId")Integer sysmanUserId);
+    
+    /**
+     * 批量插入数据
+     * @param list	SysmanUserRoleRel对象的集合
+     * @return
+     */
+    int insertbatch(List<SysmanUserRoleRel> list);
 }

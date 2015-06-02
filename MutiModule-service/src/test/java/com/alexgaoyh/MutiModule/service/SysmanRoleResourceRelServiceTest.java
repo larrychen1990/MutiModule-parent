@@ -4,11 +4,11 @@ import org.junit.Before;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserRoleRelService;
+import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleResourceRelService;
 
-public class SysmanUserRoleRelRoleRelServiceTest {
+public class SysmanRoleResourceRelServiceTest {
 
-	private ISysmanUserRoleRelService sysmanUserRoleRelService;
+	private ISysmanRoleResourceRelService sysmanRoleResourceRelService;
 	
 	@Before
     public void prepare() throws Exception  {
@@ -17,7 +17,7 @@ public class SysmanUserRoleRelRoleRelServiceTest {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext( springConfigFiles );
 
-        sysmanUserRoleRelService = (ISysmanUserRoleRelService) ctx.getBean( "sysmanUserRoleRelService" );
+        sysmanRoleResourceRelService = (ISysmanRoleResourceRelService) ctx.getBean( "sysmanRoleResourceRelService" );
         
     }
 	
