@@ -1,6 +1,7 @@
 package com.alexgaoyh.MutiModule.service;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,5 +21,10 @@ public class SysmanRoleResourceRelServiceTest {
         sysmanRoleResourceRelService = (ISysmanRoleResourceRelService) ctx.getBean( "sysmanRoleResourceRelService" );
         
     }
+	
+	@Test
+	public void removeOldRelAndSaveNewRel() {
+		sysmanRoleResourceRelService.removeOldRelAndSaveNewRel(2, "2,3,4");
+	}
 	
 }

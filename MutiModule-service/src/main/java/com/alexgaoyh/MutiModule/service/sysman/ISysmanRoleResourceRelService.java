@@ -38,4 +38,11 @@ public interface ISysmanRoleResourceRelService {
 	 */
 	public int deleteByExample(SysmanRoleResourceRelExample example);
 	
+	/**
+	 * 根据sysmanRoleId 角色id，先删除此角色的所有资源信息，之后根据sysmanResourceIds（ids字符串），将新的关系保存起来
+	 * @param sysmanRoleId	角色id
+	 * @param sysmanResourceIds	资源ids,字符串（","分隔）
+	 */
+	public void removeOldRelAndSaveNewRel(Integer sysmanRoleId, String sysmanResourceIds);
+	
 }
