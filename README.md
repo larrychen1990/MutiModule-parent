@@ -29,3 +29,4 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 #20150602
 	后台管理页面，rel关系处理(sysmanUser-sysmanRole-sysmanResource 部分)，
 	jquery左右选择 easyui樹形控件
+********************************至此完成RBAC相關權限控制部分***************************************************	
