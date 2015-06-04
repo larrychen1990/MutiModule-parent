@@ -6,21 +6,21 @@ import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisClient_Jedis {
 	
-	//�ͻ�������
+	//客户端连接
 	private Jedis jedis;
-	//���ӳ�
+	//连接池
 	private JedisPool jedisPool;
 	
 	/**
-	 * ���캯��
+	 * 构造函数
 	 */
 	public RedisClient_Jedis() {
-		//���ó�ʼ������
+		//调用初始化方法
 		init();
 	}
 	
 	/**
-	 * ��ʼ��
+	 * 初始化
 	 */
 	private void init() {
 		JedisPoolConfig config = new JedisPoolConfig();
@@ -38,7 +38,7 @@ public class RedisClient_Jedis {
 		String returnStr = jedis.get("aa");
 		System.out.println(returnStr);
 		
-		//�黹 �ͷ�
+		//归还 释放
 		jedisPool.returnResource(jedis);
 		
 	}

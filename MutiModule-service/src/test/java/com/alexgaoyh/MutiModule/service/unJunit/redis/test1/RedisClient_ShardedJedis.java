@@ -38,7 +38,7 @@ public class RedisClient_ShardedJedis {
 		String returnStr = shardedJedis.get("aa");
 		System.out.println(returnStr);
 		
-		//�黹 �ͷ�
+		//归还 释放
 		sharededJedisPool.returnResource(shardedJedis);
 		
 	}
