@@ -4,6 +4,7 @@ MutiModule-persist部分：
 	
 	2、在模板文件中添加对应的分页支持：
 		2.1:  *Example.java 文件增加  protected MyRowBounds myRowBounds(get set方法省略)；
+			序列化相关操作 implements Serializable
 		
 		2.2:  *Mapper.xml 文件增加如下部分， 
 				<sql id="myRowBoundsSQL">
