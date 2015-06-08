@@ -37,6 +37,10 @@
 	</bean>
 	
 	<!-- 引入persist持久化bean的定义 -->
-	<import resource="module-persist-*.xml"/>
+	<!-- <import resource="module-persist-*.xml"/>
+	 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.alexgaoyh.MutiModule.persist" />
+	</bean>
 	
 </beans>

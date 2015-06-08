@@ -30,3 +30,10 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 	后台管理页面，rel关系处理(sysmanUser-sysmanRole-sysmanResource 部分)，
 	jquery左右选择 easyui樹形控件
 ********************************至此完成RBAC相關權限控制部分***************************************************	
+
+#20150608
+	persist层，原先使用形如(如下)所示的代码段来定义一个个的bean，现改为MapperScannerConfigurer(查 找 类 路 径 下 的 映 射 器 并 自 动 将 它 们 创 建 成 MapperFactoryBean)
+	<bean id="demoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.demo.DemoMapper" />  
+	</bean>

@@ -18,11 +18,16 @@ MutiModule-persist部分：
 				<include refid="myRowBoundsSQL" />
 			    <!-- alexgaoyh end -->
 						
-		2.3:  module-persist-bean.xml 里面增加对应的bean 设定
+		2.3:
+			/**  20150608 removed 接下来的bean定义交由MapperScannerConfigurer代替，较少代码段书写
+				使用MapperScannerConfigurer代替一个个的bean定义
+			module-persist-bean.xml 里面增加对应的bean 设定
 				<bean id="*Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
 			        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
 			        <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.*.*Mapper" />  
 				</bean>
+			*/
+			
 			
 		2.3： 进行junti测试 *MyBatisTest.java
 				//定义查询过滤类
@@ -83,4 +88,6 @@ MutiModule-persist部分：
 		4.3 增加测试方法，返回更新状态的数据
 	5： sysmanRole类，重写父类方法 hashCode() equals()
 		保证在对形如集合处理操作的时候，保证id相同的话，两个对象实际是相同的，例如 List.removeALL(?) 
+		
+	6： 使用MapperScannerConfigurer 代替一个个的bean定义。
 							
