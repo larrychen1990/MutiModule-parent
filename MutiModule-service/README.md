@@ -35,3 +35,10 @@ MutiModule-service 部分：
 	        			key =  com.alexgaoyh.MutiModule.persist.sysman.SysmanUser_1
 	        3.2.4: 增加针对updateByPrimaryKeySelective(Model)方法的AOP操作 ： aspectUpdeteModel
 	        		用于在更新操作发生的时候，随机更新缓存中的数据 key的方式与selectByPrimaryKey方法的缓存key一致
+	        		
+	4：
+		使用如下代码段定义bean（注解），而不是使用bean定义的代码段，减少代码量书写
+		<!-- 使Spring关注Annotation -->  
+		<context:annotation-config />   
+	    <!-- 使用annotation 自动注册bean,并保证@Service,@Autowired的属性被注入 -->
+		<context:component-scan base-package="com.alexgaoyh.MutiModule.service" />  
