@@ -17,6 +17,7 @@
 	<mvc:resources location="/ueditor/" mapping="/ueditor/**"/>
 	<mvc:resources location="/upload/" mapping="/upload/**"/>
 	<mvc:resources location="/front/" mapping="/front/**"/>
+	<mvc:resources location="/html/" mapping="/html/**"/>
 
 	<!-- 注解扫描包 -->  
     <context:component-scan base-package="com.alexgaoyh.MutiModule.web" />
