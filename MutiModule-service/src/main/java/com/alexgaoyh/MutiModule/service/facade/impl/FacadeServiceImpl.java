@@ -1,5 +1,9 @@
 package com.alexgaoyh.MutiModule.service.facade.impl;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.alexgaoyh.MutiModule.captcha.CaptchaException;
 import com.alexgaoyh.MutiModule.captcha.CaptchaService;
 import com.alexgaoyh.MutiModule.service.facade.IFacadeService;
@@ -10,8 +14,10 @@ import com.alexgaoyh.MutiModule.service.facade.exception.FacadeServiceException;
  * @author alexgaoyh
  *
  */
+@Service(value="facadeService")
 public class FacadeServiceImpl implements IFacadeService {
 
+	@Resource(name="captchaService")
     private CaptchaService captchaService;
     
     //------------------get set方法 begin

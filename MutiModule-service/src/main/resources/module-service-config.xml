@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <beans xmlns="http://www.springframework.org/schema/beans"   
+       xmlns:context="http://www.springframework.org/schema/context" 
        xmlns:aop="http://www.springframework.org/schema/aop"   
        xmlns:tx="http://www.springframework.org/schema/tx"   
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
@@ -7,8 +8,16 @@
         http://www.springframework.org/schema/aop/spring-aop-4.0.xsd   
         http://www.springframework.org/schema/beans   
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd   
         http://www.springframework.org/schema/tx   
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+        
+        
+	<!-- 使Spring关注Annotation -->  
+	<context:annotation-config />   
+    <!-- 使用annotation 自动注册bean,并保证@Service,@Autowired的属性被注入 -->
+	<context:component-scan base-package="com.alexgaoyh.MutiModule.service" />  
         
 	<!--  事务控制  begin -->
 	        
@@ -70,6 +79,8 @@
 	
 	<!-- 以下部分为添加新的service方法后，手动添加的部分 -->
 	
+	<!-- 
+	20150608 removed 删除手工定义的bean，改为注解形式，减少代码量的书写
 	<bean id="demoService" class="com.alexgaoyh.MutiModule.service.demo.impl.DemoServiceImpl">
 		<property name="demoMapper" ref="demoMapper" />
 	</bean>
@@ -96,6 +107,6 @@
 	
 	<bean id="sysmanRoleResourceRelService" class="com.alexgaoyh.MutiModule.service.sysman.impl.SysmanRoleResourceRelServiceImpl">
 		<property name="sysmanRoleResourceRelMapper" ref="sysmanRoleResourceRelMapper" />
-	</bean>
+	</bean> -->
 	
 </beans>

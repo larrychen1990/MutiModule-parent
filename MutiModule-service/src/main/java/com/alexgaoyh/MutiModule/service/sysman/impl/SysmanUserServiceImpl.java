@@ -2,6 +2,10 @@ package com.alexgaoyh.MutiModule.service.sysman.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserMapper;
@@ -14,8 +18,10 @@ import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
  *
  * @author alexgaoyh
  */
+@Service(value = "sysmanUserService")
 public class SysmanUserServiceImpl implements ISysmanUserService {
 
+	@Resource(name = "sysmanUserMapper")
 	private SysmanUserMapper sysmanUserMapper;
 
 	//------------------get set方法 begin

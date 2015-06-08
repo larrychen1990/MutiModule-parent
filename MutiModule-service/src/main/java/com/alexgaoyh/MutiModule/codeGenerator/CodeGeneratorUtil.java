@@ -21,11 +21,11 @@ public class CodeGeneratorUtil {
 	public static void demo() {
 		Map<String, Object> root = new HashMap<String, Object>();
 		//子文件的包名
-		root.put("packageName", "sysman");// 子包包名，整个包的路径为   com.alexgaoyh.MutiModule+（模块:persist/service）
+		root.put("packageName", "demo");// 子包包名，整个包的路径为   com.alexgaoyh.MutiModule+（模块:persist/service）
 		//实体类名称
-		root.put("className", "SysmanUserRoleRel");// 类名称
+		root.put("className", "Demo");// 类名称
 		//实体类名称首字母小写，驼峰式
-		root.put("smallClassName", "sysmanUserRoleRel");// 类名称的首字母小写
+		root.put("smallClassName", "demo");// 类名称的首字母小写
 		
 		String workDir = (String) System.getProperties().get("user.dir");
 		try {

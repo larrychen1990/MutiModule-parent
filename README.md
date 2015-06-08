@@ -37,3 +37,8 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
         <property name="mapperInterface" value="com.alexgaoyh.MutiModule.persist.demo.DemoMapper" />  
 	</bean>
+	
+	service层，原先使用入刑（如下）所示的代码段来定义一个个的bean，现改为<context:annotation-config /><context:component-scan base-package="X.X.X" />
+	<bean id="demoService" class="com.alexgaoyh.MutiModule.service.demo.impl.DemoServiceImpl">
+		<property name="demoMapper" ref="demoMapper" />
+	</bean>	  

@@ -1,9 +1,17 @@
 package com.alexgaoyh.MutiModule.service.demo;
 
+import java.util.List;
+
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
 import com.alexgaoyh.MutiModule.persist.util.Pagination;
 
+/**
+ * 
+ * @desc IDemoService e接口
+ *
+ * @author alexgaoyh
+ */
 public interface IDemoService {
 
 	/**

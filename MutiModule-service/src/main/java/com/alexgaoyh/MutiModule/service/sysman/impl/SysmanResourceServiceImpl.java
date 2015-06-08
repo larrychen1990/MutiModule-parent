@@ -2,6 +2,11 @@ package com.alexgaoyh.MutiModule.service.sysman.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceMapper;
@@ -15,8 +20,10 @@ import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
  *
  * @author alexgaoyh
  */
+@Service(value = "sysmanResourceService")
 public class SysmanResourceServiceImpl implements ISysmanResourceService {
 
+	@Resource(name = "sysmanResourceMapper")
 	private SysmanResourceMapper sysmanResourceMapper;
 
 	//------------------get set方法 begin

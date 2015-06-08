@@ -2,6 +2,10 @@ package com.alexgaoyh.MutiModule.service.${packageName}.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.alexgaoyh.MutiModule.persist.${packageName}.${className};
 import com.alexgaoyh.MutiModule.persist.${packageName}.${className}Example;
 import com.alexgaoyh.MutiModule.persist.${packageName}.${className}Mapper;
@@ -14,8 +18,10 @@ import com.alexgaoyh.MutiModule.service.${packageName}.I${className}Service;
  *
  * @author alexgaoyh
  */
+@Service(value = "${smallClassName}Service")
 public class ${className}ServiceImpl implements I${className}Service {
 
+	@Resource(name = "${smallClassName}Mapper")
 	private ${className}Mapper ${smallClassName}Mapper;
 
 	//------------------get set方法 begin

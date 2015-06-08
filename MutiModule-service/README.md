@@ -4,7 +4,11 @@ MutiModule-service 部分：
 			Run As CodeGeneratorUtil 类，使用 freemarker 生成相关的类文件，具体的多个service部分方法可以根据需要对方法进行增加处理。
 			PS: 这里执行run as方法之后，package部分会报错，使用错误提示更新一下即可（move package）。后期可以根据需要，对模板文件的具体方法进行修改维护操作 。
 		
-		1.2: 在 module-service-config.xml 文件中，增加新的bean
+		1.2: 
+			/** 20150608 removed
+			*	使用注解方式，不再手工定义bean，减少代码书写
+			在 module-service-config.xml 文件中，增加新的bean
+			*/
 		
 		1.3： 书写junit测试用例，并且执行相关操作进行测试
 		

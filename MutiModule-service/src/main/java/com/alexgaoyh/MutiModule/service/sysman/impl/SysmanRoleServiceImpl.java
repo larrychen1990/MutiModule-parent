@@ -2,6 +2,10 @@ package com.alexgaoyh.MutiModule.service.sysman.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleMapper;
@@ -14,8 +18,10 @@ import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
  *
  * @author alexgaoyh
  */
+@Service(value = "sysmanRoleService")
 public class SysmanRoleServiceImpl implements ISysmanRoleService {
 
+	@Resource(name = "sysmanRoleMapper")
 	private SysmanRoleMapper sysmanRoleMapper;
 
 	//------------------get set方法 begin
