@@ -1,5 +1,5 @@
 maven多模块项目管理，整合spring mybatis，多模块划分： web层，service层， persist层， 其他（capthca验证码）；
-已经实现实现分页功能，事务支持，多模块功能
+已经实现后台管理页面RBAC相关权限控制，整合easyui，完成相关CRUD功能。
 
 #upgrade更新部分：
 
