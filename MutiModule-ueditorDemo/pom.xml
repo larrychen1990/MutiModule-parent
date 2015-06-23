@@ -57,7 +57,22 @@
                 <configuration>  
                     <attachClasses>true</attachClasses>  
                 </configuration>  
-            </plugin>  
+            </plugin>
+            <!-- 这里的 tomcat7-maven-plugin 为使用插件部署Maven Web项目：-->
+			<!-- 此处需要配置本地环境，tomcat: tomcat_user。xml，添加manager角色和用户，用于插件自动部署应用 -->
+			<!-- 打开Maven： setting.xml，在<servers>节点下配置上面的相关Tomcat的Manager用户信息， -->
+			<!-- 开启下面的插件配置代码段 -->
+			<!-- tomcat7:deploy  tomcat7:redeploy  tomcat7:undeploy -->
+            <plugin> 
+				<groupId>org.apache.tomcat.maven</groupId> 
+				<artifactId>tomcat7-maven-plugin</artifactId> 
+				<version>2.2</version> 
+				<configuration> 
+					<url>http://localhost:8080/manager/text</url>
+					<server>Tomcat7</server>
+					<path>/MutiModule-ueditorDemo</path>
+				</configuration> 
+		    </plugin>
     	</plugins>
 	</build>
 </project>
