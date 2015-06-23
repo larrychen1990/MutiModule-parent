@@ -42,3 +42,14 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 	<bean id="demoService" class="com.alexgaoyh.MutiModule.service.demo.impl.DemoServiceImpl">
 		<property name="demoMapper" ref="demoMapper" />
 	</bean>	  
+	
+#20150623
+	增加webapp项目: 
+		MutiModule-ueditorDemo(ueditor部分的demo用例);
+		MutiModule-ueditor	  (ueditor部分的js/css/image……部分资源文件)；
+	增加quickstart项目：
+		MutiModule-uedirotClass（ueditor部分的相关java类文件和添加的servlet部分。ueditor源码类文件部分有部分修改）；
+		
+	前台有多个web子项目，每个子项目有时候都会依赖于ueditor部分，这样，重复性的东西很多，这样，可以吧这一部分的资源抽离出来（MutiModule-class  MutiModule-ueditor），
+	这样的话，java类文件放到MutiModule-class的jar包里面，资源文件js/css/image放到MutiModule-ueditor的war包里面；
+	MutiModule-uedirotDemo就是一个测试用例，测试可用。
