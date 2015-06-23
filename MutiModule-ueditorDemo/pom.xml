@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.alexgaoyh</groupId>
+		<artifactId>MutiModule-parent</artifactId>
+		<version>0.0.1-RELEASE</version>
+	</parent>
+	<artifactId>MutiModule-ueditorDemo</artifactId>
+	<packaging>war</packaging>
+	<name>MutiModule-ueditorDemo Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>com.alexgaoyh</groupId>
+			<artifactId>MutiModule-ueditorClass</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>  
+            <groupId>com.alexgaoyh</groupId>  
+            <artifactId>MutiModule-ueditor</artifactId>  
+			<version>${project.version}</version>      
+            <type>war</type>  
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>MutiModule-ueditorDemo</finalName>
+		<plugins>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+    		</plugin>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-resources-plugin</artifactId>
+    		</plugin>
+    		<plugin>  
+                <artifactId>maven-war-plugin</artifactId>  
+                <configuration>  
+                    <attachClasses>true</attachClasses>  
+                </configuration>  
+            </plugin>  
+    	</plugins>
+	</build>
+</project>
