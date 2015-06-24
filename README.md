@@ -53,3 +53,7 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 	前台有多个web子项目，每个子项目有时候都会依赖于ueditor部分，这样，重复性的东西很多，这样，可以吧这一部分的资源抽离出来（MutiModule-class  MutiModule-ueditor），
 	这样的话，java类文件放到MutiModule-class的jar包里面，资源文件js/css/image放到MutiModule-ueditor的war包里面；
 	MutiModule-uedirotDemo就是一个测试用例，测试可用。
+	
+#20150624
+	增加 MutiModule-logback 模块，用来统一处理日志记录模块
+	使用方法详见  MutiModule-logback/README.md 文件中

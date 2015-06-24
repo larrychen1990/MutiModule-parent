@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 @Controller
 @RequestMapping(value="demo")
 public class DemoController {
+	
+	Logger logger = LoggerFactory.getLogger(DemoController.class);
 	
 	@Resource
 	private IDemoService demoService;
@@ -47,6 +51,11 @@ public class DemoController {
 	
 	@RequestMapping(value = "/page/{id}")
 	public ModelAndView blogItem(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
+		
+		logger.debug("XXXXXX");
+		logger.info("XXXXXX");
+		logger.warn("XXXXXX");
+		logger.error("XXXXXX");
 		
 		DemoExample example = new DemoExample();
 		example.setOrderByClause("id desc");

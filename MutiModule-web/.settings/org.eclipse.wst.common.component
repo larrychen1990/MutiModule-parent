@@ -14,6 +14,9 @@
         <dependent-module archiveName="MutiModule-persist-0.0.1-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MutiModule-persist/MutiModule-persist">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="MutiModule-logback-0.0.1-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MutiModule-logback/MutiModule-logback">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="MutiModule-web"/>
         <property name="java-output-path" value="/MutiModule-web/target/classes"/>
     </wb-module>
