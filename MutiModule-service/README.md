@@ -49,3 +49,9 @@ MutiModule-service 部分：
 ----------------------------------------------------------------------
 #20150625
 	SerializablePojoRedisTest 测试类，Redis相关，存入value为序列化之后的Student对象，此后如果Student类属性变更，从缓存中获取value值之后进行反序列化Student对象，验证可用性；
+	
+	Redis PUB/SUB订阅发布相关	类似于消息广播
+		SubscribePart 为订阅相关，相当于一个监听者，消息接收者；
+		PublishPart 为发布相关，消息发送者；
+		com.alexgaoyh.MutiModule.service.unJunit.redis.pubsub.PubSubListener
+	
