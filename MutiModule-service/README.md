@@ -42,3 +42,10 @@ MutiModule-service 部分：
 		<context:annotation-config />   
 	    <!-- 使用annotation 自动注册bean,并保证@Service,@Autowired的属性被注入 -->
 		<context:component-scan base-package="com.alexgaoyh.MutiModule.service" />  
+		
+		
+		
+		
+----------------------------------------------------------------------
+#20150625
+	SerializablePojoRedisTest 测试类，Redis相关，存入value为序列化之后的Student对象，此后如果Student类属性变更，从缓存中获取value值之后进行反序列化Student对象，验证可用性；

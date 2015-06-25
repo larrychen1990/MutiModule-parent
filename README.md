@@ -57,3 +57,7 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 #20150624
 	增加 MutiModule-logback 模块，用来统一处理日志记录模块
 	使用方法详见  MutiModule-logback/README.md 文件中
+	
+#20150625
+	MutiModule-service层，Redis相关
+	SerializablePojoRedisTest 测试类，Redis相关，存入value为序列化之后的Student对象，此后如果Student类属性变更，从缓存中获取value值之后进行反序列化Student对象，验证可用性；
