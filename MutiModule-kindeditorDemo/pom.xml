@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.alexgaoyh</groupId>
+		<artifactId>MutiModule-parent</artifactId>
+		<version>0.0.1-RELEASE</version>
+	</parent>
+	
+	<artifactId>MutiModule-kindeditorDemo</artifactId>
+	<packaging>war</packaging>
+	<name>MutiModule-kindeditorDemo Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.alexgaoyh</groupId>
+			<artifactId>MutiModule-kindeditorClass</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>  
+            <groupId>com.alexgaoyh</groupId>  
+            <artifactId>MutiModule-kindeditor</artifactId>  
+			<version>${project.version}</version>      
+            <type>war</type>  
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<finalName>MutiModule-kindeditorDemo</finalName>
+		<plugins>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+    		</plugin>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-resources-plugin</artifactId>
+    		</plugin>
+    		<plugin>  
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version> 
+                <configuration>  
+                    <attachClasses>true</attachClasses>
+                </configuration>  
+            </plugin>
+            <!-- 这里的 tomcat7-maven-plugin 为使用插件部署Maven Web项目：-->
+			<!-- 此处需要配置本地环境，tomcat: tomcat_user。xml，添加manager角色和用户，用于插件自动部署应用 -->
+			<!-- 打开Maven： setting.xml，在<servers>节点下配置上面的相关Tomcat的Manager用户信息， -->
+			<!-- 开启下面的插件配置代码段 -->
+			<!-- tomcat7:deploy  tomcat7:redeploy  tomcat7:undeploy -->
+            <plugin> 
+				<groupId>org.apache.tomcat.maven</groupId> 
+				<artifactId>tomcat7-maven-plugin</artifactId> 
+				<version>2.2</version> 
+				<configuration> 
+					<url>http://localhost:8080/manager/text</url>
+					<server>Tomcat7</server>
+					<path>/MutiModule-kindeditorDemo</path>
+				</configuration> 
+		    </plugin>
+    	</plugins>
+	</build>
+</project>
