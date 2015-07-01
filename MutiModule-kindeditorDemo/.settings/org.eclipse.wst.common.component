@@ -7,6 +7,9 @@
         <dependent-module archiveName="MutiModule-kindeditorClass-0.0.1-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MutiModule-kindeditorClass/MutiModule-kindeditorClass">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="llmj-common-0.0.1-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/llmj-common/llmj-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/overlay/prj/MutiModule-kindeditor?includes=**/**&amp;excludes=META-INF/MANIFEST.MF">
             <dependency-type>consumes</dependency-type>
         </dependent-module>
