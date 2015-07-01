@@ -1,2 +1,3 @@
 #20150701
 	增加 MutiModule-common 部分，通用模块，util方法……
+	PropertiesUtilss	配置文件讀取util
