@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MutiModule.common.utils.CookieUtilss;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.util.TreeNode;
@@ -128,7 +129,10 @@ public class SysmanResourceController {
 	public String checkSysmanResourcePermission(HttpServletRequest request, @RequestParam("sysmanResourceId") Integer sysmanResourceId) {
 		Result result = null;
 		
-		String sysmanUserId = request.getSession().getAttribute(ConstantsUtil.ADMIN_LOGIN_CONSTANTS).toString();
+		//從web.xml裡面，取出context-param鍵值對標註的某個值
+        String adminLoginCookieName = request.getServletContext().getInitParameter("adminLoginCookieName");
+        
+		String sysmanUserId = CookieUtilss.get(request, adminLoginCookieName);
 		
 		SysmanUser su = JacksonUtil.readValue(RedisClient.get(SysmanUser.class.getName() + "_" + sysmanUserId), SysmanUser.class);
 		

@@ -62,7 +62,7 @@
 					
 			<!-- <aop:before method="doBefore"  pointcut-ref="pointRedisHandler"/>
 			<aop:after method="doAfter"  pointcut-ref="pointRedisHandler"/> -->
-			<aop:around method="doAround"  pointcut-ref="pointRedisHandler"/>
+			<!-- <aop:around method="doAround"  pointcut-ref="pointRedisHandler"/> -->
 			<!-- <aop:after-returning method="doReturn"  pointcut-ref="pointRedisHandler"/>
 			<aop:after-throwing method="doThrowing" throwing="ex" pointcut-ref="pointRedisHandler"/> -->
 			
@@ -71,7 +71,7 @@
 		<aop:aspect id="aspectUpdeteModel" ref="redisHandler">
 			<aop:pointcut id="pointRedisUpdateModelHandler" expression="execution(* com.alexgaoyh.MutiModule.service.*.*.updateByPrimaryKeySelective(..))"/>		
 					
-			<aop:around method="doUpdateModel"  pointcut-ref="pointRedisUpdateModelHandler"/>
+			<!-- <aop:around method="doUpdateModel"  pointcut-ref="pointRedisUpdateModelHandler"/> -->
 		</aop:aspect>
 	</aop:config>
 	

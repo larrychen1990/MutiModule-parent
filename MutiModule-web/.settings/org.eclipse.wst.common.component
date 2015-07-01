@@ -5,6 +5,9 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="MutiModule-common-0.0.1-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MutiModule-common/MutiModule-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="MutiModule-service-0.0.1-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MutiModule-service/MutiModule-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,13 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MutiModule.common.utils.CookieUtilss;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
 import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
-import com.alexgaoyh.MutiModule.util.jackson.JacksonUtil;
-import com.alexgaoyh.MutiModule.util.redis.RedisClient;
 import com.alexgaoyh.MutiModule.web.admin.vo.EasyUIData;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
@@ -58,34 +58,26 @@ public class SysmanUserController {
 	@RequestMapping(value="doLogin", method = RequestMethod.POST)
 	public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response, 
 			@RequestParam("userName") String userName, 
-			@RequestParam("passWord") String passWord, 
-			@RequestParam("captcha") String captcha) {
+			@RequestParam("passWord") String passWord) {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		if(StringUtilss.isNotEmpty(userName) && StringUtilss.isNotEmpty(passWord) && StringUtilss.isNotEmpty(captcha)) {
+		if(StringUtilss.isNotEmpty(userName) && StringUtilss.isNotEmpty(passWord)) {
 			
-			
-			if(captcha.equals(request.getSession().getAttribute(ConstantsUtil.ADMIN_CAPTCHA_CONSTANTS))) {
-				SysmanUser su = sysmanUserService.selectUserByNameAndPasswd(userName, MD5Util.encrypByMd5Jar(passWord));
-				if(su != null) {
-					//session 存值
-					request.getSession().setAttribute(ConstantsUtil.ADMIN_LOGIN_CONSTANTS, su.getId());
-					
-					//加入缓存
-					RedisClient.add(SysmanUser.class.getName() + "_" + su.getId(), JacksonUtil.toJSon(su));
-					
-					//登陆成功，页面重定向
-					mv.setViewName("redirect:manager");
-				} else {
-					Map<String, String> map = new HashMap<String, String>();
-					map.put("errorMsg", "用户名密码错误!");
-					mv.addObject("mapInfo", map);
-					mv.setViewName("admin/loginError");
-				}
+			SysmanUser su = sysmanUserService.selectUserByNameAndPasswd(userName, MD5Util.encrypByMd5Jar(passWord));
+			if(su != null) {
+				
+				CookieUtilss.add(response, request.getServletContext().getInitParameter("adminLoginCookieName"), su.getId() + "", 30*60);
+				
+				
+				//加入缓存
+				//RedisClient.add(SysmanUser.class.getName() + "_" + su.getId(), JacksonUtil.toJSon(su));
+				
+				//登陆成功，页面重定向
+				mv.setViewName("redirect:manager");
 			} else {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("errorMsg", "验证码错误!");
+				map.put("errorMsg", "用户名密码错误!");
 				mv.addObject("mapInfo", map);
 				mv.setViewName("admin/loginError");
 			}
@@ -110,9 +102,13 @@ public class SysmanUserController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		String sysmanUserId = request.getSession().getAttribute(ConstantsUtil.ADMIN_LOGIN_CONSTANTS).toString();
+		//從web.xml裡面，取出context-param鍵值對標註的某個值
+        String adminLoginCookieName = request.getServletContext().getInitParameter("adminLoginCookieName");
+        
+		String sysmanUserId = CookieUtilss.get(request, adminLoginCookieName);
 		
-		map.put("sysmanUser", JacksonUtil.readValue(RedisClient.get(SysmanUser.class.getName() + "_" + sysmanUserId), SysmanUser.class));
+		//map.put("sysmanUser", JacksonUtil.readValue(RedisClient.get(SysmanUser.class.getName() + "_" + sysmanUserId), SysmanUser.class));
+		map.put("sysmanUser", sysmanUserService.selectByPrimaryKey(Integer.parseInt(sysmanUserId)));
 		
 		return new ModelAndView("admin/manager", map);
 	}
@@ -122,9 +118,16 @@ public class SysmanUserController {
 	 * @return
 	 */
 	@RequestMapping(value="logout")
-	public ModelAndView logout() {
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+		
 		//删除登陆的缓存信息
-		RedisClient.del(ConstantsUtil.ADMIN_LOGIN_CONSTANTS);
+		//RedisClient.del(ConstantsUtil.ADMIN_LOGIN_CONSTANTS);
+		
+		//從web.xml裡面，取出context-param鍵值對標註的某個值
+        String adminLoginCookieName = request.getServletContext().getInitParameter("adminLoginCookieName");
+        CookieUtilss.remove(request, response, adminLoginCookieName);
+        
+		
 		return new ModelAndView("redirect:login");
 	}
 	

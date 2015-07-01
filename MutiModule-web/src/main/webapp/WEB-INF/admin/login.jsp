@@ -19,8 +19,6 @@
 		<fieldset id="inputs">
 			<input name="userName" id="userName" type="text" placeholder="Username" autofocus required> 
 			<input name="passWord" id="passWord"  type="password" placeholder="Password" required>
-			<input name="captcha" id="captcha"  type="text" placeholder="验证码" required>
-			<img style=" float:right;" title="点击更换" id="img_captcha" onclick="javascript:refreshCaptcha();" src="${pageContext.request.contextPath}/servlet/captchaCode">
 		</fieldset>
 		<input type="checkbox" name="rememberMe" value="true" /> Remember me
 		<fieldset id="actions">
@@ -37,9 +35,6 @@
 			$("#userName").val(userName);
 		}
 	
-		function refreshCaptcha() {
-	        $("#img_captcha").attr("src",context_ + "/servlet/captchaCode?t=" + Math.random());
-	    }
 	</script>
 
 </body>

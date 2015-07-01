@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
+import com.MutiModule.common.utils.CookieUtilss;
 
 public class LoginFilter implements Filter {
 
@@ -24,7 +24,7 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        // 获得在下面代码中要用的request,response,session对象
+        // 获得在下面代码中要用的request,response对象
         HttpServletRequest servletRequest = (HttpServletRequest) request;
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         
@@ -37,11 +37,16 @@ public class LoginFilter implements Filter {
             chain.doFilter(servletRequest, servletResponse);
             return;
         }
-
-        Object sessionObj = servletRequest.getSession().getAttribute(ConstantsUtil.ADMIN_LOGIN_CONSTANTS);
         
+        //從web.xml裡面，取出context-param鍵值對標註的某個值
+        String adminLoginCookieName = request.getServletContext().getInitParameter("adminLoginCookieName");
+        
+        String loginCookie = CookieUtilss.get(servletRequest, adminLoginCookieName);
+        
+    	System.out.println("loginCookie = " + loginCookie);
+
         // 判断如果没有取到员工信息,就跳转到登陆页面
-        if (sessionObj == null || "".equals(sessionObj)) {
+        if (loginCookie == null || "".equals(loginCookie)) {
         	// 跳转到登陆页面
             servletResponse.sendRedirect(servletRequest.getContextPath() + "/admin/sysmanUser/login");
         } else {

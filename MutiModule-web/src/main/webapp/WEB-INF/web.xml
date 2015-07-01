@@ -30,17 +30,6 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- captcha servlet config-->
-	<servlet>
-		<servlet-name>CaptchaServlet</servlet-name>
-		<servlet-class>com.alexgaoyh.MutiModule.web.admin.sysman.captcha.CaptchaServlet</servlet-class>
-		<load-on-startup>10</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CaptchaServlet</servlet-name>
-		<url-pattern>/servlet/captchaCode</url-pattern>
-	</servlet-mapping>
-	
 	<!-- 配置登陆过滤器 -->
 	<filter>
         <filter-name>login</filter-name>
@@ -50,6 +39,11 @@
         <filter-name>login</filter-name>
         <url-pattern>/admin/*</url-pattern>
 	</filter-mapping>
+	
+	<context-param>
+		<param-name>adminLoginCookieName</param-name>
+		<param-value>alexgaoyh-admin</param-value>
+	</context-param>
 	
 	<!-- session超时定义,单位为分钟 -->  
     <session-config>  
@@ -63,6 +57,11 @@
 	<error-page>  
 		<error-code>404</error-code>  
 		<location>/404.jsp</location>
+	</error-page> 
+	
+	<error-page>  
+		<error-code>405</error-code>  
+		<location>/405.jsp</location>
 	</error-page> 
 	
 	<error-page>  
