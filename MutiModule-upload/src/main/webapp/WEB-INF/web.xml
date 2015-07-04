@@ -8,7 +8,7 @@
 
 	<servlet>
 		<servlet-name>fileUpload</servlet-name>
-		<servlet-class>com.MutiModule.upload.servlet.FileUploadServlet</servlet-class>
+		<servlet-class>com.MutiModule.common.servlet.FileUploadServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>fileUpload</servlet-name>

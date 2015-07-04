@@ -67,3 +67,6 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 	MutiModule-upload : ajaxfileupload.js 文件上傳相關功能測試完成
 	MutiModule-common : 通用方法處理相關
 	MutiModule-web : 登陸驗證去除session部分，改為使用cookie部分;	同時去除驗證碼部分	
+	
+#20150704
+	MutiModule-upload　部分。将FileUploadServlet 部分移动到MutiModule-common 
