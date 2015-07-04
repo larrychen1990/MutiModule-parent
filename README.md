@@ -71,3 +71,8 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 #20150704
 	MutiModule-upload　部分。将FileUploadServlet 部分移动到MutiModule-common 
 	移除 MutiModule-kindeditorClass 模块，将相关的*.java文件移动到 MutiModule-common
+	
+	删除 MutiModule-upload 部分，将文件上传部分移动到 MutiModule-kindeditorDemo 内部
+	形成 jsUpload.jsp 文件，采用 ajaxfileupload.js 进行文件上传，其中文件上传URL类采用 kindeditor 部分，
+	整体 MutiModule-kindeditorDemo 模块中，不管是使用富文本编辑器。还是js进行的文件上传，都统一有一个文件处理类（com.MutiModule.common.kindeditor.servlet.FileUploadServlet）
+	对整体文件上传类统一规划

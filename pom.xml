@@ -285,7 +285,6 @@
     <module>MutiModule-logback</module>
     <module>MutiModule-kindeditor</module>
     <module>MutiModule-kindeditorDemo</module>
-    <module>MutiModule-upload</module>
     <module>MutiModule-common</module>
   </modules>
 	

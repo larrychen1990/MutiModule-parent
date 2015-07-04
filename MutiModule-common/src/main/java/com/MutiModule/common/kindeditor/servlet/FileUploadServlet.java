@@ -98,32 +98,37 @@ public class FileUploadServlet extends HttpServlet {
 				String fileName = item.getName();
 				long fileSize = item.getSize();
 				if (!item.isFormField()) {
-					//检查文件大小
-					if(item.getSize() > maxSize){
-						resp.getWriter().println(getError("上传文件大小超过限制。"));
+					if(item.getName() != null && !item.getName().equals("")) {
+						//检查文件大小
+						if(item.getSize() > maxSize){
+							resp.getWriter().println(getError("上传文件大小超过限制。"));
+							return;
+						}
+						//检查扩展名
+						String fileExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
+						if(!Arrays.<String>asList(extMap.get(dirName).split(",")).contains(fileExt)){
+							resp.getWriter().println(getError("上传文件扩展名是不允许的扩展名。\n只允许" + extMap.get(dirName) + "格式。"));
+							return;
+						}
+						
+						SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+						String newFileName = df.format(new Date()) + "_" + new Random().nextInt(1000) + "." + fileExt;
+						try{
+							File uploadedFile = new File(savePath, newFileName);
+							item.write(uploadedFile);
+						}catch(Exception e){
+							resp.getWriter().println(getError("上传文件失败。"));
+							return;
+						}
+						
+						JSONObject obj = new JSONObject();
+						obj.put("error", 0);
+						obj.put("url", saveUrl + newFileName);
+						resp.getWriter().println(obj.toJSONString());
+					} else {
+						resp.getWriter().println(getError("没有选择文件"));
 						return;
 					}
-					//检查扩展名
-					String fileExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-					if(!Arrays.<String>asList(extMap.get(dirName).split(",")).contains(fileExt)){
-						resp.getWriter().println(getError("上传文件扩展名是不允许的扩展名。\n只允许" + extMap.get(dirName) + "格式。"));
-						return;
-					}
-
-					SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-					String newFileName = df.format(new Date()) + "_" + new Random().nextInt(1000) + "." + fileExt;
-					try{
-						File uploadedFile = new File(savePath, newFileName);
-						item.write(uploadedFile);
-					}catch(Exception e){
-						resp.getWriter().println(getError("上传文件失败。"));
-						return;
-					}
-
-					JSONObject obj = new JSONObject();
-					obj.put("error", 0);
-					obj.put("url", saveUrl + newFileName);
-					resp.getWriter().println(obj.toJSONString());
 				}
 			}
 		} catch (FileUploadException e1) {
