@@ -1,4 +1,4 @@
-package com.MutiModule.kindeditorClass.Comparator;
+package com.MutiModule.common.kindeditor.Comparator;
 
 import java.util.Comparator;
 import java.util.Hashtable;

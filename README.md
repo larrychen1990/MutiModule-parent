@@ -70,3 +70,4 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 	
 #20150704
 	MutiModule-upload　部分。将FileUploadServlet 部分移动到MutiModule-common 
+	移除 MutiModule-kindeditorClass 模块，将相关的*.java文件移动到 MutiModule-common

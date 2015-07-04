@@ -7,22 +7,32 @@
   <display-name>Archetype Created Web Application</display-name>
   
   	<servlet>
-		<servlet-name>uploadJson</servlet-name>
+		<servlet-name>uploadServlet</servlet-name>
 		<servlet-class>com.MutiModule.kindeditorClass.servlet.UploadServlet</servlet-class>
 		<load-on-startup>10</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>uploadJson</servlet-name>
+		<servlet-name>uploadServlet</servlet-name>
 		<url-pattern>/upload</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>fileManagerJson</servlet-name>
+		<servlet-name>fileManagerServlet</servlet-name>
 		<servlet-class>com.MutiModule.kindeditorClass.servlet.FileManagerServlet</servlet-class>
 		<load-on-startup>10</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>fileManagerJson</servlet-name>
+		<servlet-name>fileManagerServlet</servlet-name>
 		<url-pattern>/fileManager</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>myUploadServlet</servlet-name>
+		<servlet-class>com.MutiModule.kindeditorClass.servlet.FileManagerServlet</servlet-class>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>myUploadServlet</servlet-name>
+		<url-pattern>/myUpload</url-pattern>
 	</servlet-mapping>
 </web-app>

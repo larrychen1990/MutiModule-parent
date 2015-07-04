@@ -1,9 +1,9 @@
-package com.MutiModule.kindeditorClass.Comparator;
+package com.MutiModule.common.kindeditor.Comparator;
 
 import java.util.Comparator;
 import java.util.Hashtable;
 
-public class TypeComparator implements Comparator {
+public class NameComparator implements Comparator {
 	public int compare(Object a, Object b) {
 		Hashtable hashA = (Hashtable)a;
 		Hashtable hashB = (Hashtable)b;
@@ -12,7 +12,7 @@ public class TypeComparator implements Comparator {
 		} else if (!((Boolean)hashA.get("is_dir")) && ((Boolean)hashB.get("is_dir"))) {
 			return 1;
 		} else {
-			return ((String)hashA.get("filetype")).compareTo((String)hashB.get("filetype"));
+			return ((String)hashA.get("filename")).compareTo((String)hashB.get("filename"));
 		}
 	}
 }

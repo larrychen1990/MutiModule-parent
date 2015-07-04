@@ -1,4 +1,4 @@
-package com.MutiModule.kindeditorClass.servlet;
+package com.MutiModule.common.kindeditor.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-import com.MutiModule.kindeditorClass.Comparator.NameComparator;
-import com.MutiModule.kindeditorClass.Comparator.SizeComparator;
-import com.MutiModule.kindeditorClass.Comparator.TypeComparator;
+import com.MutiModule.common.kindeditor.Comparator.NameComparator;
+import com.MutiModule.common.kindeditor.Comparator.SizeComparator;
+import com.MutiModule.common.kindeditor.Comparator.TypeComparator;
 
 public class FileManagerServlet extends HttpServlet {
 

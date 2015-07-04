@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.alexgaoyh</groupId>
-			<artifactId>MutiModule-kindeditorClass</artifactId>
+			<artifactId>MutiModule-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>  

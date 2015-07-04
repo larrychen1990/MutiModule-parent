@@ -1,4 +1,4 @@
-package com.MutiModule.kindeditorClass.servlet;
+package com.MutiModule.common.kindeditor.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +22,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.simple.JSONObject;
 
-public class UploadServlet extends HttpServlet {
+
+public class FileUploadServlet extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -143,4 +145,5 @@ public class UploadServlet extends HttpServlet {
 		obj.put("message", message);
 		return obj.toJSONString();
 	}
+	
 }
