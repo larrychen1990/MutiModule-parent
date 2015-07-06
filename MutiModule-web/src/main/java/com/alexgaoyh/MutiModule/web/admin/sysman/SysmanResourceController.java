@@ -24,8 +24,8 @@ import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.util.TreeNode;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
+import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
 import com.alexgaoyh.MutiModule.util.jackson.JacksonUtil;
-import com.alexgaoyh.MutiModule.util.redis.RedisClient;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
 import com.alexgaoyh.MutiModule.web.util.Result;
@@ -37,6 +37,9 @@ public class SysmanResourceController {
 
 	@Resource
 	private ISysmanResourceService sysmanResourceService;
+	
+	@Resource
+	private ISysmanUserService sysmanUserService;
 	
 	/**	通用方法
 	 * 后台list页面
@@ -134,7 +137,7 @@ public class SysmanResourceController {
         
 		String sysmanUserId = CookieUtilss.get(request, adminLoginCookieName);
 		
-		SysmanUser su = JacksonUtil.readValue(RedisClient.get(SysmanUser.class.getName() + "_" + sysmanUserId), SysmanUser.class);
+		SysmanUser su = sysmanUserService.selectByPrimaryKey(Integer.parseInt(sysmanUserId));
 		
 		Boolean isPermitted = sysmanResourceService.checkSysmanResourcePermission(sysmanResourceId, su.getId());
 		
