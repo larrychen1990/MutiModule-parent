@@ -63,7 +63,7 @@
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
-	<!-- 在父模块中如下声明之后，子模块的dependency依赖声明就可以直接只声明groupId artifactId 这两个部分就可以�?????? -->
+	<!-- 在父模块中如下声明之后，子模块的dependency依赖声明就可以直接只声明groupId artifactId 这两个部分就可以�??????? -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -255,7 +255,7 @@
 	            <groupId>javax.servlet.jsp</groupId>
 				<artifactId>jsp-api</artifactId>
 				<version>${javax.servlet.jsp.jsp-api}</version>
-	            <scope>provided</scope>   <!--这里说明jsp-api.jar文件将由应用服务器提供，打包时不�????要包�????-->
+	            <scope>provided</scope>   <!--这里说明jsp-api.jar文件将由应用服务器提供，打包时不�?????要包�?????-->
 	        </dependency>
 			<dependency>
 				<groupId>junit</groupId>
@@ -295,7 +295,7 @@
   </modules>
 	
 	<!-- 提供pluginManagement 帮助管理插件 -->
-	<!-- 父模块定义了plugin ,子模块如果想引入这个插件，如下声明即可，它同时又继承了父模块的配�?????? -->
+	<!-- 父模块定义了plugin ,子模块如果想引入这个插件，如下声明即可，它同时又继承了父模块的配�??????? -->
 	<build>
 		<pluginManagement>
 			<plugins>
