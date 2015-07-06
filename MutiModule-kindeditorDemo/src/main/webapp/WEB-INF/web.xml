@@ -28,7 +28,7 @@
 	
 	<servlet>
 		<servlet-name>imgServlet</servlet-name>
-		<servlet-class>com.MutiModule.kindeditorDemo.servlet.ImgServlet</servlet-class>
+		<servlet-class>com.MutiModule.common.servlet.image.ImgServlet</servlet-class>
 		<load-on-startup>10</load-on-startup>
 	</servlet>
 	<servlet-mapping>

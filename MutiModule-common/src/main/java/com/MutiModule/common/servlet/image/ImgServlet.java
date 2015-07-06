@@ -1,4 +1,4 @@
-package com.MutiModule.kindeditorDemo.servlet;
+package com.MutiModule.common.servlet.image;
 
 import java.io.File;
 import java.io.FileInputStream;

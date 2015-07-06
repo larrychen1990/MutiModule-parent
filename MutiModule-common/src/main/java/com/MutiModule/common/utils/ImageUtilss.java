@@ -17,8 +17,6 @@ public class ImageUtilss {
 		 */
 		Object imageMagicPathObj = PropertiesUtilss.getProperties("imageMagickPath.properties", "imageMagickPath");
 		
-		System.out.println("imageMagicPathObj= " + imageMagicPathObj);
-		
 		// linux下不要设置此值，不然会报错
 		if (imageMagicPathObj != null) {
 			imageMagickPath = imageMagicPathObj.toString();
