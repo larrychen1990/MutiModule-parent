@@ -1,5 +1,7 @@
 package com.MutiModule.common.utils;
 
+import java.io.File;
+
 public class StringUtilss {
 
 	/**
@@ -8,12 +10,10 @@ public class StringUtilss {
 	 * @return	如果文件后缀		jpg
 	 */
 	public static String getFileExt(String src) {
-		String[] _splitArrays = src.split(".");
-		if(_splitArrays.length != 2) {
-			return null;
-		} else {
-			return _splitArrays[1];
-		}
+		
+		String filename= src .substring(src .lastIndexOf(File.separator) + 1, src .length());//获取到文件名
+		
+		return filename.substring(filename.lastIndexOf(".") + 1);
 	}
 	
 	/**
@@ -23,13 +23,8 @@ public class StringUtilss {
 	 */
 	public static String getFileName(String src) {
 		
-		String filename= src .substring(src .lastIndexOf("\\\\") + 1, src .length());//获取到文件名
+		String filename= src .substring(src .lastIndexOf(File.separator) + 1, src .length());//获取到文件名
 		
-		String[] _splitArrays = filename.split(".");
-		if(_splitArrays.length != 2) {
-			return null;
-		} else {
-			return _splitArrays[0];
-		}
+		return filename.substring(0, filename.lastIndexOf("."));
 	}
 }

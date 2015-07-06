@@ -26,4 +26,14 @@
 		<url-pattern>/fileManager</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>imgServlet</servlet-name>
+		<servlet-class>com.MutiModule.kindeditorDemo.servlet.ImgServlet</servlet-class>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>imgServlet</servlet-name>
+		<url-pattern>/attached/image/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
