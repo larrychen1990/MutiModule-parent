@@ -76,3 +76,6 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 	形成 jsUpload.jsp 文件，采用 ajaxfileupload.js 进行文件上传，其中文件上传URL类采用 kindeditor 部分，
 	整体 MutiModule-kindeditorDemo 模块中，不管是使用富文本编辑器。还是js进行的文件上传，都统一有一个文件处理类（com.MutiModule.common.kindeditor.servlet.FileUploadServlet）
 	对整体文件上传类统一规划
+	
+#20150706
+	GraphicsMagick+im4java 进行图片处理操作

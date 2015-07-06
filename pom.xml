@@ -59,6 +59,7 @@
 		<logback-core>1.1.2</logback-core>
 		<logback-classic>1.1.2</logback-classic>
 		<json-simple>1.1.1</json-simple>
+		<org.im4java>1.4.0</org.im4java>
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
@@ -238,6 +239,11 @@
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.commons-io}</version>
+			</dependency>
+			<dependency>
+			  <groupId>org.im4java</groupId>
+			  <artifactId>im4java</artifactId>
+			  <version>${org.im4java}</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>

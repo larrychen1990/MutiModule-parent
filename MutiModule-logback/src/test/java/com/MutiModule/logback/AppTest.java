@@ -36,10 +36,10 @@ public class AppTest extends TestCase {
 	 */
 	public void testApp() {
 		
-		logger.debug("AppTest.testApp");
-		logger.info("AppTest.testApp");
-		logger.warn("AppTest.testApp");
-		logger.error("AppTest.testApp");
+//		logger.debug("AppTest.testApp");
+//		logger.info("AppTest.testApp");
+//		logger.warn("AppTest.testApp");
+//		logger.error("AppTest.testApp");
 		
 		assertTrue(true);
 	}
