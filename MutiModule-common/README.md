@@ -12,3 +12,6 @@
 	linux 环境中，直接打包就可以，不需要修改相关。
 	不管是什么操作系统，图片处理功能，都需要安装  ImageMagick http://www.graphicsmagick.org/index.html 
 	
+#20150709
+	增加 DesUtilss 类 ，为 对称加密解密类，其中引入自定义的 BASE64DecoderReplace 类，用来提到(sun.misc.BASE64Decoder类)
+	对称加密解密算法，可以用来在CookieUtilss 方法中，对存入的cookie值进行处理，防止客户端改变cookie值进行非法操作。

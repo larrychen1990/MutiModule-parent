@@ -19,3 +19,6 @@
 #20150707
 	移除kindeditorDemo模块内所有资源文件，确保此模块仅仅为DEMO测试部分，不包含任何资源文件
 	将此模块下的js文件移动至 MutiModule-kindeditor 模块内部
+	
+	其余模块如果想使用kindeditor香港功能，需要修改模块的pom.xml web.xml 文件，具体文件内容如MutiModule-kindeditorDemo 的模块。
+	即可引入kindeditor香港操作
