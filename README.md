@@ -83,3 +83,7 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 #20150709
 	增加 DesUtilss 类 ，为 对称加密解密类，其中引入自定义的 BASE64DecoderReplace 类，用来提到(sun.misc.BASE64Decoder类)
 	对称加密解密算法，可以用来在CookieUtilss 方法中，对存入的cookie值进行处理，防止客户端改变cookie值进行非法操作。
+	
+#20150710
+	增加 MutiModule-citySelect 模块，此模块为jQuery相关的省市区地址选择框，同时满足键盘输入匹配地址，
+	省市区选择采用弹出层效果，废除难看的 select的级联选择框。
