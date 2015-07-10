@@ -19,12 +19,13 @@ import com.MutiModule.common.vo.BASE64DecoderReplace;
 public class DesUtilss {
 
 	private final static String DES = "DES";
+	
+	private final static String KEY = "alexgaoyh";
 
 	public static void main(String[] args) throws Exception {
 		String data = "123 456";
-		String key = "alexgaoyh";
-		System.err.println(encrypt(data, key));
-		System.err.println(decrypt(encrypt(data, key), key));
+		System.err.println(encrypt(data));
+		System.err.println(decrypt(encrypt(data)));
 
 	}
 
@@ -37,8 +38,8 @@ public class DesUtilss {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String encrypt(String data, String key) throws Exception {
-		byte[] bt = encrypt(data.getBytes(), key.getBytes());
+	public static String encrypt(String data) throws Exception {
+		byte[] bt = encrypt(data.getBytes(), KEY.getBytes());
 		String strs = BASE64DecoderReplace.encode(bt);
 		return strs;
 	}
@@ -53,12 +54,12 @@ public class DesUtilss {
 	 * @throws IOException
 	 * @throws Exception
 	 */
-	public static String decrypt(String data, String key) throws IOException,
+	public static String decrypt(String data) throws IOException,
 			Exception {
 		if (data == null)
 			return null;
 		byte[] buf = BASE64DecoderReplace.decode(data);
-		byte[] bt = decrypt(buf, key.getBytes());
+		byte[] bt = decrypt(buf, KEY.getBytes());
 		return new String(bt);
 	}
 
