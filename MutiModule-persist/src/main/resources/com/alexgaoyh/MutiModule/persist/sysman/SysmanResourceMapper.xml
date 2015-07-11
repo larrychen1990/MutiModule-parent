@@ -343,7 +343,7 @@
 	</select>
 	
 	<!-- 树形结构查询  alexgaoyh begin -->
-	<resultMap type="com.alexgaoyh.MutiModule.persist.util.TreeNode" id="treeNodeResultMap">  
+	<resultMap type="com.MutiModule.common.vo.TreeNode" id="treeNodeResultMap">  
         <id property="id" column="id"/>  
         <result property="text" column="name"/>  
         <result property="isLeaf" column="isLeaf"/>  

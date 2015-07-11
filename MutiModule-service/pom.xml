@@ -50,6 +50,11 @@
 			<artifactId>MutiModule-captcha</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.alexgaoyh</groupId>
+			<artifactId>MutiModule-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- 持久化 -->
 		<dependency>
 			<groupId>com.alexgaoyh</groupId>

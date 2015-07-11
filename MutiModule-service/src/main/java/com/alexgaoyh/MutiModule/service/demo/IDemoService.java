@@ -1,10 +1,8 @@
 package com.alexgaoyh.MutiModule.service.demo;
 
-import java.util.List;
-
+import com.MutiModule.common.vo.Pagination;
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 
 /**
  * 
@@ -31,6 +29,6 @@ public interface IDemoService {
 	 * @param demoExample 过滤条件
 	 * @return 分页信息
 	 */
-	Pagination<Demo> getPanigationByRowBounds(DemoExample example);
+	Pagination<Demo> getPanigationByRowBounds(DemoExample exampleForCount, DemoExample exampleForList);
 	
 }

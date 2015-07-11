@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MutiModule.common.vo.EasyUIData;
+import com.MutiModule.common.vo.Pagination;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
-import com.alexgaoyh.MutiModule.web.admin.vo.EasyUIData;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
 import com.alexgaoyh.MutiModule.web.util.Result;
@@ -87,8 +86,7 @@ public class SysmanRoleController {
 		String page = request.getParameter("page");//easyui datagrid 分页 页号
 		String rows = request.getParameter("rows");//easyui datagrid 分页 页数
 		if(StringUtilss.isInteger(rows) && StringUtilss.isInteger(page)) {
-			MyRowBounds myRowBounds = new MyRowBounds(Integer.parseInt(page),Integer.parseInt(rows));
-			example.setMyRowBounds(myRowBounds);
+			
 		}
 		
 		return example;

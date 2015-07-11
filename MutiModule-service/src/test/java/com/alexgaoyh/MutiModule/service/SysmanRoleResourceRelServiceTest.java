@@ -22,7 +22,7 @@ public class SysmanRoleResourceRelServiceTest {
         
     }
 	
-	@Test
+	//@Test
 	public void removeOldRelAndSaveNewRel() {
 		sysmanRoleResourceRelService.removeOldRelAndSaveNewRel(2, "2,3,4");
 	}

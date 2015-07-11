@@ -6,10 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.MutiModule.common.vo.Pagination;
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
 import com.alexgaoyh.MutiModule.persist.demo.DemoMapper;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
 /**
@@ -45,12 +45,15 @@ public class DemoServiceImpl implements IDemoService {
 	}
 
 	@Override
-	public Pagination<Demo> getPanigationByRowBounds(DemoExample example) {
+	public Pagination<Demo> getPanigationByRowBounds(DemoExample exampleForCount, DemoExample exampleForList) {
 		
-		int count = demoMapper.countByExample(example);
-		List<Demo> list = demoMapper.selectByExample(example);
+		int count = demoMapper.countByExample(exampleForCount);
+		List<Demo> list = demoMapper.selectByExample(exampleForList);
 		
-		return new Pagination(example.getMyRowBounds(), count, list);
+		System.out.println("count= " + count);
+		System.out.println("list= " + list.size());
+		
+		return new Pagination(count, list);
 	}
 
 }

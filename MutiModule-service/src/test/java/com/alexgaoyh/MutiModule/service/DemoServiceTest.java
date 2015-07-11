@@ -5,17 +5,17 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.MutiModule.common.utils.PaginationUtil;
+import com.MutiModule.common.vo.mybatis.pagination.Page;
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
 public class DemoServiceTest {
 
 	private IDemoService demoService;
 	
-	//@Before
+	@Before
     public void prepare() throws Exception  {
     	//可以加载多个配置文件
         String[] springConfigFiles = {"module-captcha.xml","mybatis-spring-config.xml","module-service-config.xml" };
@@ -31,7 +31,7 @@ public class DemoServiceTest {
 		try {
 			Demo demo = new Demo();
 			demo.setName("test");
-			demo.setDeleteflagstate(0);
+			demo.setDeleteFlag(0);
 			demoService.insert(demo);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,16 +59,21 @@ public class DemoServiceTest {
 		System.out.println(demo);
 	}
 	
-	//@Test
+	@Test
 	public void getPanigationByRowBounds() {
 		
-		DemoExample example = new DemoExample();
-		example.setOrderByClause("id desc");
+		DemoExample demoExampleForCount = new DemoExample();
+		demoExampleForCount.setOrderByClause("id asc");
 		
-		MyRowBounds myRowBounds = new MyRowBounds(3,10);
-		example.setMyRowBounds(myRowBounds);
+		DemoExample demoExampleForList = new DemoExample();
+		demoExampleForList.setOrderByClause("id asc");
 		
-		demoService.getPanigationByRowBounds(example);
+		int pageNumber = 1;
+		int pageSize = 1;
+		Page page = new Page(PaginationUtil.startValue(pageNumber, pageSize), pageSize);
+		demoExampleForList.setPage(page);
+		
+		demoService.getPanigationByRowBounds(demoExampleForCount, demoExampleForList);
 		
 	}
 }

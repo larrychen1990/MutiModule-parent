@@ -13,7 +13,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
 
 public class SysmanResourceServiceTest {
@@ -45,7 +44,7 @@ public class SysmanResourceServiceTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void selectByPrimaryKey() {
 		SysmanResource sysmanResource = sysmanResourceService.selectByPrimaryKey(2);
 		System.out.println(sysmanResource);
@@ -57,14 +56,11 @@ public class SysmanResourceServiceTest {
 		SysmanResourceExample example = new SysmanResourceExample();
 		example.setOrderByClause("id desc");
 		
-		MyRowBounds myRowBounds = new MyRowBounds(3,10);
-		example.setMyRowBounds(myRowBounds);
-		
 		sysmanResourceService.getPanigationByRowBounds(example);
 		
 	}
 	
-	@Test
+	//@Test
 	public void updateByPrimaryKeySelective() {
 		SysmanResource sysmanResource = new SysmanResource();
 		sysmanResource.setId(2);
@@ -73,7 +69,7 @@ public class SysmanResourceServiceTest {
 		sysmanResourceService.updateByPrimaryKeySelective(sysmanResource);
 	}
 	
-	@Test
+	//@Test
 	public void selectResourceListBySysmanRoleId() {
 		List<SysmanResource> sysmanResourceList = sysmanResourceService.selectResourceListBySysmanRoleId(1);
 		for(SysmanResource sysmanResource : sysmanResourceList) {
@@ -81,7 +77,7 @@ public class SysmanResourceServiceTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void checkSysmanResourcePermission() {
 		Boolean trueBoolean = sysmanResourceService.checkSysmanResourcePermission(1, 1);
 		assertTrue(trueBoolean);

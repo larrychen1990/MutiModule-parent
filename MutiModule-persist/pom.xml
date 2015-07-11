@@ -19,6 +19,11 @@
 	
 	<dependencies>
 		<dependency>
+			<groupId>com.alexgaoyh</groupId>
+			<artifactId>MutiModule-common</artifactId>
+			<version>${project.version}</version>
+        </dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
@@ -74,6 +79,13 @@
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-maven-plugin</artifactId>
             <version>1.3.2</version>
+            <dependencies>
+            	<dependency>
+					<groupId>com.alexgaoyh</groupId>
+					<artifactId>MutiModule-common</artifactId>
+					<version>${project.version}</version>
+            	</dependency>
+            </dependencies>
             <configuration>
                 <verbose>true</verbose>
                 <overwrite>true</overwrite>

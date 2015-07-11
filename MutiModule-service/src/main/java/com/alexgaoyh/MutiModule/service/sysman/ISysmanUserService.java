@@ -2,9 +2,9 @@ package com.alexgaoyh.MutiModule.service.sysman;
 
 import java.util.List;
 
+import com.MutiModule.common.vo.Pagination;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 
 /**
  * 

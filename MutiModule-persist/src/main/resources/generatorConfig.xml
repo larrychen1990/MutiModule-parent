@@ -5,20 +5,30 @@
 	<classPathEntry location="C:\Users\lenovo\.m2\repository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar" />
     
 	<context id="context1" targetRuntime="MyBatis3">
+	
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>  
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+	
+		<plugin type="com.MutiModule.common.mybatis.plugin.PaginationPlugin"></plugin>
+		<plugin type="com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin"></plugin>
+		
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
             connectionURL="jdbc:mysql://127.0.0.1:3306/mybatisTest?useUnicode=true&amp;characterEncoding=UTF-8"
             userId="root" password="alexgaoyh" />
             
-        <javaModelGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" />
+        <javaModelGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" />
         
-        <sqlMapGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\resources" />
+        <sqlMapGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\resources" />
         
-        <javaClientGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" type="XMLMAPPER" />
+        <javaClientGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" type="XMLMAPPER" />
         
         <!-- domainObjectName 部分，如果不加的话，好像数据库表结构是驼峰式的话，生成的*。java类文件不是驼峰式的结构，故加上这个配置部分 -->
-        <table schema="" tableName="SysmanUserRoleRel" domainObjectName="SysmanUserRoleRel" delimitAllColumns="true">
+        <table schema="" tableName="Demo" domainObjectName="Demo" delimitAllColumns="true">
         	<!-- 生成代码字段名默认按驼峰命名 -->
-        	<property name="useActualColumnNames" value="true"/>
+        	<columnOverride column="id" property="id" javaType="Integer"></columnOverride>
+        	<columnOverride column="createTime" property="createTime" javaType="java.util.Date"></columnOverride>
+        	<columnOverride column="deleteFlag" property="deleteFlag" javaType="Integer"></columnOverride>
+        	<columnOverride column="name" property="name" javaType="String"></columnOverride>
         </table>
         
     </context>

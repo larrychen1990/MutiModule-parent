@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MutiModule.common.utils.PaginationUtil;
+import com.MutiModule.common.vo.Pagination;
+import com.MutiModule.common.vo.mybatis.pagination.Page;
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
 @Controller
@@ -44,7 +45,7 @@ public class DemoController {
 	public String index() {
 		Demo demo = new Demo();
 		demo.setName("demo/index");
-		demo.setDeleteflagstate(0);
+		demo.setDeleteFlag(0);
 		demoService.insert(demo);
 		return "demo/index";
 	}
@@ -57,15 +58,20 @@ public class DemoController {
 		logger.warn("XXXXXX");
 		logger.error("XXXXXX");
 		
-		DemoExample example = new DemoExample();
-		example.setOrderByClause("id desc");
+		Map map = new HashMap();
 		
-		MyRowBounds myRowBounds = new MyRowBounds(id,10);
-		example.setMyRowBounds(myRowBounds);
+		DemoExample demoExampleForCount = new DemoExample();
+		demoExampleForCount.setOrderByClause("id asc");
 		
-		Map<String, Object> map = new HashMap<String, Object>();
+		DemoExample demoExampleForList = new DemoExample();
+		demoExampleForList.setOrderByClause("id asc");
 		
-		Pagination<Demo> pagination = demoService.getPanigationByRowBounds(example);
+		int pageNumber = 1;
+		int pageSize = 1;
+		Page page = new Page(PaginationUtil.startValue(pageNumber, pageSize), pageSize);
+		demoExampleForList.setPage(page);
+		
+		Pagination<Demo> pagination = demoService.getPanigationByRowBounds(demoExampleForCount, demoExampleForList);
 		
 		map.put("pagination", pagination);
 		

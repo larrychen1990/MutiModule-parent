@@ -10,7 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
 
 public class SysmanRoleServiceTest {
@@ -28,7 +27,7 @@ public class SysmanRoleServiceTest {
         
     }
 	
-	@Test
+	//@Test
 	public void insert() {
 		try {
 			SysmanRole sysmanRole = new SysmanRole();
@@ -42,7 +41,7 @@ public class SysmanRoleServiceTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void selectByPrimaryKey() {
 		SysmanRole sysmanRole = sysmanRoleService.selectByPrimaryKey(2);
 		System.out.println(sysmanRole);
@@ -54,14 +53,11 @@ public class SysmanRoleServiceTest {
 		SysmanRoleExample example = new SysmanRoleExample();
 		example.setOrderByClause("id desc");
 		
-		MyRowBounds myRowBounds = new MyRowBounds(3,10);
-		example.setMyRowBounds(myRowBounds);
-		
 		sysmanRoleService.getPanigationByRowBounds(example);
 		
 	}
 	
-	@Test
+	//@Test
 	public void updateByPrimaryKeySelective() {
 		SysmanRole sysmanRole = new SysmanRole();
 		sysmanRole.setId(2);
@@ -70,7 +66,7 @@ public class SysmanRoleServiceTest {
 		sysmanRoleService.updateByPrimaryKeySelective(sysmanRole);
 	}
 	
-	@Test
+	//@Test
 	public void selectRoleListBySysmanUserId() {
 		List<SysmanRole> sysmanRoleList = sysmanRoleService.selectRoleListBySysmanUserId(1);
 		for(SysmanRole sysmanRole : sysmanRoleList) {

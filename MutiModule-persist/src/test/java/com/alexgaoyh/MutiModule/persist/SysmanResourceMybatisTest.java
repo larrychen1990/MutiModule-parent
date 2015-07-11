@@ -4,15 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.MutiModule.common.vo.TreeNode;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceMapper;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
-import com.alexgaoyh.MutiModule.persist.util.TreeNode;
 
 public class SysmanResourceMybatisTest {
 
@@ -46,9 +44,6 @@ public class SysmanResourceMybatisTest {
 	public void testSysmanResourceExample() {
 		SysmanResourceExample sysmanResourceExample = new SysmanResourceExample();
 		sysmanResourceExample.setOrderByClause("id desc");
-		
-		MyRowBounds myRowBounds1 = new MyRowBounds(1,10);
-		sysmanResourceExample.setMyRowBounds(myRowBounds1);
 		
 		int count1 = sysmanResourceMapper.countByExample(sysmanResourceExample);
 		List<SysmanResource> SysmanResourceList1 = sysmanResourceMapper.selectByExample(sysmanResourceExample);

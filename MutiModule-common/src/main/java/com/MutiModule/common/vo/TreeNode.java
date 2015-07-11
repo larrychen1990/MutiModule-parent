@@ -1,4 +1,4 @@
-package com.alexgaoyh.MutiModule.persist.util;
+package com.MutiModule.common.vo;
 
 import java.util.HashMap;
 import java.util.List;

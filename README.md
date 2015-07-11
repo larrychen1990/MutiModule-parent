@@ -87,3 +87,15 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 #20150710
 	增加 MutiModule-citySelect 模块，此模块为jQuery相关的省市区地址选择框，同时满足键盘输入匹配地址，
 	省市区选择采用弹出层效果，废除难看的 select的级联选择框。
+	
+#20150711
+	MutiModule-common 模块：
+		扩展  mybatis-generator-maven-plugin 功能，在自动生成代码时添加分页功能：
+			com.MutiModule.common.mybatis.plugin.PaginationPlugin mysql 分页扩展插件
+				com.MutiModule.common.vo.mybatis.pagination.Page 分页插件依赖的分页类 
+				
+			com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin 自定义的扩展插件
+				实现增加一个方法，方法名称为 deleteLogicByIds， 在 接口文件和XML的sql文件中，都增加自定义的方法。
+				
+	MutiModule-perisit 模块
+		在使用 mybatis-generator-maven-plugin 进行Demo 表结构对应的文件生成后，完成单元测试功能

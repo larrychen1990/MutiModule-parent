@@ -8,14 +8,12 @@ import java.util.List;
 import java.util.Random;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserMapper;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 
 public class SysmanUserMybatisTest {
 
@@ -49,9 +47,6 @@ public class SysmanUserMybatisTest {
 	public void testSysmanUserExample5() {
 		SysmanUserExample sysmanUserExample = new SysmanUserExample();
 		sysmanUserExample.setOrderByClause("id desc");
-		
-		MyRowBounds myRowBounds1 = new MyRowBounds(1,10);
-		sysmanUserExample.setMyRowBounds(myRowBounds1);
 		
 		int count1 = sysmanUserMapper.countByExample(sysmanUserExample);
 		List<SysmanUser> SysmanUserList1 = sysmanUserMapper.selectByExample(sysmanUserExample);

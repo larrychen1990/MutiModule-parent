@@ -4,14 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.MutiModule.common.vo.Pagination;
+import com.MutiModule.common.vo.TreeNode;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceMapper;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
-import com.alexgaoyh.MutiModule.persist.util.TreeNode;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
 
 /**
@@ -72,7 +71,7 @@ public class SysmanResourceServiceImpl implements ISysmanResourceService {
 		int count = sysmanResourceMapper.countByExample(example);
 		List<SysmanResource> list = sysmanResourceMapper.selectByExample(example);
 		
-		return new Pagination<SysmanResource>(example.getMyRowBounds(), count, list);
+		return new Pagination<SysmanResource>(count, list);
 	}
 
 	@Override

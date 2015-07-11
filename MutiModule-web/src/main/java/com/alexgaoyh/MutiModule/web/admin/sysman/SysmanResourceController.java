@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.MutiModule.common.utils.CookieUtilss;
+import com.MutiModule.common.vo.TreeNode;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
-import com.alexgaoyh.MutiModule.persist.util.TreeNode;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
 import com.alexgaoyh.MutiModule.util.jackson.JacksonUtil;

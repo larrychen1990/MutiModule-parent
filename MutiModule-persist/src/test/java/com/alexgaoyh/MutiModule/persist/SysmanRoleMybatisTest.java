@@ -4,14 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleMapper;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 
 public class SysmanRoleMybatisTest {
 
@@ -45,9 +43,6 @@ public class SysmanRoleMybatisTest {
 	public void testSysmanRoleExample() {
 		SysmanRoleExample sysmanRoleExample = new SysmanRoleExample();
 		sysmanRoleExample.setOrderByClause("id desc");
-		
-		MyRowBounds myRowBounds1 = new MyRowBounds(1,10);
-		sysmanRoleExample.setMyRowBounds(myRowBounds1);
 		
 		int count1 = sysmanRoleMapper.countByExample(sysmanRoleExample);
 		List<SysmanRole> SysmanRoleList1 = sysmanRoleMapper.selectByExample(sysmanRoleExample);

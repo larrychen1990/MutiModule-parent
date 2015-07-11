@@ -15,3 +15,11 @@
 #20150709
 	增加 DesUtilss 类 ，为 对称加密解密类，其中引入自定义的 BASE64DecoderReplace 类，用来提到(sun.misc.BASE64Decoder类)
 	对称加密解密算法，可以用来在CookieUtilss 方法中，对存入的cookie值进行处理，防止客户端改变cookie值进行非法操作。
+	
+#20150711
+	扩展  mybatis-generator-maven-plugin 功能，在自动生成代码时添加分页功能：
+		com.MutiModule.common.mybatis.plugin.PaginationPlugin mysql 分页扩展插件
+			com.MutiModule.common.vo.mybatis.pagination.Page 分页插件依赖的分页类 
+			
+		com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin 自定义的扩展插件
+			实现增加一个方法，方法名称为 deleteLogicByIds， 在 接口文件和XML的sql文件中，都增加自定义的方法。

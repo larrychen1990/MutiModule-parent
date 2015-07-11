@@ -22,7 +22,7 @@ public class SysmanRoleResourceRelMybatisTest {
         
     }
 	
-	@Test
+	//@Test
 	public void checkRoleIdResourceIdExisted() {
 		Boolean falseBoolean = sysmanRoleResourceRelMapper.checkRoleIdResourceIdExisted(100, 100);
 		assertFalse(falseBoolean);

@@ -7,7 +7,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
-import com.alexgaoyh.MutiModule.persist.util.MyRowBounds;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
 
 public class SysmanUserServiceTest {
@@ -38,7 +37,7 @@ public class SysmanUserServiceTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void selectByPrimaryKey() {
 		SysmanUser sysmanUser = sysmanUserService.selectByPrimaryKey(2);
 		System.out.println(sysmanUser);
@@ -50,14 +49,11 @@ public class SysmanUserServiceTest {
 		SysmanUserExample example = new SysmanUserExample();
 		example.setOrderByClause("id desc");
 		
-		MyRowBounds myRowBounds = new MyRowBounds(3,10);
-		example.setMyRowBounds(myRowBounds);
-		
 		sysmanUserService.getPanigationByRowBounds(example);
 		
 	}
 	
-	@Test
+	//@Test
 	public void updateByPrimaryKeySelective() {
 		SysmanUser sysmanUser = new SysmanUser();
 		sysmanUser.setId(2);

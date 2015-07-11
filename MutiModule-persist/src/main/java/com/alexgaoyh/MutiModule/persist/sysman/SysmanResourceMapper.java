@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.alexgaoyh.MutiModule.persist.util.TreeNode;
+import com.MutiModule.common.vo.TreeNode;
 
 public interface SysmanResourceMapper {
     /**

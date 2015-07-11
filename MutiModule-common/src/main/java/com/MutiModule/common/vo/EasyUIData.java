@@ -1,9 +1,7 @@
-package com.alexgaoyh.MutiModule.web.admin.vo;
+package com.MutiModule.common.vo;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 
 
 public class EasyUIData {

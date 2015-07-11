@@ -6,10 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.MutiModule.common.vo.Pagination;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleMapper;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
 
 /**
@@ -70,7 +70,7 @@ public class SysmanRoleServiceImpl implements ISysmanRoleService {
 		int count = sysmanRoleMapper.countByExample(example);
 		List<SysmanRole> list = sysmanRoleMapper.selectByExample(example);
 		
-		return new Pagination<SysmanRole>(example.getMyRowBounds(), count, list);
+		return new Pagination<SysmanRole>(count, list);
 	}
 
 	@Override

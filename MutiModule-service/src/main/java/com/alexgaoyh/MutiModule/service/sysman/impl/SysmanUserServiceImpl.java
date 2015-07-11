@@ -6,10 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.MutiModule.common.vo.Pagination;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserMapper;
-import com.alexgaoyh.MutiModule.persist.util.Pagination;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
 
 /**
@@ -70,7 +70,7 @@ public class SysmanUserServiceImpl implements ISysmanUserService {
 		int count = sysmanUserMapper.countByExample(example);
 		List<SysmanUser> list = sysmanUserMapper.selectByExample(example);
 		
-		return new Pagination<SysmanUser>(example.getMyRowBounds(), count, list);
+		return new Pagination<SysmanUser>( count, list);
 	}
 
 	@Override
