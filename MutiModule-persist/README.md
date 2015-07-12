@@ -49,7 +49,7 @@ MutiModule-persist部分：
 	3： 树形结构
 		3.1 *。mapper.xml里面，数据库查询如下所示：
 			<!-- 树形结构查询  alexgaoyh begin -->
-			<resultMap type="com.alexgaoyh.MutiModule.persist.util.TreeNode" id="treeNodeResultMap">  
+			<resultMap type="com.MutiModule.common.vo.TreeNode" id="treeNodeResultMap">  
 		        <id property="id" column="id"/>  
 		        <result property="text" column="text"/>  
 		        <result property="isLeaf" column="isLeaf"/>  

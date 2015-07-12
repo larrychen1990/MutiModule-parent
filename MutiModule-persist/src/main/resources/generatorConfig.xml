@@ -9,6 +9,7 @@
 		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>  
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
 	
+		<!-- page plugin && add deleteLogicByIds method  -->
 		<plugin type="com.MutiModule.common.mybatis.plugin.PaginationPlugin"></plugin>
 		<plugin type="com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin"></plugin>
 		
