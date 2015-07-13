@@ -1,5 +1,6 @@
 package com.alexgaoyh.MutiModule.web.demo;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,17 +30,6 @@ public class DemoController {
 	
 	@Resource
 	private IDemoService demoService;
-
-	//demoService get/set 方法  begin
-	public IDemoService getDemoService() {
-		return demoService;
-	}
-
-	public void setDemoService(IDemoService demoService) {
-		this.demoService = demoService;
-	}
-	//demoService get/set 方法  end
-	
 
 	@RequestMapping("index")
 	public String index() {
@@ -74,6 +64,33 @@ public class DemoController {
 		Pagination<Demo> pagination = demoService.getPanigationByRowBounds(demoExampleForCount, demoExampleForList);
 		
 		map.put("pagination", pagination);
+		
+		ModelAndView mav = new ModelAndView("demo/page", map);
+
+		return mav;
+	}
+	
+	/**
+	 * demoService.insert(demo) 进行插入方法，之后插入第二条数据，name字段使用demo.getId()主键内容
+	 * 测试关联关系的处理
+	 * @return
+	 */
+	@RequestMapping(value = "insertRel")
+	public ModelAndView insertRel() {
+		
+		Map map = new HashMap();
+		
+		Demo demo = new Demo();
+		demo.setDeleteFlag(0);
+		demo.setCreateTime(new Date());
+		demo.setName("demo/index");
+		demoService.insert(demo);
+		
+		Demo demo2 = new Demo();
+		demo2.setDeleteFlag(0);
+		demo2.setCreateTime(new Date());
+		demo2.setName(demo.getId() + "");
+		demoService.insert(demo2);
 		
 		ModelAndView mav = new ModelAndView("demo/page", map);
 

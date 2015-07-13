@@ -25,3 +25,17 @@ updated:
 #20150701
 	登陸驗證去除session部分，改為使用cookie部分
 	同時去除驗證碼部分	
+	
+#20150713
+	insertRel 关系测试，同时生成实体信息A B，并且将返回的主键id进行关联表数据插入
+		Demo demo = new Demo();
+		demo.setDeleteFlag(0);
+		demo.setCreateTime(new Date());
+		demo.setName("demo/index");
+		demoService.insert(demo);
+		
+		Demo demo2 = new Demo();
+		demo2.setDeleteFlag(0);
+		demo2.setCreateTime(new Date());
+		demo2.setName(demo.getId() + "");
+		demoService.insert(demo2);
