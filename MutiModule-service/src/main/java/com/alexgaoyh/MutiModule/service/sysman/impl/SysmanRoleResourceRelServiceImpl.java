@@ -7,10 +7,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRelExample;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRelMapper;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel.SysmanRoleResourceRelExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel.SysmanRoleResourceRelKey;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel.SysmanRoleResourceRelMapper;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleResourceRelService;
 
 /**
@@ -36,17 +35,17 @@ public class SysmanRoleResourceRelServiceImpl implements ISysmanRoleResourceRelS
 	//------------------get set方法 end
 
 	@Override
-	public void insert(SysmanRoleResourceRel sysmanRoleResourceRel) {
+	public void insert(SysmanRoleResourceRelKey sysmanRoleResourceRel) {
 		sysmanRoleResourceRelMapper.insert(sysmanRoleResourceRel);
 	}
 	
 	@Override
-	public void insertSelective(SysmanRoleResourceRel sysmanRoleResourceRel) {
+	public void insertSelective(SysmanRoleResourceRelKey sysmanRoleResourceRel) {
 		sysmanRoleResourceRelMapper.insertSelective(sysmanRoleResourceRel);
 	}
 
 	@Override
-	public int updateByExampleSelective(SysmanRoleResourceRel record, SysmanRoleResourceRelExample example) {
+	public int updateByExampleSelective(SysmanRoleResourceRelKey record, SysmanRoleResourceRelExample example) {
 		return sysmanRoleResourceRelMapper.updateByExampleSelective(record, example);
 	}
 	
@@ -63,9 +62,9 @@ public class SysmanRoleResourceRelServiceImpl implements ISysmanRoleResourceRelS
 		String[] sysmanResourceIdsArray = sysmanResourceIds.split(",");
 		int sysmanResourceIdsLength = sysmanResourceIdsArray.length;
 		
-		List<SysmanRoleResourceRel> list = new ArrayList<SysmanRoleResourceRel>();
+		List<SysmanRoleResourceRelKey> list = new ArrayList<SysmanRoleResourceRelKey>();
 		for(int i = 0; i < sysmanResourceIdsLength; i++) {
-			SysmanRoleResourceRel srrr = new SysmanRoleResourceRel();
+			SysmanRoleResourceRelKey srrr = new SysmanRoleResourceRelKey();
 			srrr.setSysmanRoleId(sysmanRoleId);
 			srrr.setSysmanResourceId(Integer.parseInt(sysmanResourceIdsArray[i].trim()));
 			list.add(srrr);

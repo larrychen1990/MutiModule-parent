@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.MutiModule.common.vo.Pagination;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleMapper;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRole;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRoleExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRoleMapper;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
 
 /**
@@ -65,10 +65,10 @@ public class SysmanRoleServiceImpl implements ISysmanRoleService {
 	}
 
 	@Override
-	public Pagination<SysmanRole> getPanigationByRowBounds(SysmanRoleExample example) {
+	public Pagination<SysmanRole> getPanigationByRowBounds(SysmanRoleExample exampleForCount, SysmanRoleExample exampleForList) {
 		
-		int count = sysmanRoleMapper.countByExample(example);
-		List<SysmanRole> list = sysmanRoleMapper.selectByExample(example);
+		int count = sysmanRoleMapper.countByExample(exampleForCount);
+		List<SysmanRole> list = sysmanRoleMapper.selectByExample(exampleForList);
 		
 		return new Pagination<SysmanRole>(count, list);
 	}

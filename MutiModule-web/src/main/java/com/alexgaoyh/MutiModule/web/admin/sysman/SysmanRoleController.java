@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MutiModule.common.utils.PaginationUtil;
 import com.MutiModule.common.vo.EasyUIData;
 import com.MutiModule.common.vo.Pagination;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
+import com.MutiModule.common.vo.mybatis.pagination.Page;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRole;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRoleExample;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
@@ -66,9 +68,12 @@ public class SysmanRoleController {
     @ResponseBody
 	public void getData(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		SysmanRoleExample example = this.encloseObject(request);
 		
-		Pagination<SysmanRole> pagination = sysmanRoleService.getPanigationByRowBounds(example);
+		SysmanRoleExample exampleForCount = this.encloseObjectForCount(request);
+		SysmanRoleExample exampleForList = this.encloseObjectForList(request);
+		
+		
+		Pagination<SysmanRole> pagination = sysmanRoleService.getPanigationByRowBounds(exampleForCount, exampleForList);
 		
 		EasyUIData data = new EasyUIData(pagination);
 		
@@ -80,15 +85,38 @@ public class SysmanRoleController {
 	 * @param request 请求对象
 	 * @return 请求对象包含的所有过滤条件进行过滤
 	 */
-	private SysmanRoleExample encloseObject(HttpServletRequest request) {
+	private SysmanRoleExample encloseObjectForCount(HttpServletRequest request) {
 		SysmanRoleExample example = new SysmanRoleExample();
 		
-		String page = request.getParameter("page");//easyui datagrid 分页 页号
-		String rows = request.getParameter("rows");//easyui datagrid 分页 页数
-		if(StringUtilss.isInteger(rows) && StringUtilss.isInteger(page)) {
-			
-		}
+		//TODO 添加相关过滤条件筛选的功能
+		CriteriaConditions(request, example);
 		
+		return example;
+	}
+	
+	/** 通用方法
+	 * 根据入参封装对象
+	 * @param request 请求对象
+	 * @return 请求对象包含的所有过滤条件进行过滤
+	 */
+	private SysmanRoleExample encloseObjectForList(HttpServletRequest request) {
+		SysmanRoleExample example = new SysmanRoleExample();
+		
+		//TODO 添加相关过滤条件筛选的功能
+		CriteriaConditions(request, example);
+		
+		example.setOrderByClause("id asc");
+		
+		Integer pageNumber = Integer.parseInt(request.getParameter("page"));//easyui datagrid 分页 页号
+		Integer pageSize = Integer.parseInt(request.getParameter("rows"));//easyui datagrid 分页 页数
+		Page page = new Page(PaginationUtil.startValue(pageNumber, pageSize), pageSize);
+		example.setPage(page);
+		
+		return example;
+	}
+	
+	private SysmanRoleExample CriteriaConditions(HttpServletRequest request, SysmanRoleExample example) {
+		//TODO 过滤条件筛选，后期可根据需求手动书写
 		return example;
 	}
 	
@@ -125,8 +153,8 @@ public class SysmanRoleController {
 	 * @throws Exception
 	 */
 	protected void beforeDoSave(HttpServletRequest request, SysmanRole entity) throws Exception {
-		entity.setDeleteflag(ConstantsUtil.DELETE_NO);
-		entity.setCreatetime(new Date());
+		entity.setDeleteFlag(ConstantsUtil.DELETE_NO);
+		entity.setCreateTime(new Date());
 	}
 	
 	/** 通用方法 

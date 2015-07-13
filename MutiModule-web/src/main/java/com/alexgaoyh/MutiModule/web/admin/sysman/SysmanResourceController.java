@@ -21,8 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.MutiModule.common.utils.CookieUtilss;
 import com.MutiModule.common.vo.TreeNode;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource.SysmanResource;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser.SysmanUser;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
 import com.alexgaoyh.MutiModule.util.jackson.JacksonUtil;
@@ -93,8 +93,8 @@ public class SysmanResourceController {
 			item.put("name", r.getName());
 			item.put("description", r.getDescription());
 			
-			if(StringUtilss.isNotEmpty(r.getParentid() + "") && !"null".equals(r.getParentid() + "") ) {
-				SysmanResource parent = sysmanResourceService.selectByPrimaryKey(r.getParentid());
+			if(StringUtilss.isNotEmpty(r.getParentId() + "") && !"null".equals(r.getParentId() + "") ) {
+				SysmanResource parent = sysmanResourceService.selectByPrimaryKey(r.getParentId());
 				item.put("parent.id",parent.getId());
 				item.put("parent.name",parent.getName());
 			}
@@ -111,8 +111,8 @@ public class SysmanResourceController {
 			}
 			item.put("href", r.getHref());
 			item.put("id", r.getId());
-			item.put("deleteFlag", r.getDeleteflag());
-			item.put("createTime", r.getCreatetime());
+			item.put("deleteFlag", r.getDeleteFlag());
+			item.put("createTime", r.getCreateTime());
 			
 			data.add(item);
 		}
@@ -182,8 +182,8 @@ public class SysmanResourceController {
 	 * @throws Exception
 	 */
 	protected void beforeDoSave(HttpServletRequest request, SysmanResource entity) throws Exception {
-		entity.setDeleteflag(ConstantsUtil.DELETE_NO);
-		entity.setCreatetime(new Date());
+		entity.setDeleteFlag(ConstantsUtil.DELETE_NO);
+		entity.setCreateTime(new Date());
 	}
 	
 	/** 通用方法 

@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelExample;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRelMapper;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel.SysmanUserRoleRelExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel.SysmanUserRoleRelKey;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserRoleRel.SysmanUserRoleRelMapper;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserRoleRelService;
 
 /**
@@ -35,17 +35,17 @@ public class SysmanUserRoleRelServiceImpl implements ISysmanUserRoleRelService {
 	//------------------get set方法 end
 
 	@Override
-	public void insert(SysmanUserRoleRel sysmanUserRoleRel) {
+	public void insert(SysmanUserRoleRelKey sysmanUserRoleRel) {
 		sysmanUserRoleRelMapper.insert(sysmanUserRoleRel);
 	}
 	
 	@Override
-	public void insertSelective(SysmanUserRoleRel sysmanUserRoleRel) {
+	public void insertSelective(SysmanUserRoleRelKey sysmanUserRoleRel) {
 		sysmanUserRoleRelMapper.insertSelective(sysmanUserRoleRel);
 	}
 
 	@Override
-	public int updateByExampleSelective(SysmanUserRoleRel record, SysmanUserRoleRelExample example) {
+	public int updateByExampleSelective(SysmanUserRoleRelKey record, SysmanUserRoleRelExample example) {
 		return sysmanUserRoleRelMapper.updateByExampleSelective(record, example);
 	}
 	
@@ -62,9 +62,9 @@ public class SysmanUserRoleRelServiceImpl implements ISysmanUserRoleRelService {
 		String[] sysmanRoleIdsArray = sysmanRoleIds.split(",");
 		int sysmanRoleIdsLength = sysmanRoleIdsArray.length;
 		
-		List<SysmanUserRoleRel> list = new ArrayList<SysmanUserRoleRel>();
+		List<SysmanUserRoleRelKey> list = new ArrayList<SysmanUserRoleRelKey>();
 		for(int i = 0; i < sysmanRoleIdsLength; i++) {
-			SysmanUserRoleRel surr = new SysmanUserRoleRel();
+			SysmanUserRoleRelKey surr = new SysmanUserRoleRelKey();
 			surr.setSysmanUserId(sysmanUserId);
 			surr.setSysmanRoleId(Integer.parseInt(sysmanRoleIdsArray[i].trim()));
 			list.add(surr);

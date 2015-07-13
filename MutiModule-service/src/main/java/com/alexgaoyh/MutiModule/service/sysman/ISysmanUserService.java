@@ -3,8 +3,8 @@ package com.alexgaoyh.MutiModule.service.sysman;
 import java.util.List;
 
 import com.MutiModule.common.vo.Pagination;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser.SysmanUser;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser.SysmanUserExample;
 
 /**
  * 
@@ -57,7 +57,7 @@ public interface ISysmanUserService {
 	 * @param SysmanUserExample 过滤条件
 	 * @return 分页信息
 	 */
-	Pagination<SysmanUser> getPanigationByRowBounds(SysmanUserExample example);
+	Pagination<SysmanUser> getPanigationByRowBounds(SysmanUserExample exampleForCount, SysmanUserExample exampleForList);
 	
 	/**
 	 * 根据example查询出相关的数据信息，并将这些数据信息进行更新，更新参数如record

@@ -22,8 +22,8 @@
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'id',width:80">编码</th>
 				<th data-options="field:'name',width:80">名称</th>
-				<th data-options="field:'createtime',width:80,formatter:function(value){var date=parseDate(value);return date;}">创建时间</th>
-				<th data-options="field:'deleteflag',width:80,formatter:function(value){
+				<th data-options="field:'createTime',width:80,formatter:function(value){var date=parseDate(value);return date;}">创建时间</th>
+				<th data-options="field:'deleteFlag',width:80,formatter:function(value){
 						if(value==0){
 							return '未删除';
 						}else if(value==1){

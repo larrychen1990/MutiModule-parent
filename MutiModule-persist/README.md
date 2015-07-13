@@ -109,4 +109,10 @@ MutiModule-persist部分：
 			
 		com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin 自定义的扩展插件
 			实现增加一个方法，方法名称为 deleteLogicByIds， 在 接口文件和XML的sql文件中，都增加自定义的方法。
+			
+#20170713
+	使用  mybatis-generator-maven-plugin 扩展插件，对RBAC相关资源进行重新代码生成
+	认真阅读 generatorConfig.xml 文件的注释部分，有助于有效地自动生成代码结构
+		注意， 关联关系表结构设定为符合主键，这样，关联关系表结构生成时，会自动生成 *Key.java 的类文件；
+			单表结构的部分，注意id, deleteFlag, createTime 部分为必须字段。
 							

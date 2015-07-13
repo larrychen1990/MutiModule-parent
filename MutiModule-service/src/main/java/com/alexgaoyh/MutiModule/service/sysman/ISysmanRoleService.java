@@ -3,8 +3,8 @@ package com.alexgaoyh.MutiModule.service.sysman;
 import java.util.List;
 
 import com.MutiModule.common.vo.Pagination;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRole;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRoleExample;
 
 /**
  * 
@@ -57,7 +57,7 @@ public interface ISysmanRoleService {
 	 * @param SysmanRoleExample 过滤条件
 	 * @return 分页信息
 	 */
-	Pagination<SysmanRole> getPanigationByRowBounds(SysmanRoleExample example);
+	Pagination<SysmanRole> getPanigationByRowBounds(SysmanRoleExample exampleForCount, SysmanRoleExample exampleForList);
 	
 	/**
 	 * 根据example查询出相关的数据信息，并将这些数据信息进行更新，更新参数如record

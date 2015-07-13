@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRole;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser.SysmanUser;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserRoleRelService;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;

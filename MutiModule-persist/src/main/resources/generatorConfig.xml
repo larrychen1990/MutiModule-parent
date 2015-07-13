@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<!-- 每次修改的部分为替换  targetPackage tableName 部分，对应数据库不同的表结构，不同的包名，自动映射出来相关的类文件-->
+<!-- 注意如果是单表结构的逻辑，增加 两个自定义插件，并且必须有 id deleteFlag createTime 表字段 -->
+<!-- 如果为关联关系的表结构，注释掉两个自定义插件，并且关联关系的两个表字段，设定为复合主键，之后生成的实体类型，默认为 Key 后缀的主键名称 -->
 <generatorConfiguration>
 
 	<classPathEntry location="C:\Users\lenovo\.m2\repository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar" />
@@ -10,29 +13,34 @@
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
 	
 		<!-- page plugin && add deleteLogicByIds method  -->
-		<plugin type="com.MutiModule.common.mybatis.plugin.PaginationPlugin"></plugin>
-		<plugin type="com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin"></plugin>
+		<!-- 单表逻辑的话， 可以增加下面的两个两个自定义插件，关联关系的话，建议注释掉如下的两个插件-->
+		<!-- <plugin type="com.MutiModule.common.mybatis.plugin.PaginationPlugin"></plugin>
+		<plugin type="com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin"></plugin> -->
 		
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
             connectionURL="jdbc:mysql://127.0.0.1:3306/mybatisTest?useUnicode=true&amp;characterEncoding=UTF-8"
             userId="root" password="alexgaoyh" />
             
-        <javaModelGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" />
+        <javaModelGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" />
         
-        <sqlMapGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\resources" />
+        <sqlMapGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\resources" />
         
-        <javaClientGenerator targetPackage="com.alexgaoyh.MutiModule.persist.demo" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" type="XMLMAPPER" />
+        <javaClientGenerator targetPackage="com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel" targetProject="F:\eclipseWorkspace\MutiModule-parent\MutiModule-persist\src\main\java" type="XMLMAPPER" />
         
         <!-- domainObjectName 部分，如果不加的话，好像数据库表结构是驼峰式的话，生成的*。java类文件不是驼峰式的结构，故加上这个配置部分 -->
-        <table schema="" tableName="Demo" domainObjectName="Demo" delimitAllColumns="true">
-        	<!-- 生成代码字段名默认按驼峰命名 -->
-        	<columnOverride column="id" property="id" javaType="Integer"></columnOverride>
+        <table schema="" tableName="SysmanRoleResourceRel" domainObjectName="SysmanRoleResourceRel" delimitAllColumns="true">
+        	
+        	<!-- 生成代码字段名默认按驼峰命名， 单表逻辑的话， id createTime deleteFlag 三个字段为必须的，关联关系表结构的话，要注释掉如下的三个字段 -->
+        	<!-- <columnOverride column="id" property="id" javaType="Integer"></columnOverride>
         	<columnOverride column="createTime" property="createTime" javaType="java.util.Date"></columnOverride>
-        	<columnOverride column="deleteFlag" property="deleteFlag" javaType="Integer"></columnOverride>
-        	<columnOverride column="name" property="name" javaType="String"></columnOverride>
+        	<columnOverride column="deleteFlag" property="deleteFlag" javaType="Integer"></columnOverride> -->
+        	
+        	
+        	<columnOverride column="sysmanResourceId" property="sysmanResourceId" javaType="Integer"></columnOverride>
+        	<columnOverride column="sysmanRoleId" property="sysmanRoleId" javaType="Integer"></columnOverride>
+        	
         </table>
         
     </context>
 	    
 </generatorConfiguration>
-<!-- 每次修改的部分为替换  targetPackage tableName 部分，对应数据库不同的表结构，不同的包名，自动映射出来相关的类文件-->

@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.MutiModule.common.vo.Pagination;
 import com.MutiModule.common.vo.TreeNode;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanResourceExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource.SysmanResource;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource.SysmanResourceExample;
 
 /**
  * 

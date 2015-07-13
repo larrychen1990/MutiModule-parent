@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.MutiModule.common.utils.CookieUtilss;
+import com.MutiModule.common.utils.PaginationUtil;
 import com.MutiModule.common.vo.EasyUIData;
 import com.MutiModule.common.vo.Pagination;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanUserExample;
+import com.MutiModule.common.vo.mybatis.pagination.Page;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser.SysmanUser;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser.SysmanUserExample;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
 import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
@@ -174,9 +176,12 @@ public class SysmanUserController {
     @ResponseBody
 	public void getData(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		SysmanUserExample example = this.encloseObject(request);
 		
-		Pagination<SysmanUser> pagination = sysmanUserService.getPanigationByRowBounds(example);
+		SysmanUserExample exampleForCount = this.encloseObjectForCount(request);
+		SysmanUserExample exampleForList = this.encloseObjectForList(request);
+		
+		
+		Pagination<SysmanUser> pagination = sysmanUserService.getPanigationByRowBounds(exampleForCount, exampleForList);
 		
 		EasyUIData data = new EasyUIData(pagination);
 		
@@ -188,15 +193,38 @@ public class SysmanUserController {
 	 * @param request 请求对象
 	 * @return 请求对象包含的所有过滤条件进行过滤
 	 */
-	private SysmanUserExample encloseObject(HttpServletRequest request) {
+	private SysmanUserExample encloseObjectForCount(HttpServletRequest request) {
 		SysmanUserExample example = new SysmanUserExample();
 		
-		String page = request.getParameter("page");//easyui datagrid 分页 页号
-		String rows = request.getParameter("rows");//easyui datagrid 分页 页数
-		if(StringUtilss.isInteger(rows) && StringUtilss.isInteger(page)) {
-			
-		}
+		//TODO 添加相关过滤条件筛选的功能
+		CriteriaConditions(request, example);
 		
+		return example;
+	}
+	
+	/** 通用方法
+	 * 根据入参封装对象
+	 * @param request 请求对象
+	 * @return 请求对象包含的所有过滤条件进行过滤
+	 */
+	private SysmanUserExample encloseObjectForList(HttpServletRequest request) {
+		SysmanUserExample example = new SysmanUserExample();
+		
+		//TODO 添加相关过滤条件筛选的功能
+		CriteriaConditions(request, example);
+		
+		example.setOrderByClause("id asc");
+		
+		Integer pageNumber = Integer.parseInt(request.getParameter("page"));//easyui datagrid 分页 页号
+		Integer pageSize = Integer.parseInt(request.getParameter("rows"));//easyui datagrid 分页 页数
+		Page page = new Page(PaginationUtil.startValue(pageNumber, pageSize), pageSize);
+		example.setPage(page);
+		
+		return example;
+	}
+	
+	private SysmanUserExample CriteriaConditions(HttpServletRequest request, SysmanUserExample example) {
+		//TODO 过滤条件筛选，后期可根据需求手动书写
 		return example;
 	}
 	
@@ -233,8 +261,8 @@ public class SysmanUserController {
 	 * @throws Exception
 	 */
 	protected void beforeDoSave(HttpServletRequest request, SysmanUser entity) throws Exception {
-		entity.setDeleteflag(ConstantsUtil.DELETE_NO);
-		entity.setCreatetime(new Date());
+		entity.setDeleteFlag(ConstantsUtil.DELETE_NO);
+		entity.setCreateTime(new Date());
 		entity.setPassword(MD5Util.encrypByMd5Jar("admin"));
 	}
 	

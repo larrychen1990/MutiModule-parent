@@ -99,3 +99,6 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 				
 	MutiModule-perisit 模块
 		在使用 mybatis-generator-maven-plugin 进行Demo 表结构对应的文件生成后，完成单元测试功能
+		
+#20150713
+	使用新增的  mybatis-generator-maven-plugin 插件，将之前不符合要求的（关联关系表结构-复合主键， 驼峰式字段命名）进行修复；

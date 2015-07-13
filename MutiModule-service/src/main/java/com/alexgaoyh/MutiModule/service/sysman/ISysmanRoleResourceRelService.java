@@ -2,8 +2,8 @@ package com.alexgaoyh.MutiModule.service.sysman;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel;
-import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRelExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel.SysmanRoleResourceRelExample;
+import com.alexgaoyh.MutiModule.persist.sysman.SysmanRoleResourceRel.SysmanRoleResourceRelKey;
 
 /**
  * 
@@ -17,13 +17,13 @@ public interface ISysmanRoleResourceRelService {
 	 * 插入操作
 	 * @param SysmanRoleResourceRel sysmanRoleResourceRel 插入操作实体类数据
 	 */
-	public void insert(SysmanRoleResourceRel sysmanRoleResourceRel);
+	public void insert(SysmanRoleResourceRelKey sysmanRoleResourceRel);
 	
 	/**
 	 * 插入操作，根据实体类的相关参数，匹配插入数据
 	 * @param SysmanRoleResourceRel sysmanRoleResourceRel 插入操作实体类数据
 	 */
-	public void insertSelective(SysmanRoleResourceRel sysmanRoleResourceRel);
+	public void insertSelective(SysmanRoleResourceRelKey sysmanRoleResourceRel);
 	
 	/**
 	 * 根据example查询出相关的数据信息，并将这些数据信息进行更新，更新参数如record
@@ -31,7 +31,7 @@ public interface ISysmanRoleResourceRelService {
 	 * @param example 过滤条件
 	 * @return 符合条件的数据条数
 	 */
-	public int updateByExampleSelective(SysmanRoleResourceRel record, SysmanRoleResourceRelExample example);
+	public int updateByExampleSelective(SysmanRoleResourceRelKey record, SysmanRoleResourceRelExample example);
 	
 	/**
 	 * 根据example删除出相关的数据集，并对其进行删除操作
