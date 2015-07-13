@@ -16,7 +16,7 @@ public interface IDemoService {
 	 * 插入操作
 	 * @param demo
 	 */
-	public void insert(Demo demo);
+	public int insert(Demo demo);
 	
 	/**
 	 * 根据id获取实体信息

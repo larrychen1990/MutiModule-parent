@@ -1,5 +1,7 @@
 package com.alexgaoyh.MutiModule.service.demo;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -9,7 +11,6 @@ import com.MutiModule.common.utils.PaginationUtil;
 import com.MutiModule.common.vo.mybatis.pagination.Page;
 import com.alexgaoyh.MutiModule.persist.demo.Demo;
 import com.alexgaoyh.MutiModule.persist.demo.DemoExample;
-import com.alexgaoyh.MutiModule.service.demo.IDemoService;
 
 public class DemoServiceTest {
 
@@ -26,13 +27,15 @@ public class DemoServiceTest {
         
     }
 	
-	//@Test
+	@Test
 	public void insert() {
 		try {
 			Demo demo = new Demo();
-			demo.setName("test");
 			demo.setDeleteFlag(0);
-			demoService.insert(demo);
+			demo.setCreateTime(new Date());
+			demo.setName("test");
+			int savedId = demoService.insert(demo);
+			System.out.println("demoService.insert(demo) = " + savedId+ "|||demo.getId() = " +  demo.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,7 +62,7 @@ public class DemoServiceTest {
 		System.out.println(demo);
 	}
 	
-	@Test
+	//@Test
 	public void getPanigationByRowBounds() {
 		
 		DemoExample demoExampleForCount = new DemoExample();

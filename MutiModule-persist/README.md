@@ -115,4 +115,7 @@ MutiModule-persist部分：
 	认真阅读 generatorConfig.xml 文件的注释部分，有助于有效地自动生成代码结构
 		注意， 关联关系表结构设定为符合主键，这样，关联关系表结构生成时，会自动生成 *Key.java 的类文件；
 			单表结构的部分，注意id, deleteFlag, createTime 部分为必须字段。
+			
+	mybatis-generator-maven-plugin	用来指定自动生成主键的属性（identity字段或者sequences序列）。如果指定这个元素，MBG在生成insert的SQL映射文件中插入一个<selectKey>元素
+		<generatedKey column="id" sqlStatement="Mysql" identity="true" type="post"/>
 							

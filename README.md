@@ -102,3 +102,6 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 		
 #20150713
 	使用新增的  mybatis-generator-maven-plugin 插件，将之前不符合要求的（关联关系表结构-复合主键， 驼峰式字段命名）进行修复；
+	
+	mybatis-generator-maven-plugin	用来指定自动生成主键的属性（identity字段或者sequences序列）。如果指定这个元素，MBG在生成insert的SQL映射文件中插入一个<selectKey>元素
+		<generatedKey column="id" sqlStatement="Mysql" identity="true" type="post"/>

@@ -35,8 +35,8 @@ public class DemoServiceImpl implements IDemoService {
 	//------------------get set方法 end
 
 	@Override
-	public void insert(Demo demo) {
-		demoMapper.insert(demo);
+	public int insert(Demo demo) {
+		return demoMapper.insert(demo);
 	}
 
 	@Override

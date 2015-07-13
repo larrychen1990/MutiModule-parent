@@ -27,7 +27,7 @@ public class DemoMyBatisTest {
         
     }
 
-	//@Test
+	@Test
 	public void testInsert() {
 		
 		try {
@@ -35,7 +35,8 @@ public class DemoMyBatisTest {
 			demo.setDeleteFlag(0);
 			demo.setCreateTime(new Date());
 			demo.setName("test");
-			demoMapper.insert(demo);
+			int savedId = demoMapper.insert(demo);
+			System.out.println("demoMapper.insert(demo) id = " + savedId + "|||" + demo.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -45,7 +46,7 @@ public class DemoMyBatisTest {
 	public void testSelectById() {
 		
 		try {
-			Demo demo = demoMapper.selectByPrimaryKey(100);
+			Demo demo = demoMapper.selectByPrimaryKey(1);
 			if(demo != null) {
 				System.out.println(demo.getName());
 			}
@@ -54,7 +55,7 @@ public class DemoMyBatisTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testNullDemoExample() {
 		DemoExample demoExample = new DemoExample();
 		
@@ -67,7 +68,7 @@ public class DemoMyBatisTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testDemoExample1() {
 		DemoExample demoExampleForCount = new DemoExample();
 		demoExampleForCount.setOrderByClause("id asc");
@@ -89,7 +90,7 @@ public class DemoMyBatisTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void deleteLogicByIds() {
 		Integer[] ids = {4,5,6,7,8};
 		Integer deleteCount = demoMapper.deleteLogicByIds(1, ids);
