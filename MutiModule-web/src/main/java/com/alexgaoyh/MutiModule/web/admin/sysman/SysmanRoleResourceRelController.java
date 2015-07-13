@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MutiModule.common.utils.JSONUtilss;
+import com.MutiModule.common.vo.Result;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanRole.SysmanRole;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleResourceRelService;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanRoleService;
 import com.alexgaoyh.MutiModule.util.jackson.JacksonUtil;
-import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
-import com.alexgaoyh.MutiModule.web.util.Result;
 
 @Controller
 @RequestMapping(value = "admin/sysmanRoleResourceRel")

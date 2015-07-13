@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.MutiModule.common.utils.CookieUtilss;
+import com.MutiModule.common.utils.JSONUtilss;
+import com.MutiModule.common.utils.StringUtilss;
+import com.MutiModule.common.vo.Result;
 import com.MutiModule.common.vo.TreeNode;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanResource.SysmanResource;
 import com.alexgaoyh.MutiModule.persist.sysman.SysmanUser.SysmanUser;
@@ -27,9 +30,6 @@ import com.alexgaoyh.MutiModule.service.sysman.ISysmanResourceService;
 import com.alexgaoyh.MutiModule.service.sysman.ISysmanUserService;
 import com.alexgaoyh.MutiModule.util.jackson.JacksonUtil;
 import com.alexgaoyh.MutiModule.web.util.ConstantsUtil;
-import com.alexgaoyh.MutiModule.web.util.JSONUtilss;
-import com.alexgaoyh.MutiModule.web.util.Result;
-import com.alexgaoyh.MutiModule.web.util.StringUtilss;
 
 @Controller
 @RequestMapping(value="admin/sysmanResource")

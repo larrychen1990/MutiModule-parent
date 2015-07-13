@@ -1,4 +1,4 @@
-package com.alexgaoyh.MutiModule.web.util;
+package com.MutiModule.common.utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
