@@ -61,6 +61,7 @@
 		<json-simple>1.1.1</json-simple>
 		<org.im4java>1.4.0</org.im4java>
 		<mybatis-generator-core>1.3.2</mybatis-generator-core>
+		<dom4j.dom4j>1.6.1</dom4j.dom4j>
 	</properties>
 
 	<!-- dependencyManagement元素既能够让子模块继承到父模块的依赖配置，又能保证子模块的灵活�?�，在dependencyManagement下的依赖声明不会引入实际的依赖，但是能够约束dependencies下的依赖 -->
@@ -250,6 +251,11 @@
 			  <groupId>org.im4java</groupId>
 			  <artifactId>im4java</artifactId>
 			  <version>${org.im4java}</version>
+			</dependency>
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.dom4j}</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>

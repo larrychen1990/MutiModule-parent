@@ -59,5 +59,9 @@
 	    	<groupId>org.mybatis.generator</groupId>
 	    	<artifactId>mybatis-generator-core</artifactId>
 		 </dependency>
+		 <dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+		</dependency>
 	</dependencies>
 </project>

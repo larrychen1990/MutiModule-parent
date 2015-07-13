@@ -23,3 +23,6 @@
 			
 		com.MutiModule.common.mybatis.plugin.DeleteLogicByIdsPlugin 自定义的扩展插件
 			实现增加一个方法，方法名称为 deleteLogicByIds， 在 接口文件和XML的sql文件中，都增加自定义的方法。
+			
+#20150713
+	增加 XmlParserUtilss dom4j 相关的处理XML 通用方法
