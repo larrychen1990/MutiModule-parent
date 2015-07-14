@@ -107,3 +107,6 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 		<generatedKey column="id" sqlStatement="Mysql" identity="true" type="post"/>
 		
 	XmlParserUtilss dom4j 处理xml 通用方法
+		
+#20150714
+	维护XmlParserUtilss 方法

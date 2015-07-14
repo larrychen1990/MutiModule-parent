@@ -565,4 +565,36 @@ public class XmlParserUtilss {
 		Element element = root.element(tagName);
 		element.setText(value);
 	}
+	
+	/** 
+     * @Title: parseSqlXML 
+     * @Description: 使用DOM4J解析xml文件 
+     * @param root  xml 根节点
+     * @param _node xml节点 
+     * @return String 
+     */  
+    @SuppressWarnings("rawtypes")  
+    public static Element parseSqlXML(Element root, String _node) {  
+  
+        if ((null != _node && !"".equals(_node))) {
+  
+            try {  
+                // 从当前节点的子节点中选择名称为_node的节点  
+                List rootList = root.selectNodes(_node);  
+  
+                // xml元素  
+                Element element = null;  
+  
+                // 循环此节点,并取出对应的文本信息  
+                for (Object obj : rootList) {  
+                    element = (Element) obj;  
+                }  
+                return element;  
+  
+            } catch (Exception e) {  
+            	e.getStackTrace();
+            }  
+        }  
+        return null;  
+    }
 }

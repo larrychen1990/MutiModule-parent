@@ -26,3 +26,6 @@
 			
 #20150713
 	增加 XmlParserUtilss dom4j 相关的处理XML 通用方法
+	
+#20150714
+	维护XmlParserUtilss 方法
