@@ -110,3 +110,4 @@ maven多模块项目管理，整合spring mybatis，多模块划分： web层，
 		
 #20150714
 	维护XmlParserUtilss 方法
+	增加 生成xml 字符串的方法，详见单元测试部分   GenerateXMLTest

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GBK"?>
+<PolicyList username="username">
+	<Policy logic="test">
+		<PrimaryNo></PrimaryNo>
+	</Policy>
+</PolicyList>
